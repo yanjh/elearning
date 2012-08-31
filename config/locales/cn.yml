@@ -57,6 +57,7 @@ cn:
       title: 设置
       user: 用户
       role: 角色
+      organization: 组织
       application: 系统设置
       save: 保存设置
       options:
@@ -116,6 +117,19 @@ cn:
       edit: 编辑通告
     commits:
       title: "指派"
+    orgs:
+      title: 组织单位管理
+      edit_school: 编辑学校信息
+      school: 学校
+      grade: 年级
+      class: 班级
+      grade_list: 年级列表
+      class_list: 班级列表
+      add_grade: 新建年级
+      add_class: 新建班级
+      edit_grade: 编辑年级
+      edit_class: 编辑班级
+      class_member: 班级成员
     roles:
       new: "新建用户角色"
       name: "名称"
@@ -135,6 +149,8 @@ cn:
       administration: "管理"
       my_accout: "我的帐户"
   session:
+    system_login: 系统登录
+    login_info: "登录信息"
     log_in: "登录"
     sign_up: "注册"
     log_out: "注销"

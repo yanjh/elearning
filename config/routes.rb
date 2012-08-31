@@ -34,12 +34,14 @@ Rails3::Application.routes.draw do
   # Administration
   namespace :admin do 
     root :to => 'dashboard#index'
-    resources :settings 
     match '/settings/update_settings' => 'settings#update_settings',  :requirements => { :method => :post }
+    match '/users/search' => 'users#search',  :requirements => { :method => :get }
+
     resources :announcements
     resources :commits
+    resources :orgs
     resources :delayed_jobs, :only => [:index]
-    match '/users/search' => 'users#search',  :requirements => { :method => :get }
+    resources :settings 
     
     resources :users do 
       member do 

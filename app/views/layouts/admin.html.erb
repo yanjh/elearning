@@ -16,19 +16,15 @@
 <body>
 
   <div id="header">
-    <div id="global_links">
-      <%= render :partial => 'shared/global_links' %>
-    </div>
+    <div id="global_links"> <%= render :partial => 'shared/global_links' %></div>
+	
     <h1><%= link_to configatron.site_name, root_url %></h1>
 
-    <div id="tabs">
-      <%= render :partial => 'admin/shared/tabs' %>
-    </div>
+    <div id="tabs"> <%= render :partial => 'admin/shared/tabs' %> </div>
   </div>
 
   <div id="main">
-
-    <div id="left">
+   <div id="left">
 	  <%= flash_message.html_safe %>
 
       <h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>
@@ -45,7 +41,5 @@
     <%= configatron.site_name %> by <%= configatron.company_name %><br />
 	Copyright © <%= configatron.company_name %>
   </div>
-
-
 </body>
 </html>

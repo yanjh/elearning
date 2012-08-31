@@ -1,15 +1,18 @@
 authorization do  
   role :admin do
     has_permission_on [:admin_commits,:admin_dashboard,:admin_settings,:admin_announcements, 
-                      :admin_delayed_jobs, :admin_users, :admin_roles ],
+                      :admin_delayed_jobs, :admin_users, :admin_roles, :admin_orgs ],
     :to => [:manage,:read]
     
     has_permission_on :admin_users,
-    :to => [ :active, :search,:pending,:reset_password,:suspended, :activate,
-      :deleted, :suspend , :unsuspend, :purge, :toggle_role, :update ]
+    :to => [:active, :search,:pending,:reset_password,:suspended, :activate,
+            :deleted, :suspend , :unsuspend, :purge, :toggle_role, :update ]
 
     has_permission_on :admin_roles,
     :to => [ :adduser, :removeuser ]
+
+    has_permission_on :admin_orgs,
+    :to => [ :addclass, :addgrade ]
   end
 
   role :guest do

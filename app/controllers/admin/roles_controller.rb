@@ -64,8 +64,4 @@ class Admin::RolesController < Admin::BaseController
 
     redirect_to admin_roles_path
   end
-
-
-
-  
 end

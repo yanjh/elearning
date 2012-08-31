@@ -1,21 +1,20 @@
-<% content_for :header do -%>
-	<%= configatron.site_name %> <%= t('session.log_in') %>
-<% end -%>
-
+<% content_for :header do -%><%= t('session.system_login') %><% end -%>
+<br>
 <%= form_for resource, :url => session_path(resource_name) do |f| -%>
-	<fieldset>	  
-		<p><label for="login"><%= t('session.username') %></label><br/>
-			<%= f.text_field 'login' %></p>
+<fieldset>
+	<legend><%= t('session.login_info') %></legend>
+	<p><label for="login"><%= t('session.username') %></label><br/>
+		<%= f.text_field 'login' %></p>
 
-		<p><label for="password"><%= t('session.password') %></label><br/>
-			<%= f.password_field 'password' %></p>
+	<p><label for="password"><%= t('session.password') %></label><br/>
+		<%= f.password_field 'password' %></p>
 
-		<% if devise_mapping.rememberable? -%>
-			<p><%= f.check_box :remember_me %><label for="password"><%= t('session.remember') %></label></p>
-		<% end -%>
+	<% if devise_mapping.rememberable? -%>
+		<p><%= f.check_box :remember_me %><label for="password"><%= t('session.remember') %></label></p>
+	<% end -%>
 
-		<p><%= f.submit t('session.log_in') %></p>
-	</fieldset>
+	<p><%= f.submit t('session.log_in') %></p>
+</fieldset>
 <% end -%>
 
 <%= render :partial => "devise/shared/links" %>
