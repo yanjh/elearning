@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  gyear: 1
+  status: 1
+  description: MyText
+
+two:
+  name: MyString
+  gyear: 1
+  status: 1
+  description: MyText

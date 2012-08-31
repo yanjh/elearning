@@ -1,0 +1,39 @@
+cn:
+  errors:
+    messages:
+      not_found: '未找到'
+      already_confirmed: '已确认'
+      not_locked: '未锁定'
+
+  devise:
+    failure:
+      unauthenticated: '需要先登录或者注册.'
+      unconfirmed: '需要先确认帐号.'
+      locked: '您的帐户已锁定.'
+      invalid: '无效的电子邮件地址或密码.'
+      invalid_token: '无效的认证令牌.'
+      timeout: '会话已过期, 请重新登录.'
+      inactive: '帐号未激活.'
+    user_sessions:
+      signed_in: '已成功登录.'
+      signed_out: '已成功注销.'
+    passwords:
+      send_instructions: '您将会收到一封电子邮件来指导您如何快速重置密码.'
+      updated: '密码已成功修改. 现在已登录.'
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: '您已经成功注册. 系统会在启用是发送一封电子邮件.'
+      updated: '帐号信息修改成功.'
+      destroyed: '再见! 您的帐户已成功注销. 期望再次看到您.'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: '您的帐号已成功解锁. 现在已登录.'
+    mailer:
+      confirmation_instructions:
+        subject: '帐号确认指导'
+      reset_password_instructions:
+        subject: '密码重置指导'
+      unlock_instructions:
+        subject: '帐号解锁指导'

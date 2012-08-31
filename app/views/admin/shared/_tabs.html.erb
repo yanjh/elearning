@@ -1,0 +1,10 @@
+<ul>
+    <li><%= tab_to t('admin.dashboard.title'), [{:controller => "admin/dashboard"}] %></li>
+	<li><%= tab_to t('admin.delayed_jobs.title'), [admin_delayed_jobs_path] %></li>
+	<li><%= tab_to t('admin.announcements.title'), [ admin_announcements_path ] %></li>
+	<li><%= tab_to t('admin.commits.title'), [{:controller => "admin/commits" }] %></li>
+	
+	<li style="float: right;"><%= tab_to t('admin.settings.title'), [{:controller => "admin/settings"}] %></li>
+	<li style="float: right;"><%= tab_to t('admin.settings.user'), [{:controller => "admin/users"}] %></li>
+	<li style="float: right;"><%= tab_to t('admin.settings.role'), [{:controller => "admin/roles"}] %></li>
+</ul>

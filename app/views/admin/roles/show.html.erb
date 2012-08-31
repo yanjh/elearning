@@ -1,0 +1,26 @@
+<% content_for :header do -%>
+	<em>[<%=h @role.name %>] </em><%= t("admin.roles.members") %> 
+<% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("admin.roles.adduser") %></h2>
+   <ul><li>
+    <%= form_tag(adduser_admin_role_path) do %>
+	<%= hidden_field_tag(:id, @role.id ) %>
+	<%= label_tag(:search, "用户名称:") %><br />
+	<%= text_field_tag(:search) %><br /><br />
+	<%= submit_tag(t("manage.add")) %>
+    <% end %>
+    </li></ul>
+<% end -%>
+
+<% ulist = @role.users %>
+<% if ulist.count>0 %>
+	<%=raw ulist.collect{|item| link_to(item.login, removeuser_admin_role_path(@role,:user_id=>item), :confirm => t("manage.are_you_sure"), :method => :delete)} %>
+	<br>(<%= t("admin.roles.click_remove") %>)
+<% else %>
+	<p><%= t("admin.roles.no_members") %></p>	
+
+<% end %>
+
+<hr><%= link_to t("manage.back"), admin_roles_path %>

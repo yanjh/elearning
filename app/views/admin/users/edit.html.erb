@@ -1,0 +1,20 @@
+<% content_for :header do -%>
+<%= t('admin.users.edit_user') %> 
+<% end -%>
+
+<% content_for :sidebar do -%>
+    <%= render "admin/shared/error_messages", :target => @user%>
+<% end -%>
+
+<table class="overview">
+    <%= form_for [:admin, @user], :method => :put do |f| -%>
+    <%= cell((f.label :login), (f.text_field :login))%>
+    <%= cell((f.label :email), (f.text_field :email))%>
+    <%= cell((f.label :password), (f.password_field :password))%>
+    <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
+    <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>
+    
+    <%= cell("", (submit_tag t('manage.update')))%>
+    <% end -%>
+    <%= cell("", (link_to t('manage.back'), admin_users_path))%>
+</table>

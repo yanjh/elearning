@@ -1,0 +1,234 @@
+# Chinese translations for Ruby on Rails
+# by Jacek Becela (jacek.becela@gmail.com, http://github.com/ncr)
+# Minor changes and adjustments for Rails 3 by Piotrek Okoński (http://github.com/pokonski)
+# Minor changes and adjustments by Paweł Chojnacki (https://github.com/chojnacki)
+
+cn:
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%B %d, %Y"
+
+    day_names:
+      - 星期一
+      - 星期二
+      - 星期三
+      - 星期四
+      - 星期五
+      - 星期六
+      - 星期日
+    abbr_day_names:
+      - 周一
+      - 周二
+      - 周三
+      - 周四
+      - 周五
+      - 周六
+      - 周日
+
+    month_names:
+      - ~
+      - 一月
+      - 二月
+      - 三月
+      - 四月
+      - 五月
+      - 六月
+      - 七月
+      - 八月
+      - 九月
+      - 十月
+      - 十一月
+      - 十二月
+    abbr_month_names:
+      - ~
+      - 一月
+      - 二月
+      - 三月
+      - 四月
+      - 五月
+      - 六月
+      - 七月
+      - 八月
+      - 九月
+      - 十月
+      - 十一月
+      - 十二月
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " i "
+      last_word_connector: " oraz "
+
+    select:
+      prompt: "Proszę wybrać"
+
+  number:
+    format:
+      separator: ","
+      delimiter: " "
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u %n"
+        unit: "CNY"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: true
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "比特"
+            other: "比特"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: 千
+          million: 百万
+          billion: 十亿
+          trillion: Bilion
+          quadrillion: Biliard
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one:   "mniej niż sekundę"
+        few:   "mniej niż %{count} sekundy"
+        other: "mniej niż %{count} sekund"
+      x_seconds:
+        one:   "1 sekunda"
+        few:   "%{count} sekundy"
+        other: "%{count} sekund"
+      less_than_x_minutes:
+        one:   "mniej niż minutę"
+        few:   "mniej niż %{count} minuty"
+        other: "mniej niż %{count} minut"
+      x_minutes:
+        one:   "1 minuta"
+        few:   "%{count} minuty"
+        other: "%{count} minut"
+      about_x_hours:
+        one:   "około godziny"
+        few:   "około %{count} godziny"
+        other: "około %{count} godzin"
+      x_days:
+        one:   "1 dzień"
+        few:   "%{count} dni"
+        other: "%{count} dni"
+      about_x_months:
+        one:   "około miesiąca"
+        few:   "około %{count} miesiące"
+        other: "około %{count} miesięcy"
+      x_months:
+        one:   "1 miesiąc"
+        few:   "%{count} miesiące"
+        other: "%{count} miesięcy"
+      about_x_years:
+        one:   "około rok"
+        few:   "około %{count} lata"
+        other: "około %{count} lat"
+      over_x_years:
+        one:   "ponad rok"
+        few:   "ponad %{count} lata"
+        other: "ponad %{count} lat"
+      almost_x_years:
+        one:   "prawie rok"
+        few:   "prawie %{count} lata"
+        other: "prawie %{count} lat"
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "时"
+      minute: "分"
+      second: "秒"
+
+  helpers:
+    select:
+      prompt: "提示"
+
+    submit:
+      create: '创建 %{model}'
+      update: '更新 %{model}'
+      submit: '提交 %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "nie znajduje się na liście dopuszczalnych wartości"
+      exclusion: "jest zarezerwowane"
+      invalid: "无效的地址"
+      confirmation: "nie zgadza się z potwierdzeniem"
+      accepted: "musi zostać zaakceptowane"
+      empty: "内容不能为空"
+      blank: "内容不能为空"
+      too_long: "密码长度太长(必须小于 %{count} 个字符)"
+      too_short: "密码长度太短 (必须大于 %{count} 个字符)"
+      wrong_length: "错误的长度(必须为 %{count} 个字符)"
+      not_a_number: "不是有效的数字"
+      not_an_integer: "不是整数"
+      greater_than: "必须大于 %{count}"
+      greater_than_or_equal_to: "必须大于或等于 %{count}"
+      equal_to: "必须等于 %{count}"
+      less_than: "必须小于 %{count}"
+      less_than_or_equal_to: "必须小于或者等于 %{count}"
+      odd: "必须是奇数"
+      even: "必须是偶数"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "%{model} nie został zachowany z powodu jednego błędu"
+          other:  "%{model} nie został zachowany z powodu %{count} błędów"
+        body: "Błędy dotyczą następujących pól:"
+
+      messages:
+        taken: "zostało już zajęte"
+        record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"

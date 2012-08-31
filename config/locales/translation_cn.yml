@@ -1,0 +1,82 @@
+cn:
+  manage:
+    general: 通用
+    add: 增加
+    new: 新建
+    create: 创建
+    update: 更新
+    back: 返回
+    edit: 编辑
+    show: 显示
+    destroy: 清除
+    delete: 删除
+    edited: 已修正
+    showing: 显示中
+    destroyed: 已清除
+    forget_about_it: 暂时忘记
+    are_you_sure: 请确认
+  words: 
+    back: 返回
+    next: 下一条
+    previous: 上一条
+    or: 或者
+  activerecord:
+    models:
+      user: "用户"   
+      announcement: "通告"   
+      profile: 概况   
+      role: 角色   
+      setting: 设置   
+
+    attributes:
+      user:
+        id: ID
+        email: 电子邮件   
+        encrypted_password: "密码加密"   
+        reset_password_token: "重置密码令牌"   
+        remember_token: "保留令牌"   
+        remember_created_at: "保留令牌创建时间"   
+        current_sign_in_at: "当前登录时间"   
+        last_sign_in_at: "最后登录时间"   
+        current_sign_in_ip: 当前登录ip   
+        last_sign_in_ip: 最后登录ip   
+        login: 登录名称
+        identity_url: "标识Url地址"   
+        name: 名称   
+        status: 状态   
+        state: 状态   
+        twitter_token: Twitter令牌   
+        activated_at: 激活于   
+        deleted_at: "删除时间"   
+        roles: 角色   
+        profile: 个人信息   
+        admin: 是否管理员?
+        language: 语言
+        password: 密码
+        password_confirmation: 密码确认
+        created_at: 创建于
+        updated_at: 更新于
+        facebook: Facebook
+        
+      announcement:
+        headline: "标题"   
+        message: "消息"   
+        starts_at: "起始于"   
+        ends_at: 终止于
+
+      profile:
+        real_name: "实际名称"   
+        location: 位置   
+        website: 网络地址   
+        user: "用户"   
+
+      role:
+        name: 名称   
+        users: "用户"   
+
+      setting:
+        label: 标签   
+        identifier: 识别符   
+        description: 描述信息   
+        field_type: 字段类型 
+        value: "值" 

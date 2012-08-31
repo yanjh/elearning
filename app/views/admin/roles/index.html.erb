@@ -1,0 +1,34 @@
+<% content_for :header do -%>
+	<%= t("admin.roles.manage") %>
+<% end -%>
+
+<% content_for :sidebar do -%>
+    <h2><%= t("admin.roles.new") %></h2>
+	<%= form_for(@role,:url => admin_roles_path) do |f| %>
+  		<%= f.error_messages %>
+		<%= render :partial => 'form', :locals => {:f => f}%>
+	<% end %>
+
+<% end -%>
+
+<table class="index">
+	<tr><th><%= t("admin.roles.name") %></th><th><%= t("admin.roles.desc") %></th><th><%= t("admin.roles.rights") %></th><th align="right"></th></tr>
+	<% @roles.each do |item| %>
+	<tr>
+		<td class="text"><%= item.name %></td>
+		<td class="text"><%= item.description %></td>
+		<td class="text"></td>
+    	<td align=right>
+    	<%= link_to(t("manage.delete"),admin_role_path(item), :confirm => t("manage.are_you_sure"), :method => :delete) unless item.id==1 %> | 
+    	<%= link_to(t("admin.roles.rights"),admin_role_path(item)) %> | 
+    	<%= link_to(t("admin.roles.users"),admin_role_path(item)) %>
+    	</td>
+	</tr>
+	<% end %>
+</table>	
+
+
+
+
+
+
