@@ -45,6 +45,7 @@
     <%= cell t('activerecord.attributes.user.language'), h(@user.site_name) %>
   <% end %>
 	<%= cell "ID", h(@user.id) %>
+	<%= cell t('activerecord.attributes.user.sname'), h(@user.sname) %>
 	<%= cell t('activerecord.attributes.user.language'), h(@user.language) %>
 	<%= cell t('activerecord.attributes.user.roles'), @user.roles.map{|x| x.name.humanize }.join(", ") %>
 	<%= cell t('activerecord.attributes.user.email'), "#{in_place_editor_field :user, 'email'}" %>

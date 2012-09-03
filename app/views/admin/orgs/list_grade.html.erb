@@ -1,0 +1,40 @@
+<% content_for :header do -%> <%= t("admin.orgs.title") %> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("admin.orgs.new_grade") %></h2>
+   <ul><li><%= render(:partial=>'form_grade',:ftype=>0) %></li></ul>
+   
+   <h2><%= t("admin.orgs.new_class") %></h2>
+   <ul><li><%= render(:partial=>'form_class',:ftype=>0) %></li></ul>
+<% end -%>
+
+<h3><%= @school_name+"-"+t("admin.orgs.grade_list") %></h3>
+
+<table class="index">
+  <tr>
+	<th><%= t('admin.orgs.grade')%></th>
+	<th><%= t('admin.orgs.grade_year')%></th>
+	<th><%= t('admin.orgs.class_list')%></th>
+	<th align=right><%= t('general.admin')%></th>
+  </tr>
+
+  <% for grade1 in @grades %>
+  <tr>
+	<td><%= grade1.name %></td>
+	<td><%= grade1.gyear %></td>
+	<td></td>
+	<td class="actions">
+		<%= link_to t('general.edit'), edit_admin_org_path(grade1) %> | 
+		<%= link_to t('admin.orgs.add_class'), edit_admin_org_path(grade1) %> | 
+	    <%= link_to t('general.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("general.confirm_delete",:something=>grade1.name) %> 
+	</td>
+  </tr>
+  <% end %>
+</table>
+
+<p>
+   
+<%= link_to t('general.back'), admin_orgs_url%>
+
+
+

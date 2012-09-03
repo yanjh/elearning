@@ -10,6 +10,7 @@
     <%= form_for [:admin, @user], :method => :put do |f| -%>
     <%= cell((f.label :login), (f.text_field :login))%>
     <%= cell((f.label :email), (f.text_field :email))%>
+    <%= cell((f.label :sname), (f.text_field :sname))%>
     <%= cell((f.label :password), (f.password_field :password))%>
     <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
     <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>

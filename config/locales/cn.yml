@@ -1,6 +1,21 @@
 # Ernest Bursa
 # http://ernest.bzdury.pl
 cn:
+  general:
+    name: 名称
+    desc: 描述信息
+    back: 返回
+    edit: 编辑
+    show: 显示
+    admin: 管理
+    general: 通用
+    add: 增加
+    new: 新建
+    create: 创建
+    update: 更新
+    destroy: 清除
+    delete: 删除
+    confirm_delete: "确认删除资源: %{something} ?"
   site:
     sidebar: 工具栏
     needhelp: 获取帮助和反馈
@@ -125,11 +140,25 @@ cn:
       class: 班级
       grade_list: 年级列表
       class_list: 班级列表
-      add_grade: 新建年级
-      add_class: 新建班级
+      new_grade: 新建年级
+      new_class: 新建班级
+      add_class: 增加班级
+      create_grade: 创建年级
+      create_class: 创建班级
       edit_grade: 编辑年级
       edit_class: 编辑班级
+      update_grade: 更新年级
+      update_class: 更新班级
+      grade_year: 毕业年份
       class_member: 班级成员
+      school_name: 学校名称
+      desc: 描述信息
+      address: 地址
+      update_school_success: 学校信息成功更新
+      create_grade_success: 年级信息成功创建
+      create_class_success: 班级信息成功创建
+      update_grade_success: 年级信息成功更新
+      update_class_success: 班级信息成功更新
     roles:
       new: "新建用户角色"
       name: "名称"

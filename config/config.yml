@@ -14,6 +14,10 @@ development: &local
     
     site_envnote: Local Server
 
+    site_envnote: 192.168.0.90:8080
+
+    school_name: 七中育才学校
+    school_desc: 七中育才学校
 production:
     site_name: BaseApp2
     site_namemobile: BaseApp2
@@ -25,8 +29,10 @@ production:
     support_name: Development Company
     support_email: support@baseapp2.com
     
-    site_envnote: Production Server
-  
+    site_envnote: 192.168.0.90:8080
+
+    school_name: 七中育才学校
+    school_desc: 七中育才学校  
 staging:
   <<: *local
 

@@ -1,7 +1,7 @@
 authorization do  
   role :admin do
     has_permission_on [:admin_commits,:admin_dashboard,:admin_settings,:admin_announcements, 
-                      :admin_delayed_jobs, :admin_users, :admin_roles, :admin_orgs ],
+                      :admin_delayed_jobs, :admin_users, :admin_roles, :admin_orgs, :admin_grades],
     :to => [:manage,:read]
     
     has_permission_on :admin_users,
@@ -12,7 +12,9 @@ authorization do
     :to => [ :adduser, :removeuser ]
 
     has_permission_on :admin_orgs,
-    :to => [ :addclass, :addgrade ]
+    :to => [:add_class, :add_grade, :list_grade,
+            :edit_school,:edit_grade, :delete_grade, :delete_class,
+            :update_school,:update_grade, :update_class]
   end
 
   role :guest do

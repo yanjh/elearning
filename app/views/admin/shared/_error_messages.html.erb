@@ -1,8 +1,8 @@
 <%if target.errors.any? %>
-    <h2 class="error"><%= pluralize(target.errors.count, "error") + " prohibited this record from being saved:"%></h2>
-        <ul>
-            <% target.errors.full_messages.each do |msg|%>
-            <li><%= msg %></li>
-            <%end%>
-        </ul>
+    <h2 class="error"><%= t("activerecord.error_in_save",:count=>target.errors.count) %>:</h2>
+    <ul>
+        <% target.errors.full_messages.each do |msg|%>
+        <li><%= msg %></li>
+        <%end%>
+    </ul>
 <%end%>

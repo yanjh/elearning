@@ -137,25 +137,25 @@ cn:
         few:   "mniej niż %{count} sekundy"
         other: "mniej niż %{count} sekund"
       x_seconds:
-        one:   "1 sekunda"
-        few:   "%{count} sekundy"
-        other: "%{count} sekund"
+        one:   "1 秒"
+        few:   "%{count} 秒"
+        other: "%{count} 秒"
       less_than_x_minutes:
         one:   "mniej niż minutę"
         few:   "mniej niż %{count} minuty"
         other: "mniej niż %{count} minut"
       x_minutes:
-        one:   "1 minuta"
-        few:   "%{count} minuty"
-        other: "%{count} minut"
+        one:   "1 分钟"
+        few:   "%{count} 分钟"
+        other: "%{count} 分钟"
       about_x_hours:
         one:   "około godziny"
         few:   "około %{count} godziny"
         other: "około %{count} godzin"
       x_days:
-        one:   "1 dzień"
-        few:   "%{count} dni"
-        other: "%{count} dni"
+        one:   "1 天"
+        few:   "%{count} 天"
+        other: "%{count} 天"
       about_x_months:
         one:   "około miesiąca"
         few:   "około %{count} miesiące"
@@ -218,15 +218,16 @@ cn:
       even: "必须是偶数"
 
   activerecord:
+    error_in_save: 数据保存过程中出现了%{count}个错误
     errors:
       template:
         header:
-          one:    "%{model} nie został zachowany z powodu jednego błędu"
-          other:  "%{model} nie został zachowany z powodu %{count} błędów"
+          one:    "%{model} 模型的处理出现了一个错误"
+          other:  "%{model} 的模型出现了 %{count} 个错误"
         body: "Błędy dotyczą następujących pól:"
 
       messages:
-        taken: "zostało już zajęte"
+        taken: "登录用户名已存在"
         record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
         <<: *errors_messages
 

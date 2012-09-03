@@ -1,0 +1,20 @@
+<% content_for :header do -%>
+<%= t('admin.orgs.edit_school') %> 
+<% end -%>
+
+<% content_for :sidebar do -%>
+    <%= render "admin/shared/error_messages", :target => @school%>
+<% end -%>
+
+<%= form_for(@school, :url => update_school_admin_orgs_path) do |f| -%>
+<table class="overview">
+    <%= cell(t("admin.orgs.school_name"), (f.text_field :name)) %>
+    <%= cell(t("admin.orgs.desc"), (f.text_area  :description,:rows =>4,:cols=>32)) %>
+    <%= cell(t("admin.orgs.address"), (f.text_area  :address,:rows =>4,:cols=>32)) %>
+    
+    <%= cell("", (submit_tag t('manage.update'))) %>
+</table>
+<% end -%>
+
+<%= link_to(t('general.back'), admin_orgs_path) %>
+

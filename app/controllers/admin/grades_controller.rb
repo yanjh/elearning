@@ -1,4 +1,4 @@
-class GradesController < ApplicationController
+class  Admin::GradesController < ApplicationController
   # GET /grades
   # GET /grades.json
   def index
@@ -44,11 +44,11 @@ class GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.save
-        format.html { redirect_to @grade, notice: 'Grade was successfully created.' }
-        format.json { render json: @grade, status: :created, location: @grade }
+        format.html { redirect_to list_grade_admin_orgs_url, notice: t('admin.orgs.create_grade_success')}
+        #format.json { render json: @grade, status: :created, location: @grade }
       else
         format.html { render action: "new" }
-        format.json { render json: @grade.errors, status: :unprocessable_entity }
+        #format.json { render json: @grade.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.update_attributes(params[:grade])
-        format.html { redirect_to @grade, notice: 'Grade was successfully updated.' }
+        format.html { redirect_to list_grade_admin_orgs_url, notice: t('admin.orgs.update_grade_success') }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @grade.errors, status: :unprocessable_entity }
+        format.html { render action: "edit_school" }
+        format.json { render json: @school.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +76,7 @@ class GradesController < ApplicationController
     @grade.destroy
 
     respond_to do |format|
-      format.html { redirect_to grades_url }
+      format.html { redirect_to list_grade_admin_orgs_url }
       format.json { head :ok }
     end
   end

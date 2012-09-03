@@ -1,7 +1,4 @@
 Rails3::Application.routes.draw do
-
-  resources :grades
-
   devise_for  :users,
               :controllers => { :sessions => "user_sessions" },
               :path_names => { :sign_in => 'login', :sign_out => 'logout',  :registration => 'register' }
@@ -39,7 +36,6 @@ Rails3::Application.routes.draw do
 
     resources :announcements
     resources :commits
-    resources :orgs
     resources :delayed_jobs, :only => [:index]
     resources :settings 
     
@@ -70,6 +66,25 @@ Rails3::Application.routes.draw do
         delete :removeuser
 	  end 
   	end
+
+    match '/orgs/update_school' => 'orgs#update_school',  :requirements => { :method => :post }
+    resources :orgs do
+      collection do
+        get  :edit_school
+        post :update_school
+        get  :list_grade
+        post :update_grade
+        get  :edit_class
+        post :update_class
+        post :add_class
+      end
+
+    end
+
+    resources :grades
+    #resources :sclasses
+
+    #match '/orgs/edit_school' => 'orgs#edit_school',  :requirements => { :method => :get }
   end
   
   match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback

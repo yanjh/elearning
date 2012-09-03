@@ -1,15 +1,5 @@
 cn:
   manage:
-    general: 通用
-    add: 增加
-    new: 新建
-    create: 创建
-    update: 更新
-    back: 返回
-    edit: 编辑
-    show: 显示
-    destroy: 清除
-    delete: 删除
     edited: 已修正
     showing: 显示中
     destroyed: 已清除
@@ -43,6 +33,7 @@ cn:
         login: 登录名称
         identity_url: "标识Url地址"   
         name: 名称   
+        sname: 显示名称   
         status: 状态   
         state: 状态   
         twitter_token: Twitter令牌   
@@ -72,7 +63,7 @@ cn:
 
       role:
         name: 名称   
-        users: "用户"   
+        users: 用户  
 
       setting:
         label: 标签   

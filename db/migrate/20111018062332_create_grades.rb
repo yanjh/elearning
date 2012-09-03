@@ -4,6 +4,9 @@ class CreateGrades < ActiveRecord::Migration
       t.string :name
       t.integer :gyear
       t.integer :status
+      t.integer :stype
+      t.text :address
+      t.string :geocode
       t.text :description
 
       t.timestamps
