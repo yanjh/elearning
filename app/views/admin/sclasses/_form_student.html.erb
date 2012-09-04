@@ -1,0 +1,12 @@
+<%
+    stitle = @student.id.nil? ? stitle = t('admin.orgs.create_student'):t('admin.orgs.update_student')
+-%>
+
+<%= form_for [:admin, @student] do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("general.name"), (f.text_field :name))%>
+    <%= cell(t("general.name"), (f.text_field :unumber))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

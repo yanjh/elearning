@@ -19,7 +19,7 @@
 		<td class="text"><%= item.description %></td>
 		<td class="text"></td>
     	<td align=right>
-    	<%= link_to(t("manage.delete"),admin_role_path(item), :confirm => t("manage.are_you_sure"), :method => :delete) unless item.id==1 %> | 
+    	<%= link_to(t("general.delete"),admin_role_path(item), :confirm => t("phrase.are_you_sure"), :method => :delete) unless item.id==1 %> | 
     	<%= link_to(t("admin.roles.rights"),admin_role_path(item)) %> | 
     	<%= link_to(t("admin.roles.users"),admin_role_path(item)) %>
     	</td>

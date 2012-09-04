@@ -1,6 +1,4 @@
-<% content_for :header do -%>
-	<%= t('admin.announcements.title')%>
-<% end -%>
+<% content_for :header do -%> <%= t('admin.announcements.title')%> <% end -%>
 
 <% content_for :sidebar do -%>
 	<h2><%= t("admin.announcements.new") %></h2>
@@ -13,21 +11,16 @@
 
 <table class="index">
   <tr>
-    <th><%= t('activerecord.attributes.announcement.headline')%></th>
-    <th><%= t('activerecord.attributes.announcement.message')%></th>
-    <th><%= t('activerecord.attributes.announcement.starts_at')%></th>
-    <th><%= t('activerecord.attributes.announcement.ends_at')%></th>
+    <th><%= t('activerecord.attributes.announcement.headline')%>/<%= t('activerecord.attributes.announcement.message')%></th>
+    <th><%= t('activerecord.attributes.announcement.starts_at')%>/<%= t('activerecord.attributes.announcement.ends_at')%></th>
   </tr>
 
 <% @announcements.each do |announcement| %>
   <tr>
-    <td><%=h announcement.headline %></td>
-    <td><%=h announcement.message %></td>
-    <td><%=h announcement.starts_at %></td>
-    <td><%=h announcement.ends_at %></td>
-    <td><%= link_to t('manage.show'), admin_announcement_path(announcement) %></td>
-    <td><%= link_to t('manage.edit'), edit_admin_announcement_path(announcement) %></td>
-    <td><%= link_to t('manage.destroy'), admin_announcement_path(announcement), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h announcement.headline %><br><%=h announcement.message %></td>
+    <td><%=h announcement.starts_at %><br><%=h announcement.ends_at %></td>
+    <td><%= link_to t('general.edit'), edit_admin_announcement_path(announcement) %></td>
+    <td><%= link_to t('general.destroy'), admin_announcement_path(announcement), :confirm => t('phrase.are_you_sure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -13,7 +13,6 @@ authorization do
 
     has_permission_on :admin_orgs,
     :to => [:add_class, :add_grade, :list_grade,
-            :edit_school,:edit_grade, :delete_grade, :delete_class,
             :update_school,:update_grade, :update_class]
   end
 

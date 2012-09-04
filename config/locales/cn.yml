@@ -7,6 +7,7 @@ cn:
     back: 返回
     edit: 编辑
     show: 显示
+    view: 查看
     admin: 管理
     general: 通用
     add: 增加
@@ -15,7 +16,15 @@ cn:
     update: 更新
     destroy: 清除
     delete: 删除
+    yes: 是
+    no: 否
+    next: 下一条
+    prev: 上一条
+    or: 或者
+  phrase:
+    confirm_save: 确认保存 %{somethin} ?
     confirm_delete: "确认删除资源: %{something} ?"
+    are_you_sure: 你确认要进行此项操作吗 ?"
   site:
     sidebar: 工具栏
     needhelp: 获取帮助和反馈
@@ -46,9 +55,9 @@ cn:
       created_at: 创建于
       updated_at: 更新于
     login:
-      new: 登录
-      text: "Proszę wpisz poniżej swój nowy login, zapamiętaj go gdyż możesz go później potrzebować."
-      set: Zapisz mój nowy login
+      new: 重新登录
+      text: "请重新登录."
+      set: 保持登录
     actions:
       update: 更新信息
       update_email: 更新电子邮件

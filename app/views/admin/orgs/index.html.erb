@@ -1,32 +1,59 @@
-<% content_for :header do -%>
-<%= t("admin.orgs.title") %>
-<% end -%>
+<% content_for :header do -%><%= t("admin.orgs.title") %><% end -%>
 
 <% content_for :sidebar do -%>
    <h2><%= t("admin.orgs.school") %></h2>
    <ul>
 		<li><%= link_to t('admin.orgs.edit_school'), edit_school_admin_orgs_url %></li>
-		<li><%= link_to t('admin.orgs.grade_list'), list_grade_admin_orgs_url %></li>
    </ul>
 
    <h2><%= t("admin.orgs.new_grade") %></h2>
-   <ul><li><%= render 'form_grade' %></li></ul>
+   <ul><li><%= render 'admin/grades/form' %></li></ul>
 
    <h2><%= t("admin.orgs.new_class") %></h2>
-   <ul>
-		<li><%= form_for(@sclass,:url => add_class_admin_orgs_path) do |f| %>
-				<%= f.error_messages %>
-				<table >
-					<%= cell(t("general.name"), (f.text_field :name))%>
-					<%= cell(t("general.desc"), (f.text_area :description, :rows =>4,:cols=>28))%>
-					<%= cell("", (submit_tag t('admin.orgs.create_class')))%>
-				</table>
-			<% end %>
-		</li>
-   </ul>
+   <ul><li><%= render 'admin/sclasses/form' %></li></ul>
 <% end -%>
 
 <h3><%= @school.name %></h3>
-<%= @school.description %><br>
-<%= t("admin.orgs.address")+":"+ @school.address %><hr>
-<h3>年级/班级：</h3>
+
+<%= @school.description %>
+<br>
+<%= t("admin.orgs.address") %>:<br>
+<%= @school.address %>
+<br>
+<hr>
+	
+<h3><%= t("admin.orgs.grade_list") %></h3>
+
+<table class="index">
+  <tr>
+	<th><%= t('admin.orgs.grade')%></th>
+	<th><%= t('admin.orgs.grade_year')%></th>
+	<th><%= t('admin.orgs.class_list')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+
+  <% for grade1 in @grades %>
+  <tr>
+	<td><%= grade1.name %></td>
+	<td><%= grade1.gyear %></td>
+	<td><%= grade1.sclasses.count %></td>
+	<td class="actions">
+		<%= link_to t('general.edit'), edit_admin_grade_path(grade1) %> | 
+	    <%= link_to t('general.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>grade1.name) %> 
+	</td>
+  </tr>
+	<% for sclass1 in grade1.sclasses.order(:name) %>
+	<tr>
+	  <td></td>
+	  <td></td>
+	  <td><%= sclass1.name %></td>
+	  <td class="actions">
+		  <%= link_to t('general.view'), [:admin,sclass1] %> | 
+		  <%= link_to t('general.edit'), edit_admin_sclass_path(sclass1) %> | 
+		  <%= link_to t('general.delete'), admin_sclass_url(sclass1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>sclass1.name) %> 
+	  </td>
+	</tr>
+	<% end %>	
+  
+  <% end %>
+</table>

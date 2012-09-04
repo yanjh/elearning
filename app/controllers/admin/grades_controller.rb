@@ -1,4 +1,4 @@
-class  Admin::GradesController < ApplicationController
+class  Admin::GradesController < Admin::BaseController 
   # GET /grades
   # GET /grades.json
   def index
@@ -34,7 +34,8 @@ class  Admin::GradesController < ApplicationController
 
   # GET /grades/1/edit
   def edit
-    @grade = Grade.find(params[:id])
+    @grade  = Grade.find(params[:id])
+    @sclass = Sclass.new(:grade=>@grade)
   end
 
   # POST /grades
@@ -44,7 +45,7 @@ class  Admin::GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.save
-        format.html { redirect_to list_grade_admin_orgs_url, notice: t('admin.orgs.create_grade_success')}
+        format.html { redirect_to admin_orgs_url, notice: t('admin.orgs.create_grade_success')}
         #format.json { render json: @grade, status: :created, location: @grade }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class  Admin::GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.update_attributes(params[:grade])
-        format.html { redirect_to list_grade_admin_orgs_url, notice: t('admin.orgs.update_grade_success') }
+        format.html { redirect_to admin_orgs_url, notice: t('admin.orgs.update_grade_success') }
         format.json { head :ok }
       else
         format.html { render action: "edit_school" }

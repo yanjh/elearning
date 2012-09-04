@@ -41,9 +41,9 @@
 	<td><%= link_to h(user.login || user.site_name), admin_user_url(user) %></td>
 	<td><%= user.email %></td>
 	<td><%= user.state %></td>
-	<td><%= t('misc.words.yes') if user.admin? %></td>
+	<td><%= t('general.yes') if user.admin? %></td>
 	<td class="actions">
-		<%= link_to t('manage.edit'), edit_admin_user_path(user) %>
+		<%= link_to t('general.edit'), edit_admin_user_path(user) %>
 		<% if user.pending? %>
 			<%= link_to t('admin.users.options.activate'), activate_admin_user_url(user), :method => :put %>
 			<%= link_to t('admin.users.options.suspend'), suspend_admin_user_url(user), :method => :put %>

@@ -1,6 +1,12 @@
-<h1>Editing grade</h1>
+<% content_for :header do -%> <%= t('admin.orgs.edit_grade') %> <% end -%>
+
+<% content_for :sidebar do -%>
+   <%= render "admin/shared/error_messages", :target => @sclass%>
+    
+   <h2><%= t("admin.orgs.new_class") %></h2>
+   <ul><li><%= render ("admin/sclasses/form") %></li></ul>    
+<% end -%>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @grade %> |
-<%= link_to 'Back', grades_path %>
+<%= link_to(t('general.back'), admin_orgs_path) %>

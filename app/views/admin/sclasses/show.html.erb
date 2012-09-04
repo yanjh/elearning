@@ -1,0 +1,18 @@
+<% content_for :header do -%> <%= t('admin.orgs.class')%> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("admin.orgs.new_student") %></h2>
+   <ul><li><%= render ("form_student") %></li></ul>    
+	
+<% end -%>
+
+<%= @sclass.name %>
+
+教师列表
+
+
+学生列表
+
+
+
+<%= link_to t('general.back'), admin_orgs_path %>

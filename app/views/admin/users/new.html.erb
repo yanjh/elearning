@@ -15,8 +15,8 @@
     <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
     <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>
     
-    <%= cell("", (submit_tag t('manage.create')))%>
-    <%= cell("", (link_to t('manage.back'), admin_users_path))%>
+    <%= cell("", (submit_tag t('general.create')))%>
+    <%= cell("", (link_to t('general.back'), admin_users_path))%>
 </table>
 
 <% end -%>

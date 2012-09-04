@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
     has_role?(:admin)
   end
   
+  def teacher?
+    has_role?(:admin)
+  end
+  
+  def student?
+    has_role?(:admin)
+  end
+  
   def facebook?
     self.authentications.find_by_provider('facebook').present?
   end

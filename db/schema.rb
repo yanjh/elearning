@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020062332) do
+ActiveRecord::Schema.define(:version => 20111021163926) do
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20111020062332) do
 
   create_table "sclasses", :force => true do |t|
     t.string   "name"
-    t.integer  "cid"
+    t.integer  "grade_id"
     t.integer  "status"
     t.integer  "ctype"
     t.text     "address"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20111020062332) do
     t.datetime "updated_at"
     t.string   "language"
     t.string   "sname"
+    t.string   "unumber"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

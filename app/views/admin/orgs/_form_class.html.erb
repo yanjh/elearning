@@ -1,8 +1,0 @@
-<%= form_for(@sclass,:url => add_class_admin_orgs_path) do |f| %>
-<%= f.error_messages %>
-<table >
-    <%= cell(t("general.name"), (f.text_field :name))%>
-    <%= cell(t("general.desc"), (f.text_area :description, :rows =>4,:cols=>28))%>
-    <%= cell("", (submit_tag t('admin.orgs.create_class')))%>
-</table>
-<% end %>

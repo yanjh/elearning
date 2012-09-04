@@ -1,5 +1,5 @@
 class Sclass < ActiveRecord::Base
-  belongs_to :grade,:foreign_key => "cid"
-
+  belongs_to :grade
+  
   
 end

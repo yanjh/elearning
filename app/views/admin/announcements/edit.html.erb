@@ -1,11 +1,7 @@
-<% content_for :header do -%>
-	<%= t('admin.announcements.edit')%>
-<% end -%>
+<% content_for :header do -%> <%= t('admin.announcements.edit')%> <% end -%>
 
-<%= simple_form_for @announcement do |f| %>
+<%= simple_form_for [:admin,@announcement] do |f| %>
   <%= render :partial => 'form', :locals => {:f => f}%>
 <% end %>
 
-
-<%= link_to t('manage.show'), admin_announcement_path(@announcement) %> |
-<%= link_to t('manage.back'), admin_announcements_path %>
+<%= link_to t('general.back'), admin_announcements_path %>

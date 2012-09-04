@@ -67,16 +67,10 @@ Rails3::Application.routes.draw do
 	  end 
   	end
 
-    match '/orgs/update_school' => 'orgs#update_school',  :requirements => { :method => :post }
     resources :orgs do
       collection do
         get  :edit_school
         post :update_school
-        get  :list_grade
-        post :update_grade
-        get  :edit_class
-        post :update_class
-        post :add_class
       end
 
     end
