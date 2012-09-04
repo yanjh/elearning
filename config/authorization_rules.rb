@@ -1,7 +1,7 @@
 authorization do  
   role :admin do
     has_permission_on [:admin_commits,:admin_dashboard,:admin_settings,:admin_announcements, 
-                      :admin_delayed_jobs, :admin_users, :admin_roles, :admin_orgs, :admin_grades],
+                      :admin_delayed_jobs, :admin_users, :admin_roles, :admin_orgs, :admin_grades, :admin_sclasses],
     :to => [:manage,:read]
     
     has_permission_on :admin_users,

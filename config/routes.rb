@@ -82,7 +82,7 @@ Rails3::Application.routes.draw do
     end
 
     resources :grades
-    #resources :sclasses
+    resources :sclasses
 
     #match '/orgs/edit_school' => 'orgs#edit_school',  :requirements => { :method => :get }
   end
