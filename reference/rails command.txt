@@ -1,0 +1,41 @@
+// 班级 名称，如201401, 年级2014
+rails g scaffold sclass name:string grade:integer desc:text
+
+// 学生列表，学号 20140115，姓名，性别，所属班级，出生日期，角色，描述信息
+rails g scaffold student sid:string  password:text name:string  gender:integer birthday:date classid:integer roleid:integer descr:text
+rails g model classuser sclass_id:integer user_id:integer  username:string ltype:integer 
+
+// 教师列表，编号
+rails g scaffold teacher tid:string password:text name:string  gender:integer birthday:date roleid:integer descr:text
+rails g scaffold teacherClass tid:string 
+
+// 课程，名称(初一语文)，类别：语文，级别：7，
+rails g scaffold course name:string catelog:text level:integer desc:text
+
+// 章节，所属课程，名称，内容(html编码)
+rails g scaffold chapter courseid:integer name:string content:text 
+
+//资源编目，编目名称，文件基础目录，链接基础目录
+rails g scaffold rcatalog name:string basefolder:string baselink:string 
+
+//课程资源，名称，编码，类型(图片、图片集、声音、视频、Widget、链接)，文件名称，链接，实际保存为 资源目录+
+rails g scaffold cresource name:string catalogid:integer filename:string url:text
+
+// 题目 ,标题(显示用)，类别(单选、多选、对错、简答、描述、...)，内容，答案，难度级别
+rails g scaffold question name:string qtype:integer content:text answer:string level:integer desc:text
+
+// 题目组
+rails g exam name:string desc:text 
+rails g examQuestion eid:integer qid:integer score:integer 
+
+// 课堂: 名称，状态，教师，教室，时间
+rails g scaffold lesson name:string  chapter:integer teacher1:string teacher2:string sclass:string ldate:date status:integer
+
+rails g scaffold lessonExam lid:integer eid:integer status:integer
+
+评测结果，成绩, qid=0 评测成绩
+lessonExamResult sid:string leid:integer qid:integer answer:text score:integer 
+
+考试成绩报告
+lessonExamReport sid:string leid:integer edate:date content:text score:integer
+
