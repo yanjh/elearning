@@ -24,18 +24,19 @@
 	
 	<% if @user.deleted? -%>
 		<li><%= link_to t('admin.users.purge'), purge_admin_user_url(@user), :method => :delete, :confirm => "Are you sure you want to remove this account, and all data associated with it from base_app?" %></li>
+		<li><%= link_to t('admin.users.recover'), purge_admin_user_url(@user), :method => :delete, :confirm => "Are you sure you want to remove this account, and all data associated with it from base_app?" %></li>
 	<% end -%>
 </ul>	
-
-<h2><%= t('admin.users.options.roles') %></h2>	
-
-<ul>
-    <% Role.all.each do |x| -%>
-	<li>
-	<%= link_to (@user.has_real_role?(x.name.underscore.to_sym) ? t('.take', :role => x.name.humanize.gsub(/-/, ' ')) : t('.grant', :role => x.name.humanize.gsub(/-/, ' '))), toggle_role_admin_user_path(@user, x.name), :method => :post %>
-	</li>
-    <% end -%>
-</ul>
+	<% if !@user.deleted? -%>
+		<h2><%= t('admin.users.options.roles') %></h2>	
+		<ul>
+			<% Role.all.each do |x| -%>
+			<li>
+			<%= link_to (@user.has_real_role?(x.name.underscore.to_sym) ? t('.take', :role => x.name.humanize.gsub(/-/, ' ')) : t('.grant', :role => x.name.humanize.gsub(/-/, ' '))), toggle_role_admin_user_path(@user, x.name), :method => :post %>
+			</li>
+			<% end -%>
+		</ul>
+	<% end -%>
 <% end -%>
 
 <table class="overview">

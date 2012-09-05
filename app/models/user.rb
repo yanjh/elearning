@@ -13,8 +13,11 @@ class User < ActiveRecord::Base
   # Hooks
   after_create :create_profile, :register!
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :identity_url, :language
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :identity_url, :language, :unumber, :sname
+
   before_validation(:set_default, :on => :create)
+  
+  self.per_page = 20
   
   def self.search(search, page)
     if search  
@@ -37,11 +40,11 @@ class User < ActiveRecord::Base
   end
   
   def teacher?
-    has_role?(:admin)
+    has_role?(:teacher)
   end
   
   def student?
-    has_role?(:admin)
+    has_role?(:student)
   end
   
   def facebook?
@@ -58,6 +61,12 @@ class User < ActiveRecord::Base
   
   def role_symbols
     @role_symbols ||= roles.map {|r| r.name.underscore.to_sym }
+  end
+
+
+  def add_role(role_name)
+    role=Role.find_by_name(role_name)
+    self.roles << role if !role.nil? 
   end
 
   def openid_login?
@@ -95,6 +104,13 @@ class User < ActiveRecord::Base
     @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token).fetch
   end
 
+  def self.role_users(rolename)
+    role=Role.find_by_name(rolename)
+    #puts role.to_s
+    #role.nil? Array.new:role.users
+    role.users
+  end
+
   protected
   
   def apply_facebook(omniauth)
@@ -107,6 +123,8 @@ class User < ActiveRecord::Base
     # Give the user a profile
     self.profile = Profile.create    
   end
+  
+  
   
   private
   

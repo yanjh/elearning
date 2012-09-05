@@ -4,11 +4,6 @@
 <% end -%>
   
 <% content_for :sidebar do -%>
-    <h2><%= t('.create') %> </h2>
-    <ul><li>
-	<%= link_to t('.create_user'), new_admin_user_path %>
-    </li></ul>
-    
     <h2><%= t('.search') %> </h2>
     <ul><li>
 	<%= form_tag admin_users_search_path, :method => 'get' do %>
@@ -16,20 +11,31 @@
             <%= submit_tag  t('.search'), :name => nil %>
         <% end %>
     </li></ul>
+
+    <h2><%= t('.operation') %> </h2>
+    <ul><li><%= link_to t('.create_user'), new_admin_user_path %></li>
+		<li><%= link_to t('.purge_all'), new_admin_user_path %></li>
+	</ul>
+    
     <h2><%= t('.filtr') %></h2>
     <ul>
-	<li><%= link_to t('.options.all'), admin_users_url %></li>
-	<li><%= link_to t('.options.active'), active_admin_users_url %></li>
-	<li><%= link_to t('.options.suspended'), suspended_admin_users_url %></li>
-	<li><%= link_to t('.options.pending'), pending_admin_users_url %></li>
-	<li><%= link_to t('.options.deleted'), deleted_admin_users_url %></li>
+	<li><%= link_to t('.options.admin'), filter_admin_users_url(:by=>"roles",:name=>"admin") %> |
+		<%= link_to t('.options.teacher'), filter_admin_users_url(:by=>"roles",:name=>"teacher") %> |
+		<%= link_to t('.options.student'), filter_admin_users_url(:by=>"roles",:name=>"student") %></li>
+ 	<li><%= link_to t('.options.all'), admin_users_url %> | 
+		<%= link_to t('.options.active'), filter_admin_users_url(:by=>"active") %> | 
+		<%= link_to t('.options.suspended'), filter_admin_users_url(:by=>"suspended") %> | 
+		<%= link_to t('.options.pending'), filter_admin_users_url(:by=>"pending") %> | 
+		<%= link_to t('.options.deleted'), filter_admin_users_url(:by=>"deleted") %></li>
     </ul>
+	
 <% end -%>
 
 <table class="index">
   <tr>
 	<th>ID</th>
 	<th><%= t('activerecord.attributes.user.login')%></th>
+	<th><%= t('activerecord.attributes.user.sname')%></th>
 	<th><%= t('activerecord.attributes.user.email')%></th>
 	<th><%= t('activerecord.attributes.user.status')%></th>
 	<th><%= t('activerecord.attributes.user.admin')%></th>
@@ -39,6 +45,7 @@
   <tr>
 	<td><%= user.id %></td>
 	<td><%= link_to h(user.login || user.site_name), admin_user_url(user) %></td>
+	<td><%= user.sname %></td>
 	<td><%= user.email %></td>
 	<td><%= user.state %></td>
 	<td><%= t('general.yes') if user.admin? %></td>
@@ -64,4 +71,4 @@
   <% end %>
 </table>
 
-<%= will_paginate @users %>
+<%= will_paginate @users, :previous_label => t("general.prev_page"), :next_label => t("general.next_page")%>

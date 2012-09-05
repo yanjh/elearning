@@ -36,6 +36,32 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_user_path(@user)
   end
   
+  def filter
+    case params[:by]  
+    when "roles"
+      @users = User.role_users(params[:name]).page(params[:page])
+
+    when "pending"  
+      @users = User.paginate :conditions => {:state => 'pending'}, :page => params[:page]
+
+    when "suspended"  
+      @users = User.paginate :conditions => {:state => 'suspended'}, :page => params[:page]
+
+    when "active"  
+      @users = User.paginate :conditions => {:state => 'active'}, :page => params[:page]
+
+    when "deleted"  
+      @users = User.paginate :conditions => {:state => 'deleted'}, :page => params[:page]
+
+    when "all"  
+      @users = User.paginate :page => params[:page]
+
+    else
+      
+    end
+    render :action => 'index'
+  end
+  
   def pending
     @users = User.paginate :conditions => {:state => 'pending'}, :page => params[:page]
     render :action => 'index'

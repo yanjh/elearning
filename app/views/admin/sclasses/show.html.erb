@@ -3,16 +3,36 @@
 <% content_for :sidebar do -%>
    <h2><%= t("admin.orgs.new_student") %></h2>
    <ul><li><%= render ("form_student") %></li></ul>    
-	
 <% end -%>
 
 <%= @sclass.name %>
 
 教师列表
-
+<p>
+  
+  
+</p>
 
 学生列表
-
-
+<table class="index">
+  <tr>
+	<th>ID</th>
+	<th><%= t('activerecord.attributes.user.login')%></th>
+	<th><%= t('activerecord.attributes.user.sname')%></th>
+	<th><%= t('activerecord.attributes.user.email')%></th>
+	<th><%= t('activerecord.attributes.user.status')%></th>
+	<th><%= t('activerecord.attributes.user.admin')%></th>
+  </tr>
+  
+  <% for user in @sclass.students %>
+  <tr>
+	<td><%= user.user_id %></td>
+	<td><%= user.username %></td>
+	<td class="actions">
+		<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+	</td>
+  </tr>
+  <% end %>
+</table>
 
 <%= link_to t('general.back'), admin_orgs_path %>

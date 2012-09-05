@@ -57,6 +57,7 @@ Rails3::Application.routes.draw do
         get :active
         get :suspended
         get :deleted
+        get :filter
       end
     end
     
@@ -76,9 +77,13 @@ Rails3::Application.routes.draw do
     end
 
     resources :grades
-    resources :sclasses
-
-    #match '/orgs/edit_school' => 'orgs#edit_school',  :requirements => { :method => :get }
+    resources :sclasses do
+      member do 
+        post :add_student
+        post :add_teacher
+        delete :removeuser
+	  end 
+    end
   end
   
   match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback

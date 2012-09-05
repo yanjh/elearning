@@ -1,4 +1,6 @@
 class Grade < ActiveRecord::Base
-    has_many :sclasses
+    validate :name, :presence => true, :on => :create, :message =>"phrase.cant_blank"
+
+    has_many :sclasses, :order => "name"
   
 end

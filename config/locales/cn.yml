@@ -20,11 +20,14 @@ cn:
     no: 否
     next: 下一条
     prev: 上一条
+    next_page: 下一页
+    prev_page: 上一页
     or: 或者
   phrase:
+    cant_blank: 不能为空
     confirm_save: 确认保存 %{somethin} ?
     confirm_delete: "确认删除资源: %{something} ?"
-    are_you_sure: 你确认要进行此项操作吗 ?"
+    are_you_sure: 你确认要进行此项操作吗 ?
   site:
     sidebar: 工具栏
     needhelp: 获取帮助和反馈
@@ -88,7 +91,10 @@ cn:
         manage: " %{app} 设置管理"
     users:
       title: 用户管理
+      lname: 登录名称
+      sname: 显示名称
       purge: 清除
+      recover: 恢复
       grant_role: 赋予了 %{role} 角色
       revoke_role: 取消了 %{role} 角色
       send_password_mail: 已经向您注册电子邮件地址发送了重置密码的邮件
@@ -114,8 +120,9 @@ cn:
           one: 一个用户
           few: %{count} 个用户
           other: %{count} 个用户
-        create: 创建
+        operation: 操作
         create_user: 创建新用户
+        purge_all: 清除所有已删除用户
         search: 搜索
         search_by: 电邮 登录名...
         filtr: 用户筛选
@@ -125,6 +132,9 @@ cn:
           suspended: 已锁定
           pending: 待激活
           deleted: 已删除
+          admin: 管理员
+          teacher: 教师
+          student: 学生
     delayed_jobs:
       title: "待办任务"
       attributes:
@@ -163,6 +173,12 @@ cn:
       school_name: 学校名称
       desc: 描述信息
       address: 地址
+      snumber: 学号
+      tnumber: 教号
+      create_student: 增加
+      new_student: 创建或增加学生
+      add_student_success: 学生信息添加成功
+      add_teacher_success: 教师信息添加成功
       update_school_success: 学校信息成功更新
       create_grade_success: 年级信息成功创建
       create_class_success: 班级信息成功创建

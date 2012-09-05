@@ -6,6 +6,10 @@ class Role < ActiveRecord::Base
     @@admin ||= find_by_name("admin")
   end
   
+  def self.student
+    @@student ||= find_by_name("student")
+  end
+  
   def add_user(user) 
       users << user
   end 
