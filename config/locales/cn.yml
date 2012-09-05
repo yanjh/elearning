@@ -92,6 +92,8 @@ cn:
     users:
       title: 用户管理
       lname: 登录名称
+      lsname: 登录名(学号)
+      ltname: 登录名(教号)
       sname: 显示名称
       purge: 清除
       recover: 恢复
@@ -175,10 +177,14 @@ cn:
       address: 地址
       snumber: 学号
       tnumber: 教号
-      create_student: 增加
+      create_student: 增加学生
+      create_teacher: 增加教师
       new_student: 创建或增加学生
+      new_teacher: 创建或增加教师
       add_student_success: 学生信息添加成功
       add_teacher_success: 教师信息添加成功
+      add_student_false: 学生信息添加失败
+      add_teacher_false: 教师信息添加失败
       update_school_success: 学校信息成功更新
       create_grade_success: 年级信息成功创建
       create_class_success: 班级信息成功创建

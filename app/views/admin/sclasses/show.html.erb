@@ -1,38 +1,36 @@
-<% content_for :header do -%> <%= t('admin.orgs.class')%> <% end -%>
+<% content_for :header do -%> <%= t('admin.orgs.class')%> - <%= @sclass.name %> <% end -%>
 
 <% content_for :sidebar do -%>
+   <% if @sclass.teachers.count>0 %>
+   <h2><%= t("admin.orgs.teacher_list") %></h2>
+   <ul><% for teacher in @sclass.teachers %>
+      <li><%= link_to teacher.username,edit_admin_user_path(teacher.user_id) %></li>
+   <% end -%></ul>
+   <% end -%>
+   <h2><%= t("admin.orgs.new_teacher") %></h2>
+   <ul><li><%= render ("form_teacher") %></li></ul>    
    <h2><%= t("admin.orgs.new_student") %></h2>
    <ul><li><%= render ("form_student") %></li></ul>    
 <% end -%>
 
-<%= @sclass.name %>
 
-教师列表
-<p>
-  
-  
-</p>
 
-学生列表
 <table class="index">
   <tr>
-	<th>ID</th>
-	<th><%= t('activerecord.attributes.user.login')%></th>
-	<th><%= t('activerecord.attributes.user.sname')%></th>
-	<th><%= t('activerecord.attributes.user.email')%></th>
-	<th><%= t('activerecord.attributes.user.status')%></th>
-	<th><%= t('activerecord.attributes.user.admin')%></th>
+	<th></th>
+	<th></th>
   </tr>
   
-  <% for user in @sclass.students %>
-  <tr>
-	<td><%= user.user_id %></td>
-	<td><%= user.username %></td>
-	<td class="actions">
-		<%= link_to t('general.edit'), edit_admin_user_path(user) %>
-	</td>
-  </tr>
+  <% icount=@sclass.students.count
+     i1=1
+     i=0
+  %>
+
+  <tr><td>
+  <% for student in @sclass.students %>
+  <%= link_to student.username,edit_admin_user_path(student.user_id) %>&nbsp&nbsp
   <% end %>
+  </td></tr>
 </table>
 
 <%= link_to t('general.back'), admin_orgs_path %>

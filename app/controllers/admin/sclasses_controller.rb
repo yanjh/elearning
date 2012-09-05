@@ -7,9 +7,9 @@ class  Admin::SclassesController < Admin::BaseController
   end
   
   def show
-    @sclass  = Sclass.find(params[:id])
-    @students = User.new
+    @sclass   = Sclass.find(params[:id])
     @student  = User.new
+    @teacher  = User.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -54,12 +54,12 @@ class  Admin::SclassesController < Admin::BaseController
   def add_student
     @sclass= Sclass.find(params[:id])
 
-    @student = User.find_by_name(params[:user][:name])
+    @student = User.find_by_login(params[:user][:login])
     if @student.nil?
       params[:user][:password]="hello123"
       params[:user][:password_confirmation]="hello123"
       params[:user][:language]="cn"
-      params[:user][:email]=params[:user][:name]+"@yucai.cn"
+      params[:user][:email]=params[:user][:login]+"@yucai.cn"
       
       @student = User.new(params[:user])
     end
@@ -76,5 +76,36 @@ class  Admin::SclassesController < Admin::BaseController
         #format.json { render json: @grade.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  
+  def add_teacher
+    @sclass= Sclass.find(params[:id])
+
+    @teacher = User.find_by_login(params[:user][:login])
+    if @teacher.nil?
+      params[:user][:password]="hello123"
+      params[:user][:password_confirmation]="hello123"
+      params[:user][:language]="cn"
+      params[:user][:email]=params[:user][:login]+"@yucai.cn"
+      
+      @teacher = User.new(params[:user])
+    end
+    
+    logger.debug "teacher name  "+@teacher.name
+    
+#=begin
+    respond_to do |format|
+      if @teacher.save
+        logger.debug "teacher save "+@teacher.name
+        @sclass.add_teacher(@teacher)
+        format.html { redirect_to admin_sclass_url(@sclass), notice: t('admin.orgs.add_teacher_success')}
+        #format.json { render json: @grade, status: :created, location: @grade }
+      else
+        format.html { redirect_to admin_sclass_url(@sclass), notice: t('admin.orgs.add_teacher_false')}
+        #format.json { render json: @grade.errors, status: :unprocessable_entity }
+      end
+    end
+#=end 
   end
 end

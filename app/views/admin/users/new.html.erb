@@ -9,7 +9,7 @@
 <%= form_for :user, :url => admin_users_path do |f| -%>
 <table class="overview">
     <%= cell((f.label :login), (f.text_field :login))%>
-    <%= cell((f.label :sname), (f.text_field :sname))%>
+    <%= cell((f.label :name),  (f.text_field :name))%>
     <%= cell((f.label :email), (f.text_field :email))%>
     <%= cell((f.label :password), (f.password_field :password))%>
     <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>

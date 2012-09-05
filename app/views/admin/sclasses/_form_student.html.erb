@@ -5,9 +5,8 @@
 <%= form_for [:admin, @student], :url => add_student_admin_sclass_path do |f| %>
 <%= f.error_messages %>
 <table >
-    <%= cell(t("admin.users.lname"), (f.text_field :name))%>
-    <%= cell(t("admin.users.sname"), (f.text_field :sname))%>
-    <%= cell(t("admin.orgs.snumber"), (f.text_field :unumber))%>
+    <%= cell(t("admin.users.lsname"), (f.text_field :login))%>
+    <%= cell(t("admin.users.sname"),  (f.text_field :name))%>
     <%= cell("", (submit_tag stitle))%>
 </table>
 <% end %>

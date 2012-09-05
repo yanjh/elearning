@@ -9,13 +9,18 @@
 <table class="overview">
     <%= form_for [:admin, @user], :method => :put do |f| -%>
     <%= cell((f.label :login), (f.text_field :login))%>
+    <%= cell((f.label :name), (f.text_field :name))%>
     <%= cell((f.label :email), (f.text_field :email))%>
-    <%= cell((f.label :sname), (f.text_field :sname))%>
-    <%= cell((f.label :password), (f.password_field :password))%>
-    <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
     <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>
     
     <%= cell("", (submit_tag t('general.update')))%>
+    <%= cell_separator %>
+    <%= cell((f.label :password), (f.password_field :password))%>
+    <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
+    
+    <%= cell("", (submit_tag t('general.update')))%>
     <% end -%>
+    <%= cell_separator %>
+    
     <%= cell("", (link_to t('general.back'), admin_users_path))%>
 </table>

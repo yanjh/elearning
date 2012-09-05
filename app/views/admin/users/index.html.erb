@@ -35,7 +35,7 @@
   <tr>
 	<th>ID</th>
 	<th><%= t('activerecord.attributes.user.login')%></th>
-	<th><%= t('activerecord.attributes.user.sname')%></th>
+	<th><%= t('activerecord.attributes.user.name')%></th>
 	<th><%= t('activerecord.attributes.user.email')%></th>
 	<th><%= t('activerecord.attributes.user.status')%></th>
 	<th><%= t('activerecord.attributes.user.admin')%></th>
@@ -45,7 +45,7 @@
   <tr>
 	<td><%= user.id %></td>
 	<td><%= link_to h(user.login || user.site_name), admin_user_url(user) %></td>
-	<td><%= user.sname %></td>
+	<td><%= user.name %></td>
 	<td><%= user.email %></td>
 	<td><%= user.state %></td>
 	<td><%= t('general.yes') if user.admin? %></td>

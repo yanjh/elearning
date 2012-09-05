@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_one :profile
   has_many :authentications
+  #belongs_to :classuser
   
   # Hooks
   after_create :create_profile, :register!
