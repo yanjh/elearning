@@ -28,14 +28,6 @@ class Admin::UsersController < Admin::BaseController
     render :index
   end
   
-  def reset_password
-    @user = User.find(params[:id])
-    @user.reset_password!
-    
-    flash[:notice] = t("admin.users.send_password_mail")
-    redirect_to admin_user_path(@user)
-  end
-  
   def filter
     case params[:by]  
     when "roles"
@@ -62,48 +54,33 @@ class Admin::UsersController < Admin::BaseController
     render :action => 'index'
   end
   
-  def pending
-    @users = User.paginate :conditions => {:state => 'pending'}, :page => params[:page]
-    render :action => 'index'
-  end
-  
-  def suspended
-    @users = User.paginate :conditions => {:state => 'suspended'}, :page => params[:page]
-    render :action => 'index'
-  end
-  
-  def active
-    @users = User.paginate :conditions => {:state => 'active'}, :page => params[:page]
-    render :action => 'index'
-  end
-  
-  def deleted
-    @users = User.paginate :conditions => {:state => 'deleted'}, :page => params[:page]
-    render :action => 'index'
-  end
-  
-  def activate
+  def operate
     @user = User.find(params[:id])
-    @user.activate!
+    case params[:by]  
+    when "active"
+      @user.activate!
+      
+    when "suspend"
+      @user.suspend!
+      
+    when "unsuspend"
+      @user.unsuspend!
+      
+    when "destroy"
+      @user.delete
+      
+    when "purge"
+      @user.destroy
+      
+    when "purgeall"
+      #@user.destroy
+      
+    when "recovery"
+      @user.set_active
+    else
+      
+    end
     redirect_to admin_users_path
-  end
-  
-  def suspend
-    @user = User.find(params[:id])
-    @user.suspend! 
-    redirect_to admin_users_path
-  end
-
-  def unsuspend
-    @user = User.find(params[:id])
-    @user.unsuspend! 
-    redirect_to admin_users_path
-  end
-
-  def purge
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url
   end
   
   # DELETE /admin_users/1
@@ -173,6 +150,14 @@ class Admin::UsersController < Admin::BaseController
     end
   end
   
+  def reset_password
+    @user = User.find(params[:id])
+    @user.reset_password!
+    
+    flash[:notice] = t("admin.users.send_password_mail")
+    redirect_to admin_user_path(@user)
+  end
+  
   def update
     @user = User.find(params[:id])
     @user.attributes = params[:user]
@@ -184,6 +169,24 @@ class Admin::UsersController < Admin::BaseController
         format.html { render :action => :edit }
       end
     end
+  end
+  
+  def update_password
+    @user = User.find(params[:id])
+    if !@user.not_using_openid?
+      flash[:notice] = "Cannot update your password with OpenID!"
+      redirect_to :back
+    end
+    
+    if @user.update_with_password(params[:user])
+      redirect_to root_path, :notice => "Password updated!"
+    else
+     # @user.errors.each do |name ,msg| 
+     #   flash[:error] = name.to_s.titleize + " " + msg
+     # end
+     # render :edit_password        
+    end
+    redirect_to admin_user_path(@user)
   end
   
 end

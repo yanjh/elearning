@@ -5,8 +5,7 @@ authorization do
     :to => [:manage,:read]
     
     has_permission_on :admin_users,
-    :to => [:active, :search,:pending,:reset_password,:suspended, :activate,
-            :deleted, :suspend , :unsuspend, :purge, :toggle_role, :update ]
+    :to => [:pending,:reset_password,:suspended, :activate,:deleted, :toggle_role, :update_password ]
 
     has_permission_on :admin_roles,
     :to => [ :adduser, :removeuser ]
@@ -25,8 +24,8 @@ authorization do
 end
   
 privileges do
-  privilege :manage, :includes => [:create, :read, :update, :delete, :search]
-  privilege :read,   :includes => [:index,  :show, :filter]
+  privilege :manage, :includes => [:create, :read, :update, :delete, :operate ]
+  privilege :read,   :includes => [:index,  :show, :filter, :search]
   privilege :create, :includes => :new
   privilege :update, :includes => :edit
   privilege :delete, :includes => :destroy

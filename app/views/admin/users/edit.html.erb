@@ -8,19 +8,22 @@
 
 <table class="overview">
     <%= form_for [:admin, @user], :method => :put do |f| -%>
-    <%= cell((f.label :login), (f.text_field :login))%>
-    <%= cell((f.label :name), (f.text_field :name))%>
-    <%= cell((f.label :email), (f.text_field :email))%>
-    <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>
-    
-    <%= cell("", (submit_tag t('general.update')))%>
-    <%= cell_separator %>
-    <%= cell((f.label :password), (f.password_field :password))%>
-    <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
-    
-    <%= cell("", (submit_tag t('general.update')))%>
+        <%= cell((f.label :login), (f.text_field :login))%>
+        <%= cell((f.label :name), (f.text_field :name))%>
+        <%= cell((f.label :email), (f.text_field :email))%>
+        <%= cell((f.label :language), (f.select(:language, [['Chinese', 'cn'],['English', 'en'], ['Polski', 'pl']])))%>
+        
+        <%= cell("", (submit_tag t('admin.users.update_info')))%>
     <% end -%>
     <%= cell_separator %>
-    
+
+    <%= form_for [:admin, @user], :url => update_password_admin_user_path do |f| -%>
+        <%= cell((f.label :password), (f.password_field :password))%>
+        <%= cell((f.label :password_confirmation), (f.password_field :password_confirmation))%>
+        
+        <%= cell("", (submit_tag t('admin.users.update_password')))%>
+    <% end -%>
+
+    <%= cell_separator %>    
     <%= cell("", (link_to t('general.back'), admin_users_path))%>
 </table>

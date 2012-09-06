@@ -42,7 +42,7 @@
 	    <%= link_to t('general.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>grade1.name) %> 
 	</td>
   </tr>
-	<% for sclass1 in grade1.sclasses.order(:name) %>
+	<% for sclass1 in grade1.sclasses %>
 	<tr>
 	  <td></td>
 	  <td></td>

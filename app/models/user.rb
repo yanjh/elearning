@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # Hooks
   after_create :create_profile, :register!
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :identity_url, :language, :unumber, :sname
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :identity_url, :language, :unumber, :sname, :state
 
   before_validation(:set_default, :on => :create)
   
@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
   
   def site_name
     self.login || self.email.split("@").first
+  end
+  
+  def set_active
+    self.update_attributes(:state=>"active")
   end
   
   def password_required?

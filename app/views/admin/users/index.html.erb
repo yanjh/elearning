@@ -6,7 +6,7 @@
 <% content_for :sidebar do -%>
     <h2><%= t('.search') %> </h2>
     <ul><li>
-	<%= form_tag admin_users_search_path, :method => 'get' do %>
+	<%= form_tag search_admin_users_path, :method => 'get' do %>
             <%= text_field_tag :search, params[:search], :type => "" , :results => 5, :placeholder =>  t('.search_by') %>
             <%= submit_tag  t('.search'), :name => nil %>
         <% end %>
@@ -19,14 +19,14 @@
     
     <h2><%= t('.filtr') %></h2>
     <ul>
-	<li><%= link_to t('.options.admin'), filter_admin_users_url(:by=>"roles",:name=>"admin") %> |
+	<li><%= link_to t('.options.admin'),   filter_admin_users_url(:by=>"roles",:name=>"admin") %> |
 		<%= link_to t('.options.teacher'), filter_admin_users_url(:by=>"roles",:name=>"teacher") %> |
 		<%= link_to t('.options.student'), filter_admin_users_url(:by=>"roles",:name=>"student") %></li>
  	<li><%= link_to t('.options.all'), admin_users_url %> | 
-		<%= link_to t('.options.active'), filter_admin_users_url(:by=>"active") %> | 
+		<%= link_to t('.options.active'),    filter_admin_users_url(:by=>"active") %> | 
 		<%= link_to t('.options.suspended'), filter_admin_users_url(:by=>"suspended") %> | 
-		<%= link_to t('.options.pending'), filter_admin_users_url(:by=>"pending") %> | 
-		<%= link_to t('.options.deleted'), filter_admin_users_url(:by=>"deleted") %></li>
+		<%= link_to t('.options.pending'),   filter_admin_users_url(:by=>"pending") %> | 
+		<%= link_to t('.options.deleted'),   filter_admin_users_url(:by=>"deleted") %></li>
     </ul>
 	
 <% end -%>
@@ -39,6 +39,7 @@
 	<th><%= t('activerecord.attributes.user.email')%></th>
 	<th><%= t('activerecord.attributes.user.status')%></th>
 	<th><%= t('activerecord.attributes.user.admin')%></th>
+	<th align=right><%= t('general.admin')%></th>
   </tr>
   
   <% for user in @users %>
@@ -50,21 +51,24 @@
 	<td><%= user.state %></td>
 	<td><%= t('general.yes') if user.admin? %></td>
 	<td class="actions">
-		<%= link_to t('general.edit'), edit_admin_user_path(user) %>
 		<% if user.pending? %>
-			<%= link_to t('admin.users.options.activate'), activate_admin_user_url(user), :method => :put %>
-			<%= link_to t('admin.users.options.suspend'), suspend_admin_user_url(user), :method => :put %>
-			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('admin.users.options.activate'), operate_admin_user_url(user,:by=>"active"), :method => :put %>
+			<%= link_to t('admin.users.options.suspend'),  operate_admin_user_url(user,:by=>"suspend"),:method => :put %>
+			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>
 		<% elsif user.passive? %>
-			<%= link_to t('admin.users.options.activate'), activate_admin_user_url(user), :method => :put %>
-			<%= link_to t('admin.users.options.suspend'), suspend_admin_user_path(user), :method => :put %>
-			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('admin.users.options.activate'), operate_admin_user_url(user,:by=>"active"), :method => :put %>
+			<%= link_to t('admin.users.options.suspend'),  operate_admin_user_url(user,:by=>"suspend"),:method => :put %>
+			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>
 		<% elsif user.active? %>
-			<%= link_to t('admin.users.options.suspend'), suspend_admin_user_path(user), :method => :put  %>
-			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('admin.users.options.suspend'), operate_admin_user_url(user,:by=>"suspend"), :method => :put  %>
+			<%= link_to t('admin.users.options.delete'),  admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure")%>
 		<% elsif user.suspended? %>
-			<%= link_to t('admin.users.options.unsuspend'), unsuspend_admin_user_url(user), :method => :put %>
-			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>		
+			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('admin.users.options.unsuspend'), operate_admin_user_url(user,:by=>"unsuspend"), :method => :put %>
+			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>		
 		<% end %>
 	</td>
   </tr>

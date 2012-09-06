@@ -32,7 +32,7 @@ Rails3::Application.routes.draw do
   namespace :admin do 
     root :to => 'dashboard#index'
     match '/settings/update_settings' => 'settings#update_settings',  :requirements => { :method => :post }
-    match '/users/search' => 'users#search',  :requirements => { :method => :get }
+#    match '/users/search' => 'users#search',  :requirements => { :method => :get }
 
     resources :announcements
     resources :commits
@@ -41,11 +41,9 @@ Rails3::Application.routes.draw do
     
     resources :users do 
       member do 
-        put :suspend
-        put :unsuspend
-        put :activate
-        delete :purge
+        put :operate
         put :reset_password
+        put :update_password
         get :set_user_login
         get :set_user_email
         post :addrole
@@ -53,10 +51,7 @@ Rails3::Application.routes.draw do
         match 'role/:role' => "users#toggle_role", :as => "toggle_role"
       end
       collection do
-        get :pending
-        get :active
-        get :suspended
-        get :deleted
+        get :search
         get :filter
       end
     end

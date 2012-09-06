@@ -8,23 +8,23 @@
 
 <ul>
 	<% if @user.pending? -%>
-		<li><%= link_to t('admin.users.options.activate'), activate_admin_user_url(@user), :method => :put %></li>
-		<li><%= link_to t('admin.users.options.suspend'), suspend_admin_user_url(@user), :method => :put %></li>
+		<li><%= link_to t('admin.users.options.activate'), operate_admin_user_url(@user,:by=>"active"), :method => :put %></li>
+		<li><%= link_to t('admin.users.options.suspend'),  operate_admin_user_url(@user,:by=>"suspend"),:method => :put %></li>
 		<li><%= link_to t('admin.users.options.delete'), admin_user_url(@user), :method => :delete %></li>
 	<% end -%>
 	
 	<% if @user.suspended? -%>
-		<li><%= link_to t('admin.users.options.suspend'), unsuspend_admin_user_url(@user), :method => :put %></li>
+		<li><%= link_to t('admin.users.options.unsuspend'),operate_admin_user_url(@user,:by=>"unsuspend"), :method => :put %></li>
 	<% end -%>
 
 	<% if @user.active? -%>
-		<li><%= link_to t('admin.users.options.suspend'), suspend_admin_user_url(@user), :method => :put %></li>
-		<li><%= link_to t('admin.users.options.delete'), admin_user_url(@user), :method => :delete, :confirm => "Are you sure you want to delete this account?" %></li>
+		<li><%= link_to t('admin.users.options.suspend'), operate_admin_user_url(@user,:by=>"suspend"), :method => :put %></li>
+		<li><%= link_to t('admin.users.options.delete'), admin_user_url(@user), :method => :delete, :confirm => t("phrase.are_you_sure")  %></li>
 	<% end -%>
 	
 	<% if @user.deleted? -%>
-		<li><%= link_to t('admin.users.purge'), purge_admin_user_url(@user), :method => :delete, :confirm => "Are you sure you want to remove this account, and all data associated with it from base_app?" %></li>
-		<li><%= link_to t('admin.users.recover'), purge_admin_user_url(@user), :method => :delete, :confirm => "Are you sure you want to remove this account, and all data associated with it from base_app?" %></li>
+		<li><%= link_to t('admin.users.purge'),   operate_admin_user_url(@user,:by=>"purge"),:method => :put, :confirm => t("phrase.are_you_sure") %></li>
+		<li><%= link_to t('admin.users.recover'), operate_admin_user_url(@user,:by=>"recovery") ,:method =>:put %></li>
 	<% end -%>
 </ul>	
 	<% if !@user.deleted? -%>

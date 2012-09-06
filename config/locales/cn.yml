@@ -101,13 +101,16 @@ cn:
       revoke_role: 取消了 %{role} 角色
       send_password_mail: 已经向您注册电子邮件地址发送了重置密码的邮件
       edit_user: 编辑用户
+      update_info: 更新信息
+      update_password: 更新密码
       create_new: 创建新用户
       create_success: 用户已成功创建
       options:
         manage: "管理用户帐户"
         new: "创建"
         activate: "激活"
-        suspend: "停用"
+        suspend: 停用
+        unsuspend: 启用
         delete: "删除"
         roles: "角色管理"
         send_password: "发送密码"
