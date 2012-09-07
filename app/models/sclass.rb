@@ -7,23 +7,40 @@ class Sclass < ActiveRecord::Base
   belongs_to :grade
   
   def teachers
-    Classuser.where("sclass_id=? and ltype=0",self.id).joins("LEFT OUTER JOIN users ON users.id = user_id")
+    Classuser.where("sclass_id=? and ltype=0",self.id).joins("LEFT OUTER JOIN users ON users.id = user_id").order("onumber,user_id")
   end
   
   def students
-    Classuser.where("sclass_id=? and ltype=1",self.id).joins("LEFT OUTER JOIN users ON users.id = user_id")
+    Classuser.where("sclass_id=? and ltype=1",self.id).joins("LEFT OUTER JOIN users ON users.id = user_id").order("onumber,user_id")
     #Classuser.all(:include => :user, :conditions => {:sclass_id=>self.id,:ltype=>1})  
   end
   
-  def add_teacher(user)
-    user.add_role("teacher")
-    cuser=Classuser.new(:sclass_id=>self.id, :user_id=>user.id, :username=>user.name,:ltype=>0)
-    cuser.save!
+  def add_user(user,ltype)
+    user.add_role(ltype==0?"teacher":"student")
+                  
+    begin
+      cuser=Classuser.new(:sclass_id=>self.id,:sclassname=>self.name, :user_id=>user.id, :username=>user.name,:onumber=>user.login,:ltype=>ltype)
+      cuser.save!
+    rescue
+    
+    end
   end
-   
-  def add_student(user)
-    user.add_role("student")
-    cuser=Classuser.new(:sclass_id=>self.id, :user_id=>user.id, :username=>user.name,:ltype=>1)
-    cuser.save!
+  
+  def remove_user(user_id,ltype)
+    Classuser.delete_all(["sclass_id=? and ltype=? and user_id=?",self.id,ltype,user_id])
+  end
+  
+  def repair_users
+    for cuser in Classuser.all
+      user=User.find(cuser.user_id)
+      unless user.nil?
+        cuser.update_attributes(:username=>user.name,:onumber=>user.login)
+      end
+      
+      sclass=Sclass.find(cuser.sclass_id)
+      unless sclass.nil?
+        cuser.update_attributes(:sclassname=>sclass.name)
+      end
+    end
   end
 end

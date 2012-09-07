@@ -46,9 +46,12 @@ ActiveRecord::Schema.define(:version => 20120905032200) do
     t.integer  "user_id"
     t.string   "username"
     t.integer  "ltype"
+    t.string   "onumber"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "classusers", ["sclass_id", "user_id", "ltype"], :name => "index_classusers_on_sclass_id_and_user_id_and_ltype", :unique => true
 
   create_table "courses", :force => true do |t|
     t.integer  "ctype"

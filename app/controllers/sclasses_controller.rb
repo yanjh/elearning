@@ -1,4 +1,4 @@
-class  Admin::SclassesController < Admin::BaseController
+class  SclassesController < ApplicationController
 
   #require role
   
@@ -78,36 +78,6 @@ class  Admin::SclassesController < Admin::BaseController
     end
   end
   
-  
-  def add_teacher
-    @sclass= Sclass.find(params[:id])
-
-    @teacher = User.find_by_login(params[:user][:login])
-    if @teacher.nil?
-      params[:user][:password]="hello123"
-      params[:user][:password_confirmation]="hello123"
-      params[:user][:language]="cn"
-      params[:user][:email]=params[:user][:login]+"@yucai.cn"
-      
-      @teacher = User.new(params[:user])
-    end
-    
-    logger.debug "teacher name  "+@teacher.name
-    
-#=begin
-    respond_to do |format|
-      if @teacher.save
-        logger.debug "teacher save "+@teacher.name
-        @sclass.add_user(@teacher,0)
-        format.html { redirect_to admin_sclass_url(@sclass), notice: t('admin.orgs.add_teacher_success')}
-        #format.json { render json: @grade, status: :created, location: @grade }
-      else
-        format.html { redirect_to admin_sclass_url(@sclass), notice: t('admin.orgs.add_teacher_false')}
-        #format.json { render json: @grade.errors, status: :unprocessable_entity }
-      end
-    end
-#=end 
-  end
   
   def operate
     @sclass= Sclass.find(params[:id])

@@ -1,0 +1,22 @@
+<% content_for :header do -%>
+	<%= t("site.s_dashboard") %>
+<% end -%>
+
+
+<% content_for :sidebar do -%>
+
+	<h2><%= t("admin.orgs.class_list") %></h2>
+	<ul>
+		<% for sclass in current_user.sclasses %>
+		<li><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id) %></li>
+		<% end -%>
+	</ul>
+	
+	<h2><%= t("course.new") %></h2>
+	<ul><li><%= render 'form_course' %></li></ul>
+	
+<% end -%>
+
+
+<p><%= t("site.description") %></p>
+

@@ -17,7 +17,17 @@ authorization do
     has_permission_on :admin_sclasses,
     :to => [:add_student, :add_teacher, :remove_user]
   end
-
+  
+  role :teacher do
+    has_permission_on [:sclasses, :courses, :exams],
+    :to => [:manage,:read]
+    
+  end
+  
+  role :student do
+    
+  end
+  
   role :guest do
     
   end

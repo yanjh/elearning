@@ -1,0 +1,12 @@
+<%
+    stitle = @student.id.nil? ? stitle = t('admin.orgs.create_student'):t('admin.orgs.update_student')
+-%>
+
+<%= form_for [:admin, @student], :url => add_student_admin_sclass_path do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("admin.users.lsname"), (f.text_field :login))%>
+    <%= cell(t("admin.users.sname"),  (f.text_field :name))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

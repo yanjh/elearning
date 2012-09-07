@@ -1,0 +1,11 @@
+<%
+    stitle = @teacher.id.nil? ? stitle = t('admin.orgs.create_teacher'):t('admin.orgs.update_teacher')
+-%>
+<%= form_for [:admin, @teacher], :url => add_teacher_admin_sclass_path do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("admin.users.ltname"), (f.text_field :login))%>
+    <%= cell(t("admin.users.sname"), (f.text_field :name))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
   
   def site_name
-    self.login || self.email.split("@").first
+    self.name || self.login || self.email.split("@").first
   end
   
   def set_active
@@ -50,6 +50,14 @@ class User < ActiveRecord::Base
   
   def student?
     has_role?(:student)
+  end
+  
+  def sclasses
+    Classuser.where([" user_id=? and ltype=0",self.id])
+  end
+  
+  def sclass
+    #Classusers.find(condition[" user_id=? and ltype=1",self.id])
   end
   
   def facebook?

@@ -1,0 +1,12 @@
+<%
+    stitle = @course.id.nil? ? stitle = t('course.create'):t('course.update')
+-%>
+
+<%= form_for @course do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("course.title"), (f.text_field :title))%>
+    <%= cell(t("general.desc"),  (f.text_field :description))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

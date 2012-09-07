@@ -4,10 +4,14 @@
 		
 		<li><%= tab_to t("site.my_course"), [{:controller => "dashboard" }] %></li>
 
+		<% if current_user.teacher? %>
+		
 		<li style="float: right;"><%= tab_to t("site.support_info") %></li>
+		<li style="float: right;"><%= tab_to t("site.class_admin"), [{:controller => "sclasses" }] %></li>
 		<li style="float: right;"><%= tab_to t("site.course_admin") %></li>
 		<li style="float: right;"><%= tab_to t("site.question_admin") %></li>
-	
+
+		<% end -%>
 	<% else  %>
 		<li><%= tab_to t("site.general"), [{:controller => "dashboard" }] %></li>
 	<% end %>

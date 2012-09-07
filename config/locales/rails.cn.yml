@@ -227,8 +227,8 @@ cn:
         body: "Błędy dotyczą następujących pól:"
 
       messages:
-        taken: "登录用户名已存在"
-        record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
+        taken: "重复的记录"
+        record_invalid: "数据保存过程中出现错误: %{errors}"
         <<: *errors_messages
 
       full_messages:

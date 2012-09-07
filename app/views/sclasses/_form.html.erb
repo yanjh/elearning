@@ -1,0 +1,13 @@
+<%
+    stitle = @sclass.id.nil? ? stitle = t('admin.orgs.create_class'):t('admin.orgs.update_class')
+-%>
+
+<%= form_for [:admin, @sclass] do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("general.name"), (f.text_field :name))%>
+    <%= cell(t("admin.orgs.grade"),f.collection_select(:grade_id, Grade.where("id>1").order("gyear"), :id, :name)) %>
+    <%= cell(t("general.desc"), (f.text_area :description, :rows =>3,:cols=>28))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>
