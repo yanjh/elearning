@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     Classuser.where([" user_id=? and ltype=0",self.id])
   end
   
+  def courses
+    Courseuser.where([" link_id=? and ltype=0",self.id]).order("onumber")
+  end
+  
   def sclass
     #Classusers.find(condition[" user_id=? and ltype=1",self.id])
   end

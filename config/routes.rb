@@ -9,8 +9,8 @@ Rails3::Application.routes.draw do
   # first created -> highest priority.
   resources :profiles,:sclasses,:courses,:chapters,:announcements
 
-  match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback
   resources :authentications
+  match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback
   
   # RESTful rewrites
   match  '/opensession' => "sessions#create", :as => "open_id_complete", :requirements => { :method => :get }

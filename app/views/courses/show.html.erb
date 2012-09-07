@@ -1,0 +1,50 @@
+<% content_for :header do -%> <%= t('admin.orgs.class')%> - <%= @sclass.name %> <% end -%>
+
+<% content_for :sidebar do -%>
+   <% if @sclass.teachers.count>0 %>
+   <h2><%= t("admin.orgs.teacher_list") %></h2>
+   <ul><% for teacher in @sclass.teachers %>
+      <li><%= link_to teacher.username,edit_admin_user_path(teacher.user_id) %>
+		 [<%= link_to "x",operate_admin_sclass_path(@sclass,:by=>"remove_teacher",:user_id=>teacher.user_id),:method=>:put %>]</li>
+   <% end -%></ul>
+   <% end -%>
+
+   <h2><%= t("admin.orgs.new_teacher") %></h2>
+   <ul><li><%= render ("form_teacher") %></li></ul>    
+
+   <h2><%= t("admin.orgs.new_student") %></h2>
+   <ul><li><%= render ("form_student") %></li></ul>    
+
+   <h2><%= t("general.operate") %></h2>
+   <ul>
+	  <li><%= link_to t("general.repair"),operate_admin_sclass_path(@sclass,:by=>"repair"),:method=>:put %></li>
+   </ul>
+<% end -%>
+
+
+
+<table class="index">
+  <tr>
+	<th><%= t('admin.users.ID')%></th>
+	<th><%= t('admin.orgs.snumber')%></th>
+	<th><%= t('admin.users.sname')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+  
+  <% icount=@sclass.students.count
+     i1=1
+     i=0
+  %>
+
+  <% for student in @sclass.students %>
+  <tr><td><%= student.user_id %></td>
+	  <td><%= student.user.login %></td>
+      <td><%= link_to student.username,edit_admin_user_path(student.user_id) %></td>
+      <td align=right>
+		 <%= link_to t("general.edit"),edit_admin_user_path(student.user_id) %> | 
+		 <%= link_to t("general.remove"),operate_admin_sclass_path(@sclass,:by=>"remove_student",:user_id=>student.user_id),:method=>:put,:confirm=>t("phrase.are_you_sure") %>
+  </td></tr>
+  <% end %>
+</table>
+
+<%= link_to t('general.back'), admin_orgs_path %>

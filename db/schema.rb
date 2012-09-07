@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032200) do
+ActiveRecord::Schema.define(:version => 20120905032400) do
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120905032200) do
   create_table "classusers", :force => true do |t|
     t.integer  "sclass_id"
     t.integer  "user_id"
+    t.string   "sclassname"
     t.string   "username"
     t.integer  "ltype"
     t.string   "onumber"
@@ -66,6 +67,19 @@ ActiveRecord::Schema.define(:version => 20120905032200) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "courseusers", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "coursename"
+    t.integer  "link_id"
+    t.integer  "ltype"
+    t.integer  "linkname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "onumber"
+  end
+
+  add_index "courseusers", ["course_id", "link_id", "ltype"], :name => "index_courseusers_on_course_id_and_link_id_and_ltype", :unique => true
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

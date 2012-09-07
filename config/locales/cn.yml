@@ -226,6 +226,9 @@ cn:
       my_accout: "我的帐户"
   course:
     admin: 课程管理
+    code: 课程代码
+    name: 课程名称
+    type: 课程类别
     title: 课程
     list: 课程列表
     show: 显示课程
@@ -235,6 +238,28 @@ cn:
     update: 更新课程
     new_chapter: 新建章节
     edit_chapter: 编辑章节
+    types:
+      -
+        - 语文
+        - 0
+      -
+        - 数学
+        - 1
+      -
+        - 英语
+        - 2
+      -
+        - 自然
+        - 3
+      -
+        - 体育
+        - 4
+      -
+        - 美术
+        - 5
+      -
+        - 音乐
+        - 6
   session:
     system_login: 系统登录
     login_info: "登录信息"
