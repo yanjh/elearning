@@ -30,14 +30,14 @@
 	<th><%= t('general.admin')%></th>
   </tr>
 
-  <% for course in current_user.courses %>
-  <tr><td><%= course.course.ccode %></td>
-      <td><%= t("course.types")[course.course.ctype][0] %></td>
-      <td><%= link_to course.coursename, course_path(course.course_id) %></td>
-      <td><%= course.course.description %></td>
+  <% for ucourse in current_user.courses %>
+  <tr><td><%= ucourse.course.ccode %></td>
+      <td><%= t("course.types")[ucourse.course.ctype][0] %></td>
+      <td><%= link_to ucourse.coursename, course_path(ucourse.course_id) %></td>
+      <td><%= ucourse.course.description %></td>
       <td align=right>
-	<%= link_to t("general.edit"),edit_course_path(course.course_id) %> | 
-	<%= link_to t("general.delete"),course_path(course.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+	<%= link_to t("general.edit"),edit_course_path(ucourse.course_id) %> | 
+	<%= link_to t("general.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
   <% end %>
 </table>

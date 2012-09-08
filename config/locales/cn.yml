@@ -235,6 +235,8 @@ cn:
     new: 新建课程
     edit: 编辑课程
     create: 创建课程
+    create_sucess: 成功创建课程
+    create_false: 创建课程出现错误
     update: 更新课程
     new_chapter: 新建章节
     edit_chapter: 编辑章节
@@ -252,14 +254,33 @@ cn:
         - 自然
         - 3
       -
-        - 体育
-        - 4
-      -
-        - 美术
+        - 地理
         - 5
       -
-        - 音乐
+        - 历史
         - 6
+      -
+        - 生物
+        - 7
+      -
+        - 物理
+        - 8
+      -
+        - 化学
+        - 9
+      -
+        - 政治
+        - 10
+      -
+        - 体育
+        - 11
+      -
+        - 美术
+        - 12
+      -
+        - 音乐
+        - 13
+
   session:
     system_login: 系统登录
     login_info: "登录信息"
@@ -287,3 +308,13 @@ cn:
     create_success: 条目已成功创建
     create_error: 条目创建失败
     update_error: 条目更新失败
+  operate:
+    success: 操作已成功
+    create_success: 创建操作已成功
+    update_success: 更新操作已成功
+    delete_success: 删除操作已成功
+    false: 操作失败
+    create_false: 创建操作失败
+    update_false: 更新操作失败
+    delete_false: 删除操作失败
+    error: 操作失败- %{error}

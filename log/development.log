@@ -1466,3 +1466,389 @@ Rendered shared/_global_links.html.erb (1.8ms)
 Rendered shared/_tabs.html.erb (3.5ms)
   [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-07 17:48:17.066139' AND ends_at >= '2012-09-07 17:48:17.066184')
 Completed 200 OK in 317ms (Views: 188.5ms | ActiveRecord: 7.0ms)
+DEPRECATED! (configure_from_yaml) Please stop using YAML and use Ruby instead. This method will be removed in 2.9.
+
+
+Started POST "/courses" for 192.168.1.99 at 2012-09-08 03:52:46 +0000
+  Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"初三英语(上)", "title"=>"E09A", "ctype"=>"2", "description"=>""}, "commit"=>"创建课程"}
+  [1m[36mSQL (9.2ms)[0m  [1mINSERT INTO "courses" ("ccode", "content", "created_at", "ctype", "description", "end_at", "start_at", "state", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["ccode", "初三英语(上)"], ["content", nil], ["created_at", Sat, 08 Sep 2012 03:52:46 UTC +00:00], ["ctype", 2], ["description", ""], ["end_at", nil], ["start_at", nil], ["state", nil], ["status", nil], ["title", "E09A"], ["updated_at", Sat, 08 Sep 2012 03:52:46 UTC +00:00]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT 1 FROM "courseusers" WHERE ("courseusers"."course_id" = 9 AND "courseusers"."link_id" = 4 AND "courseusers"."ltype" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "courseusers" ("course_id", "coursename", "created_at", "link_id", "linkname", "ltype", "onumber", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["course_id", 9], ["coursename", "E09A"], ["created_at", Sat, 08 Sep 2012 03:52:46 UTC +00:00], ["link_id", 4], ["linkname", 0], ["ltype", 0], ["onumber", nil], ["updated_at", Sat, 08 Sep 2012 03:52:46 UTC +00:00]]
+Redirected to http://192.168.1.10:8080/
+Completed 302 Found in 299ms
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 03:52:46 +0000
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mClassuser Load (0.2ms)[0m  [1mSELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=1) ORDER BY onumber[0m
+Rendered courses/_form.html.erb (55.1ms)
+  [1m[35mCourseuser Load (0.1ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber
+  [1m[36mCourse Load (0.5ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 9]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (1.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (167.9ms)
+Rendered shared/_global_links.html.erb (3.0ms)
+Rendered shared/_tabs.html.erb (3.6ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 03:52:47.109078' AND ends_at >= '2012-09-08 03:52:47.109125')
+Completed 200 OK in 465ms (Views: 240.2ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 03:59:25 +0000
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.5ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mClassuser Load (0.3ms)[0m  [1mSELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=1) ORDER BY onumber[0m
+Rendered courses/_form.html.erb (16.5ms)
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 9]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (107.5ms)
+Rendered shared/_global_links.html.erb (2.0ms)
+Rendered shared/_tabs.html.erb (2.9ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 03:59:25.371054' AND ends_at >= '2012-09-08 03:59:25.371085')
+Completed 200 OK in 265ms (Views: 123.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 03:59:41 +0000
+
+AbstractController::ActionNotFound (The action 'edit' could not be found for CoursesController):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:01:05 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+Rendered courses/_form.html.erb (46.3ms)
+Rendered courses/edit.html.erb within layouts/application (47.9ms)
+Completed 500 Internal Server Error in 54ms
+
+ActionView::Template::Error (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+    1: <%
+    2:     stitle = @course.id.nil? ? stitle = t('course.create'):t('course.update')
+    3: -%>
+    4: 
+    5: <%= form_for @course do |f| %>
+  app/views/courses/_form.html.erb:2:in `_app_views_courses__form_html_erb___325300698_86397120'
+  app/views/courses/edit.html.erb:7:in `_app_views_courses_edit_html_erb___248218384_87528790'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.3ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:02:16 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+Rendered courses/_form.html.erb (0.6ms)
+Rendered courses/edit.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `id' for "9":String):
+    1: <%
+    2:     stitle = @course.id.nil? ? stitle = t('course.create'):t('course.update')
+    3: -%>
+    4: 
+    5: <%= form_for @course do |f| %>
+  app/views/courses/_form.html.erb:2:in `_app_views_courses__form_html_erb___325300698_86397120'
+  app/views/courses/edit.html.erb:7:in `_app_views_courses_edit_html_erb___248218384_87528790'
+  app/controllers/courses_controller.rb:26:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:05:05 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "9"]]
+Rendered courses/_form.html.erb (11.6ms)
+Rendered courses/edit.html.erb within layouts/application (12.8ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (117.1ms)
+Rendered shared/_tabs.html.erb (3.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:05:06.136840' AND ends_at >= '2012-09-08 04:05:06.136860')
+Completed 200 OK in 160ms (Views: 144.2ms | ActiveRecord: 4.5ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:06:11 +0000
+
+AbstractController::ActionNotFound (The action 'update' could not be found for CoursesController):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:26:29 +0000
+  Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"E09A", "title"=>"初三英语(上)", "ctype"=>"2", "description"=>""}, "commit"=>"更新课程", "id"=>"9"}
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "9"]]
+Completed 500 Internal Server Error in 54ms
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/courses_controller.rb:50:in `block in update'
+  app/controllers/courses_controller.rb:49:in `update'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.8ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:27:27 +0000
+  Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"E09A", "title"=>"初三英语(上)", "ctype"=>"2", "description"=>""}, "commit"=>"更新课程", "id"=>"9"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+  [1m[36m (0.7ms)[0m  [1mUPDATE "courses" SET "ccode" = 'E09A', "title" = '初三英语(上)', "updated_at" = '2012-09-08 04:27:27.360123' WHERE "courses"."id" = 9[0m
+Completed 500 Internal Server Error in 91ms
+
+ArgumentError (syntax error on line 319, col 24: `    error: 操作失败: %{error}'):
+  app/controllers/courses_controller.rb:51:in `block (2 levels) in update'
+  app/controllers/courses_controller.rb:49:in `update'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.6ms)
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 04:28:31 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 131ms
+
+ActionView::Template::Error (syntax error on line 319, col 24: `    error: 操作失败: %{error}'):
+    1: <% content_for :header do -%>
+    2: 	<%= t("site.t_dashboard") %>
+    3: <% end -%>
+    4: 
+    5: 
+  app/views/dashboard/t_dashboard.html.erb:2:in `block in _app_views_dashboard_t_dashboard_html_erb__45371778_86740360'
+  app/views/dashboard/t_dashboard.html.erb:1:in `_app_views_dashboard_t_dashboard_html_erb__45371778_86740360'
+  app/controllers/dashboard_controller.rb:8:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.5ms)
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 04:29:18 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 211ms
+
+ActionView::Template::Error (syntax error on line 319, col 24: `    error: 操作失败: %{error}'):
+    1: <% content_for :header do -%>
+    2: 	<%= t("site.t_dashboard") %>
+    3: <% end -%>
+    4: 
+    5: 
+  app/views/dashboard/t_dashboard.html.erb:2:in `block in _app_views_dashboard_t_dashboard_html_erb__45371778_86740360'
+  app/views/dashboard/t_dashboard.html.erb:1:in `_app_views_dashboard_t_dashboard_html_erb__45371778_86740360'
+  app/controllers/dashboard_controller.rb:8:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 04:30:04 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mClassuser Load (0.9ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=1) ORDER BY onumber
+Rendered courses/_form.html.erb (12.1ms)
+  [1m[36mCourseuser Load (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber[0m
+  [1m[35mCourse Load (0.4ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.7ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 9]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+Rendered dashboard/t_dashboard.html.erb within layouts/application (111.1ms)
+Rendered shared/_global_links.html.erb (0.9ms)
+Rendered shared/_tabs.html.erb (3.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:30:05.050115' AND ends_at >= '2012-09-08 04:30:05.050145')[0m
+Completed 200 OK in 246ms (Views: 123.8ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:30:16 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+Rendered courses/_form.html.erb (13.1ms)
+Rendered courses/edit.html.erb within layouts/application (14.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (111.4ms)
+Rendered shared/_tabs.html.erb (4.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:30:16.499163' AND ends_at >= '2012-09-08 04:30:16.499190')[0m
+Completed 200 OK in 154ms (Views: 140.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:51:23 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+Rendered courses/_form.html.erb (17.3ms)
+Rendered courses/edit.html.erb within layouts/application (18.5ms)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (133.9ms)
+Rendered shared/_tabs.html.erb (3.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:51:23.280908' AND ends_at >= '2012-09-08 04:51:23.281010')[0m
+Completed 200 OK in 235ms (Views: 216.6ms | ActiveRecord: 5.6ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:51:35 +0000
+  Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"E09A", "title"=>"初三英语(上)", "ctype"=>"2", "description"=>"改名了"}, "commit"=>"更新课程", "id"=>"9"}
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+  [1m[36m (0.5ms)[0m  [1mUPDATE "courses" SET "description" = '改名了', "updated_at" = '2012-09-08 04:51:35.184533' WHERE "courses"."id" = 9[0m
+Redirected to http://192.168.1.10:8080/
+Completed 302 Found in 59ms
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 04:51:35 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mClassuser Load (0.6ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=1) ORDER BY onumber
+Rendered courses/_form.html.erb (14.5ms)
+  [1m[36mCourseuser Load (0.4ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 9]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.6ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+Rendered dashboard/t_dashboard.html.erb within layouts/application (110.0ms)
+Rendered shared/_global_links.html.erb (1.1ms)
+Rendered shared/_tabs.html.erb (4.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:51:35.729420' AND ends_at >= '2012-09-08 04:51:35.729478')[0m
+Completed 200 OK in 272ms (Views: 127.2ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/courses/9/edit" for 192.168.1.99 at 2012-09-08 04:54:12 +0000
+  Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+Rendered courses/_form.html.erb (64.4ms)
+Rendered courses/edit.html.erb within layouts/application (65.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (137.4ms)
+Rendered shared/_tabs.html.erb (5.5ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:54:12.898704' AND ends_at >= '2012-09-08 04:54:12.898727')[0m
+Completed 200 OK in 236ms (Views: 221.9ms | ActiveRecord: 3.6ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:54:19 +0000
+  Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"E09A", "title"=>"初三英语(上)", "ctype"=>"2", "description"=>"又改名了"}, "commit"=>"更新课程", "id"=>"9"}
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "9"]]
+  [1m[36m (0.3ms)[0m  [1mUPDATE "courses" SET "description" = '又改名了', "updated_at" = '2012-09-08 04:54:19.786780' WHERE "courses"."id" = 9[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Completed 500 Internal Server Error in 202ms
+
+NameError (undefined local variable or method `ltype' for #<Course:0xa33f4a0>):
+  app/models/course.rb:14:in `update_user'
+  app/controllers/courses_controller.rb:51:in `block in update'
+  app/controllers/courses_controller.rb:49:in `update'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started PUT "/courses/9" for 192.168.1.99 at 2012-09-08 04:55:12 +0000
+  Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiIXj41BJ8OrX0v5qZmu1bdRE2qaEM9hb4UZG5ffqZ0=", "course"=>{"ccode"=>"E09A", "title"=>"初三英语(上)", "ctype"=>"2", "description"=>"又改名了"}, "commit"=>"更新课程", "id"=>"9"}
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "9"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE "courseusers"."course_id" = 9 AND "courseusers"."link_id" = 4 AND "courseusers"."ltype" = 0 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "courseusers" WHERE ("courseusers"."course_id" = 9 AND "courseusers"."id" != 5 AND "courseusers"."link_id" = 4 AND "courseusers"."ltype" = 0) LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mUPDATE "courseusers" SET "coursename" = '初三英语(上)', "onumber" = 'E09A', "updated_at" = '2012-09-08 04:55:13.053453' WHERE "courseusers"."id" = 5[0m
+Redirected to http://192.168.1.10:8080/
+Completed 302 Found in 181ms
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-08 04:55:13 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mClassuser Load (0.3ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=1) ORDER BY onumber
+Rendered courses/_form.html.erb (18.9ms)
+  [1m[36mCourseuser Load (1.1ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 9]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.5ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+Rendered dashboard/t_dashboard.html.erb within layouts/application (62.9ms)
+Rendered shared/_global_links.html.erb (4.1ms)
+Rendered shared/_tabs.html.erb (48.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-08 04:55:13.562617' AND ends_at >= '2012-09-08 04:55:13.562640')[0m
+Completed 200 OK in 270ms (Views: 129.5ms | ActiveRecord: 7.9ms)
