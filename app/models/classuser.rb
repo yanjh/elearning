@@ -6,4 +6,16 @@ class Classuser < ActiveRecord::Base
       User.find(user_id)
     end
     
+    def grade
+      sclass.grade
+    end
+    
+    def sclass
+      Sclass.find(self.sclass_id)
+    end
+    
+    def s_count
+      sclass.students.count
+    end
+    
 end

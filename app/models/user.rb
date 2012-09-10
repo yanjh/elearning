@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
   
   def sclasses
-    Classuser.where([" user_id=? and ltype=1",self.id]).order("onumber")
+    Classuser.where([" user_id=? and ltype=0",self.id]).order("onumber")
   end
   
   def courses

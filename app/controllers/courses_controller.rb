@@ -2,12 +2,7 @@ class CoursesController < ApplicationController
   # GET /
   # The default dashboard
   def index
-    if current_user.teacher?
-      @course  = Course.new
-      render "t_dashboard"
-    else
-      
-    end
+    @course = Course.new
     
   end
   

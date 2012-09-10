@@ -46,8 +46,10 @@ cn:
     support_info: 支持信息
     class_admin: 班级管理
     course_admin: 课程管理
-    question_admin: 问题管理
+    exam_admin: 评测管理
     my_course: 我的课程
+    my_class: 我的班级
+    other_class: 参与班级
     profile: 个人信息
     admin: 管理面板
     dashboard: 应用面板
@@ -280,7 +282,19 @@ cn:
       -
         - 音乐
         - 13
+      -
+        - 信息技术
+        - 14
 
+  class:
+    admin: 班级管理
+    list: 班级列表
+    name: 班级名称
+    my: 我的班级
+    member: 成员
+    course: 课程
+    other: 参与的班级
+    scount: 学生数量
   session:
     system_login: 系统登录
     login_info: "登录信息"

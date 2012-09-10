@@ -1,59 +1,30 @@
-<% content_for :header do -%><%= t("admin.orgs.title") %><% end -%>
+<% content_for :header do -%><%= t("class.admin") %><% end -%>
 
 <% content_for :sidebar do -%>
-   <h2><%= t("admin.orgs.school") %></h2>
-   <ul>
-		<li><%= link_to t('admin.orgs.edit_school'), edit_school_admin_orgs_url %></li>
-   </ul>
 
-   <h2><%= t("admin.orgs.new_grade") %></h2>
-   <ul><li><%= render 'admin/grades/form' %></li></ul>
-
-   <h2><%= t("admin.orgs.new_class") %></h2>
-   <ul><li><%= render 'admin/sclasses/form' %></li></ul>
+   <h2><%= t("operate.title") %></h2>
+   
 <% end -%>
-
-<h3><%= @school.name %></h3>
-
-<%= @school.description %>
-<br>
-<%= t("admin.orgs.address") %>:<br>
-<%= @school.address %>
-<br>
-<hr>
-	
-<h3><%= t("admin.orgs.grade_list") %></h3>
 
 <table class="index">
   <tr>
 	<th><%= t('admin.orgs.grade')%></th>
-	<th><%= t('admin.orgs.grade_year')%></th>
-	<th><%= t('admin.orgs.class_list')%></th>
+	<th><%= t('class.name')%></th>
+	<th><%= t('class.s_count')%></th>
 	<th><%= t('general.admin')%></th>
   </tr>
 
-  <% for grade1 in @grades %>
+  <% for sclass in current_user.sclasses %>
   <tr>
-	<td><%= grade1.name %></td>
-	<td><%= grade1.gyear %></td>
-	<td><%= grade1.sclasses.count %></td>
+	<td><%= sclass.grade.name %></td>
+	<td><%= sclass.sclassname %></td>
+	<td><%= sclass.s_count %></td>
 	<td class="actions">
-		<%= link_to t('general.edit'), edit_admin_grade_path(grade1) %> | 
-	    <%= link_to t('general.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>grade1.name) %> 
+		<%= link_to t('class.member'), sclass_path(sclass.sclass_id) %> | 
+		<%= link_to t('class.course'), sclass_path(sclass.sclass_id) %>
 	</td>
-  </tr>
-	<% for sclass1 in grade1.sclasses %>
-	<tr>
-	  <td></td>
-	  <td></td>
-	  <td><%= sclass1.name %>  (<%= sclass1.students.count %>)</td>
-	  <td class="actions">
-		  <%= link_to t('general.view'), [:admin,sclass1] %> | 
-		  <%= link_to t('general.edit'), edit_admin_sclass_path(sclass1) %> | 
-		  <%= link_to t('general.delete'), admin_sclass_url(sclass1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>sclass1.name) %> 
-	  </td>
-	</tr>
-	<% end %>	
-  
+  </tr>  
   <% end %>
 </table>
+
+

@@ -8,8 +8,8 @@
 		
 		<li style="float: right;"><%= tab_to t("site.support_info") %></li>
 		<li style="float: right;"><%= tab_to t("site.class_admin"), [{:controller => "sclasses" }] %></li>
-		<li style="float: right;"><%= tab_to t("site.course_admin") %></li>
-		<li style="float: right;"><%= tab_to t("site.question_admin") %></li>
+		<li style="float: right;"><%= tab_to t("site.course_admin"),[{:controller => "courses" }] %></li>
+		<li style="float: right;"><%= tab_to t("site.exam_admin") %></li>
 
 		<% end -%>
 	<% else  %>
