@@ -303,6 +303,7 @@ cn:
     class: 课堂
     class1: 开启班级
     class2: 可选班级
+    exam: 章节评测
   class:
     admin: 班级管理
     list: 班级列表
@@ -312,6 +313,25 @@ cn:
     course: 课程
     other: 参与的班级
     s_count: 学生数量
+  exam:
+    admin: 评测管理
+    create: 创建评测
+    update: 更新评测
+    list: 班级列表
+    type: 评测类型
+    list: 班级列表
+    name: 评测名称  
+    types:
+      -
+        - 课堂调查
+        - 0
+      -
+        - 课堂测验
+        - 1
+      -
+        - 阶段考试
+        - 2
+
   session:
     system_login: 系统登录
     login_info: "登录信息"

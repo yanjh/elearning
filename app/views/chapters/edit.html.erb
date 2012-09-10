@@ -1,7 +1,16 @@
 <% content_for :header do -%> <%= t('course.edit') %> <% end -%>
 
 <% content_for :sidebar do -%>
-
+   <h2><%= t("chapter.exam") %></h2>
+   <ul>
+      <% for cexam in @chapter.cexams %>
+      <li>
+          <%= link_to cexam.name,edit_cexam_path(cexam) %>
+         [<%= link_to "X",cexam,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>]
+      </li>
+      <% end %> 
+      <li><%= render ("cexams/form") %></li>
+   </ul>   
 <% end -%>
 
 <%= render 'form' %>

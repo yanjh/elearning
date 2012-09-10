@@ -19,13 +19,13 @@ authorization do
   end
   
   role :teacher do
-    has_permission_on [:sclasses, :courses, :chapters, :exams],
+    has_permission_on [:sclasses, :courses, :chapters, :cexams,:questions],
     :to => [:manage,:read]
     
   end
   
   role :student do
-    has_permission_on [:sclasses, :courses, :chapters, :exams],
+    has_permission_on [:sclasses, :courses, :chapters, :cexams,:questions],
     :to => [:manage,:read]
   end
   

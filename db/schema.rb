@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032600) do
+ActiveRecord::Schema.define(:version => 20120905032700) do
 
   create_table "_courseusers_old_20120910", :force => true do |t|
     t.integer  "course_id"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(:version => 20120905032600) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+  end
+
+  create_table "cexams", :force => true do |t|
+    t.integer  "chapter_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "etype"
+    t.integer  "status"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "chapterclasses", :force => true do |t|

@@ -1,0 +1,15 @@
+<%
+    stitle = @cexam.id.nil? ? stitle = t('exam.create'):t('exam.update')
+-%>
+
+<%= form_for @cexam do |f| %>
+<%= f.error_messages %>
+<%= f.hidden_field :chapter_id %>
+<table >
+    <%= cell(t("exam.name"), (f.text_field :name))%>
+    <%= cell(t("exam.type"), (f.select(:etype, t("exam.types")))) %>
+    <%= cell(t("general.desc"), (f.text_area :description,:rows=>3,:cols=>24))%>
+
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

@@ -1,6 +1,7 @@
 class Chapter < ActiveRecord::Base
   belongs_to :course
   has_many :chapterclass
+  has_many :cexams
   
   validate :name, :presence => true, :on => :create, :message => "can't be blank"
   

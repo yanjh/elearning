@@ -7822,3 +7822,1073 @@ Rendered shared/_global_links.html.erb (30.2ms)
 Rendered shared/_tabs.html.erb (8.7ms)
   [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 10:00:23.236376' AND ends_at >= '2012-09-10 10:00:23.236412')[0m
 Completed 200 OK in 392ms (Views: 383.0ms | ActiveRecord: 8.6ms)
+DEPRECATED! (configure_from_yaml) Please stop using YAML and use Ruby instead. This method will be removed in 2.9.
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-10 14:20:43 +0000
+  Processing by DashboardController#index as HTML
+Rendered dashboard/index.html.erb within layouts/application (4.0ms)
+Rendered shared/_global_links.html.erb (1.7ms)
+Rendered shared/_tabs.html.erb (1.9ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:20:43.263079' AND ends_at >= '2012-09-10 14:20:43.263121')[0m
+Completed 200 OK in 168ms (Views: 165.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/login" for 192.168.1.99 at 2012-09-10 14:20:48 +0000
+  Processing by UserSessionsController#new as HTML
+Rendered devise/shared/_links.erb (2.0ms)
+Rendered user_sessions/new.html.erb within layouts/login (5.3ms)
+Completed 200 OK in 97ms (Views: 12.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/login" for 192.168.1.99 at 2012-09-10 14:20:55 +0000
+  Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "user"=>{"login"=>"yanjh", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"登录"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE (login = 'yanjh') LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-09-10 01:14:15.911843', "current_sign_in_at" = '2012-09-10 14:20:56.078149', "last_sign_in_ip" = '192.168.0.150', "current_sign_in_ip" = '192.168.1.99', "sign_in_count" = 24, "updated_at" = '2012-09-10 14:20:56.078707' WHERE "users"."id" = 4[0m
+Redirected to http://192.168.1.10:8080/
+Completed 302 Found in 295ms
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-10 14:20:56 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mClassuser Load (0.2ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY onumber
+Rendered courses/_form.html.erb (11.6ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (79.6ms)
+Rendered shared/_global_links.html.erb (1.8ms)
+Rendered shared/_tabs.html.erb (3.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:20:56.683748' AND ends_at >= '2012-09-10 14:20:56.683773')
+Completed 200 OK in 308ms (Views: 96.7ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/courses" for 192.168.1.99 at 2012-09-10 14:21:04 +0000
+  Processing by CoursesController#index as HTML
+Rendered courses/_form.html.erb (12.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber
+  [1m[36mCourse Load (0.5ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+Rendered courses/index.html.erb within layouts/application (140.5ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (14.1ms)
+Rendered shared/_tabs.html.erb (50.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:21:05.086369' AND ends_at >= '2012-09-10 14:21:05.086392')
+Completed 200 OK in 231ms (Views: 216.4ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:21:24 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (3.3ms)
+  [1m[35mCourseuser Load (0.5ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (2.5ms)
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (1.7ms)
+  [1m[35mChapter Load (0.4ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.1ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCourseuser Load (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,8))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+Rendered courses/show.html.erb within layouts/application (133.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (112.4ms)
+Rendered shared/_tabs.html.erb (3.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:21:25.283551' AND ends_at >= '2012-09-10 14:21:25.283571')[0m
+Completed 200 OK in 334ms (Views: 254.4ms | ActiveRecord: 8.5ms)
+
+
+Started PUT "/chapters/8?by=remove_class&sclass=8" for 192.168.1.99 at 2012-09-10 14:22:05 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"remove_class", "sclass"=>"8", "id"=>"8"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "8"]]
+  [1m[36mSclass Load (0.3ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mSQL (30.3ms)[0m  DELETE FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8 AND "chapterclasses"."link_id" = 8
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 165ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:22:05 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.4ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (0.8ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (1.0ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8))[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2
+  [1m[36mCourseuser Load (0.1ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))[0m
+Rendered courses/show.html.erb within layouts/application (100.5ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (95.3ms)
+Rendered shared/_tabs.html.erb (3.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:22:06.030902' AND ends_at >= '2012-09-10 14:22:06.030924')
+Completed 200 OK in 275ms (Views: 205.6ms | ActiveRecord: 7.1ms)
+
+
+Started PUT "/chapters/8?by=add_class&sclass=1" for 192.168.1.99 at 2012-09-10 14:22:09 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"add_class", "sclass"=>"1", "id"=>"8"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "chapterclasses" ("chapter_id", "chaptername", "created_at", "link_id", "linkname", "ltype", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["chapter_id", 8], ["chaptername", "角平分线的性质"], ["created_at", Mon, 10 Sep 2012 14:22:09 UTC +00:00], ["link_id", 1], ["linkname", "2014C班"], ["ltype", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 14:22:09 UTC +00:00]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 134ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:22:10 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.1ms)
+  [1m[35mCourseuser Load (0.4ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (0.9ms)
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (1.3ms)
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.1ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.0ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0))
+Rendered courses/show.html.erb within layouts/application (101.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (96.4ms)
+Rendered shared/_tabs.html.erb (2.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:22:10.429324' AND ends_at >= '2012-09-10 14:22:10.429348')[0m
+Completed 200 OK in 302ms (Views: 209.3ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:23:48 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (1.5ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (0.9ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[36mChapter Load (0.0ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (0.3ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY link_name[0m
+SQLite3::SQLException: no such column: link_name: SELECT "courseusers".* FROM "courseusers"  WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY link_name
+Rendered courses/show.html.erb within layouts/application (104.2ms)
+Completed 500 Internal Server Error in 193ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: link_name: SELECT "courseusers".* FROM "courseusers"  WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY link_name):
+    47: 		  <%= link_to sclass1.linkname,chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id),:method=>:put %><br>
+    48: 		  <% end %> 
+    49: 	  </td>
+    50:       <td><% for sclass2 in sclasses.where(" link_id not in("+s1+")").order("link_name") %>
+    51: 		  <%= link_to sclass2.linkname,chapter_path(chapter,:by=>"add_class",:sclass=>sclass2.link_id),:method=>:put %><br>
+    52: 		  <% end %> 
+    53: 	  </td>
+  app/views/courses/show.html.erb:50:in `block in _app_views_courses_show_html_erb__749615189_85428900'
+  app/views/courses/show.html.erb:41:in `_app_views_courses_show_html_erb__749615189_85428900'
+  app/controllers/courses_controller.rb:11:in `show'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.5ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:24:13 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.2ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (0.9ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (0.3ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2
+  [1m[36mCourseuser Load (0.1ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+Rendered courses/show.html.erb within layouts/application (136.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (112.9ms)
+Rendered shared/_tabs.html.erb (3.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:24:13.662732' AND ends_at >= '2012-09-10 14:24:13.662754')
+Completed 200 OK in 334ms (Views: 259.8ms | ActiveRecord: 7.3ms)
+
+
+Started PUT "/chapters/2?by=add_class&sclass=2" for 192.168.1.99 at 2012-09-10 14:24:22 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"add_class", "sclass"=>"2", "id"=>"2"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mSclass Load (0.1ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "chapterclasses" ("chapter_id", "chaptername", "created_at", "link_id", "linkname", "ltype", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["chapter_id", 2], ["chaptername", "全等三角形"], ["created_at", Mon, 10 Sep 2012 14:24:22 UTC +00:00], ["link_id", 2], ["linkname", "2014A班"], ["ltype", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 14:24:22 UTC +00:00]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 127ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:24:22 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.0ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (0.9ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[35mChapter Load (0.3ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+Rendered courses/show.html.erb within layouts/application (97.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (92.2ms)
+Rendered shared/_tabs.html.erb (3.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:24:23.264607' AND ends_at >= '2012-09-10 14:24:23.264628')[0m
+Completed 200 OK in 271ms (Views: 199.6ms | ActiveRecord: 7.3ms)
+
+
+Started PUT "/chapters/2?by=add_class&sclass=8" for 192.168.1.99 at 2012-09-10 14:24:24 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"add_class", "sclass"=>"8", "id"=>"2"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mSclass Load (0.0ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "chapterclasses" ("chapter_id", "chaptername", "created_at", "link_id", "linkname", "ltype", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["chapter_id", 2], ["chaptername", "全等三角形"], ["created_at", Mon, 10 Sep 2012 14:24:24 UTC +00:00], ["link_id", 8], ["linkname", "2014B班"], ["ltype", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 14:24:24 UTC +00:00]]
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 148ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:24:24 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.4ms)
+  [1m[36mCourseuser Load (0.5ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (1.1ms)
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+Rendered courses/show.html.erb within layouts/application (62.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (128.9ms)
+Rendered shared/_tabs.html.erb (3.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:24:24.968915' AND ends_at >= '2012-09-10 14:24:24.969622')
+Completed 200 OK in 272ms (Views: 239.2ms | ActiveRecord: 6.3ms)
+
+
+Started PUT "/chapters/1?by=remove_class&sclass=2" for 192.168.1.99 at 2012-09-10 14:24:27 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"remove_class", "sclass"=>"2", "id"=>"1"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mSQL (14.4ms)[0m  [1mDELETE FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1 AND "chapterclasses"."link_id" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 122ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:24:27 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (1.2ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (59.6ms)
+  [1m[36mCourseuser Load (0.4ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (1.5ms)
+  [1m[35mChapter Load (0.4ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mChapterclass Load (0.3ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,8)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+Rendered courses/show.html.erb within layouts/application (138.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (96.6ms)
+Rendered shared/_tabs.html.erb (2.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:24:28.270282' AND ends_at >= '2012-09-10 14:24:28.270303')[0m
+Completed 200 OK in 277ms (Views: 244.6ms | ActiveRecord: 7.6ms)
+
+
+Started PUT "/chapters/1?by=remove_class&sclass=8" for 192.168.1.99 at 2012-09-10 14:24:29 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"remove_class", "sclass"=>"8", "id"=>"1"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mSclass Load (0.2ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35mSQL (853.9ms)[0m  DELETE FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1 AND "chapterclasses"."link_id" = 8
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 959ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:24:30 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.2ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (0.3ms)
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.4ms)
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8
+  [1m[36mCourseuser Load (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+Rendered courses/show.html.erb within layouts/application (105.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (92.3ms)
+Rendered shared/_tabs.html.erb (3.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:24:30.497755' AND ends_at >= '2012-09-10 14:24:30.497780')
+Completed 200 OK in 274ms (Views: 208.9ms | ActiveRecord: 7.0ms)
+
+
+Started PUT "/chapters/3?by=add_class&sclass=1" for 192.168.1.99 at 2012-09-10 14:31:38 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"add_class", "sclass"=>"1", "id"=>"3"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "chapterclasses" ("chapter_id", "chaptername", "created_at", "link_id", "linkname", "ltype", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["chapter_id", 3], ["chaptername", "全等三角型的判定"], ["created_at", Mon, 10 Sep 2012 14:31:38 UTC +00:00], ["link_id", 1], ["linkname", "2014C班"], ["ltype", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 14:31:38 UTC +00:00]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 164ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:31:39 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.3ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (0.5ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[35mChapter Load (0.3ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mChapterclass Load (0.2ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.0ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3[0m
+  [1m[35mCourseuser Load (0.1ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.0ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+Rendered courses/show.html.erb within layouts/application (104.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (159.2ms)
+Rendered shared/_tabs.html.erb (10.7ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:31:39.482281' AND ends_at >= '2012-09-10 14:31:39.482306')[0m
+Completed 200 OK in 318ms (Views: 285.9ms | ActiveRecord: 6.4ms)
+
+
+Started PUT "/chapters/8?by=remove_class&sclass=1" for 192.168.1.99 at 2012-09-10 14:31:40 +0000
+  Processing by ChaptersController#update as HTML
+  Parameters: {"authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "by"=>"remove_class", "sclass"=>"1", "id"=>"8"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "8"]]
+  [1m[36mSclass Load (0.2ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mSQL (14.1ms)[0m  DELETE FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8 AND "chapterclasses"."link_id" = 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 6 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/courses/6
+Completed 302 Found in 123ms
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 14:31:40 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", "6"]]
+Rendered chapters/_form.html.erb (1.9ms)
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)[0m
+Rendered courses/_form_teacher.html.erb (0.4ms)
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname
+Rendered courses/_form_class.html.erb (0.7ms)
+  [1m[36mChapter Load (3.4ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2
+  [1m[36mCourseuser Load (0.4ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCourseuser Load (0.1ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mChapterclass Load (0.6ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+Rendered courses/show.html.erb within layouts/application (102.4ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (91.7ms)
+Rendered shared/_tabs.html.erb (3.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:31:41.186133' AND ends_at >= '2012-09-10 14:31:41.186157')
+Completed 200 OK in 271ms (Views: 199.7ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 14:33:34 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered chapters/_form.html.erb (12.6ms)
+Rendered chapters/edit.html.erb within layouts/application (13.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (126.0ms)
+Rendered shared/_tabs.html.erb (5.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 14:33:35.125676' AND ends_at >= '2012-09-10 14:33:35.125699')
+Completed 200 OK in 170ms (Views: 155.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:02:09 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered chapters/_form.html.erb (11.6ms)
+Rendered chapters/edit.html.erb within layouts/application (12.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (116.4ms)
+Rendered shared/_tabs.html.erb (3.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:02:09.932730' AND ends_at >= '2012-09-10 15:02:09.932753')
+Completed 200 OK in 206ms (Views: 193.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:07:50 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 500 Internal Server Error in 15ms
+
+ActiveRecord::StatementInvalid (Could not find table 'cexams'):
+  app/controllers/chapters_controller.rb:19:in `new'
+  app/controllers/chapters_controller.rb:19:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.2ms)
+DEPRECATED! (configure_from_yaml) Please stop using YAML and use Ruby instead. This method will be removed in 2.9.
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20100831085111)
+Migrating to CreateProfileRoles (20100831092056)
+Migrating to CreateSettings (20100831101644)
+Migrating to CreateAnnouncements (20100831101816)
+Migrating to AddLanguageToUser (20111010163926)
+Migrating to CreateDelayedJobs (20111011184044)
+Migrating to AddTokenToAuthentications (20111012193415)
+Migrating to AddOauthSettings (20111012211423)
+Migrating to AddFacebookEmailToProfile (20111014190542)
+Migrating to AddDescrptionToRoles (20111015071522)
+Migrating to CreateCourses (20111016082339)
+Migrating to CreateChapters (20111017124955)
+Migrating to CreateGrades (20111018062332)
+Migrating to AddSnameToUser (20111019163926)
+Migrating to CreateSclasses (20111020062332)
+Migrating to AddUnumberToUser (20111021163926)
+Migrating to CreateClassusers (20120905032100)
+Migrating to CreateCourseusers (20120905032300)
+Migrating to AddOnumberToCourseuser (20120905032400)
+Migrating to AddCourseIdToChapter (20120905032500)
+Migrating to CreateChapterclasses (20120905032600)
+Migrating to CreateCexams (20120905032700)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "cexams" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "chapter_id" integer, "name" varchar(255), "description" text, "etype" integer, "status" integer, "score" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120905032700')
+  [1m[36m (0.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("_courseusers_old_20120910")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("announcements")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("authentications")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("cexams")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("chapterclasses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_chapterclasses_on_chapter_id_and_link_id_and_ltype')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("chapters")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("classusers")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_classusers_on_sclass_id_and_user_id_and_ltype')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("courses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("courseusers")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_courseusers_on_course_id_and_link_id_and_ltype')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("delayed_jobs")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('delayed_jobs_priority')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("grades")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("profiles")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("roles_users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("sclasses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("settings")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:08:47 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered cexams/_form.html.erb (219.9ms)
+Rendered chapters/edit.html.erb within layouts/application (222.3ms)
+Completed 500 Internal Server Error in 246ms
+
+ActionView::Template::Error (undefined method `cexams_path' for #<#<Class:0xa1f2e6c>:0xa1fa3d8>):
+    2:     stitle = @cexam.id.nil? ? stitle = t('exam.create'):t('exam.update')
+    3: -%>
+    4: 
+    5: <%= form_for @cexam do |f| %>
+    6: <%= f.error_messages %>
+    7: <table >
+    8:     <%= cell(t("exam.name"), (f.text_field :name))%>
+  app/views/cexams/_form.html.erb:5:in `_app_views_cexams__form_html_erb___277963254_84970350'
+  app/views/chapters/edit.html.erb:5:in `block in _app_views_chapters_edit_html_erb__159224652_84920950'
+  app/views/chapters/edit.html.erb:3:in `_app_views_chapters_edit_html_erb__159224652_84920950'
+  app/controllers/chapters_controller.rb:20:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.8ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:13:55 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered cexams/_form.html.erb (11.6ms)
+Rendered chapters/_form.html.erb (11.5ms)
+Rendered chapters/edit.html.erb within layouts/application (25.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (58.2ms)
+Rendered shared/_tabs.html.erb (4.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:13:56.189389' AND ends_at >= '2012-09-10 15:13:56.189412')
+Completed 200 OK in 228ms (Views: 206.1ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:20:39 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered cexams/_form.html.erb (49.8ms)
+Rendered chapters/_form.html.erb (12.0ms)
+Rendered chapters/edit.html.erb within layouts/application (73.5ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (140.0ms)
+Rendered shared/_tabs.html.erb (3.9ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:20:39.929138' AND ends_at >= '2012-09-10 15:20:39.929159')
+Completed 200 OK in 250ms (Views: 229.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:26:20 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered cexams/_form.html.erb (813.0ms)
+Rendered chapters/edit.html.erb within layouts/application (813.9ms)
+Completed 500 Internal Server Error in 906ms
+
+ActionView::Template::Error (undefined method `hidden_filed' for #<ActionView::Helpers::FormBuilder:0x9e2efc4>):
+    4: 
+    5: <%= form_for @cexam do |f| %>
+    6: <%= f.error_messages %>
+    7: <%= f.hidden_filed :chapter_id %>
+    8: <table >
+    9:     <%= cell(t("exam.name"), (f.text_field :name))%>
+    10:     <%= cell(t("exam.type"), (f.select(:etype, t("exam.types")))) %>
+  app/views/cexams/_form.html.erb:7:in `block in _app_views_cexams__form_html_erb___277963254_84798720'
+  app/views/cexams/_form.html.erb:5:in `_app_views_cexams__form_html_erb___277963254_84798720'
+  app/views/chapters/edit.html.erb:5:in `block in _app_views_chapters_edit_html_erb__159224652_84920950'
+  app/views/chapters/edit.html.erb:3:in `_app_views_chapters_edit_html_erb__159224652_84920950'
+  app/controllers/chapters_controller.rb:20:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:26:48 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered cexams/_form.html.erb (2.4ms)
+Rendered chapters/_form.html.erb (1.3ms)
+Rendered chapters/edit.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (101.4ms)
+Rendered shared/_tabs.html.erb (3.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:26:48.390381' AND ends_at >= '2012-09-10 15:26:48.390402')[0m
+Completed 200 OK in 194ms (Views: 122.3ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/cexams" for 192.168.1.99 at 2012-09-10 15:28:57 +0000
+  Processing by CexamsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "cexam"=>{"chapter_id"=>"1", "name"=>"课堂调查1", "etype"=>"0", "description"=>""}, "commit"=>"创建评测"}
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "cexams" ("chapter_id", "created_at", "description", "etype", "name", "score", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["chapter_id", 1], ["created_at", Mon, 10 Sep 2012 15:28:57 UTC +00:00], ["description", ""], ["etype", 0], ["name", "课堂调查1"], ["score", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 15:28:57 UTC +00:00]]
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = 1 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/chapters/1/edit
+Completed 302 Found in 65ms
+
+
+Started GET "/chapters/1/edit" for 192.168.1.99 at 2012-09-10 15:28:57 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mChapter Load (0.3ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered cexams/_form.html.erb (1.6ms)
+Rendered chapters/_form.html.erb (2.4ms)
+Rendered chapters/edit.html.erb within layouts/application (6.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (102.1ms)
+Rendered shared/_tabs.html.erb (3.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:28:58.147972' AND ends_at >= '2012-09-10 15:28:58.147992')[0m
+Completed 200 OK in 160ms (Views: 122.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-10 15:29:37 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mClassuser Load (0.3ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY onumber
+Rendered courses/_form.html.erb (12.9ms)
+  [1m[36mCourseuser Load (0.4ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( link_id=4 and ltype=0) ORDER BY onumber[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY ccode LIMIT 1[0m
+Rendered dashboard/t_dashboard.html.erb within layouts/application (111.1ms)
+Rendered shared/_global_links.html.erb (1.6ms)
+Rendered shared/_tabs.html.erb (4.6ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:29:37.426611' AND ends_at >= '2012-09-10 15:29:37.426635')
+Completed 200 OK in 255ms (Views: 128.0ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 15:29:41 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (1.9ms)
+  [1m[35mCourseuser Load (1.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (2.2ms)
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (0.8ms)
+  [1m[35mChapter Load (0.2ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+Rendered courses/show.html.erb within layouts/application (92.3ms)
+Completed 500 Internal Server Error in 127ms
+
+ActionView::Template::Error (undefined method `exams' for #<Chapter:0x9e37994>):
+    43:   <% s1="0" %>
+    44:   <tr><td><%= chapter.cpcode %></td>
+    45:       <td><%= chapter.title %></td>
+    46:       <td><% for exam in chapter.exams %>
+    47: 	    <%  s1+=","+sclass1.link_id.to_s %>
+    48: 	    <%= link_to sclass1.linkname,chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id),:method=>:put %><br>
+    49: 	  <% end %> 
+  app/views/courses/show.html.erb:46:in `block in _app_views_courses_show_html_erb__749615189_91739720'
+  app/views/courses/show.html.erb:42:in `_app_views_courses_show_html_erb__749615189_91739720'
+  app/controllers/courses_controller.rb:11:in `show'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.0ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 15:32:10 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (2.1ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (1.1ms)
+  [1m[36mCourseuser Load (0.4ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (0.9ms)
+  [1m[35mChapter Load (0.3ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+Rendered courses/show.html.erb within layouts/application (93.4ms)
+Completed 500 Internal Server Error in 126ms
+
+ActionView::Template::Error (undefined method `cexams' for #<Chapter:0x9fe0a84>):
+    43:   <% s1="0" %>
+    44:   <tr><td><%= chapter.cpcode %></td>
+    45:       <td><%= chapter.title %></td>
+    46:       <td><% for cexam in chapter.cexams %>
+    47: 	    <%= link_to cexam.name,chapter_path(chapter,:by=>"remove_class",:sclass=>cexam.id),:method=>:put %><br>
+    48: 	  <% end %> 
+    49:       </td>
+  app/views/courses/show.html.erb:46:in `block in _app_views_courses_show_html_erb__749615189_93357240'
+  app/views/courses/show.html.erb:42:in `_app_views_courses_show_html_erb__749615189_93357240'
+  app/controllers/courses_controller.rb:11:in `show'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.5ms)
+
+
+Started GET "/courses/6" for 192.168.1.99 at 2012-09-10 15:32:43 +0000
+  Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Rendered chapters/_form.html.erb (3.5ms)
+  [1m[35mCourseuser Load (0.2ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ((ltype=0 or ltype=1) and course_id=6)
+Rendered courses/_form_teacher.html.erb (1.2ms)
+  [1m[36mCourseuser Load (0.3ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) ORDER BY linkname[0m
+Rendered courses/_form_class.html.erb (1.0ms)
+  [1m[35mChapter Load (0.3ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."course_id" = 6 ORDER BY cpcode
+  [1m[36mCexam Load (0.4ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 1[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 1
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mCexam Load (0.1ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 2[0m
+  [1m[35mCourseuser Load (0.3ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,2,8)) ORDER BY linkname
+  [1m[36mCexam Load (0.0ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 3[0m
+  [1m[35mChapterclass Load (0.0ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 3
+  [1m[36mCourseuser Load (0.2ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0,1)) ORDER BY linkname[0m
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 8
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 8[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mCexam Load (0.2ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 7[0m
+  [1m[35mChapterclass Load (0.1ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 6
+  [1m[36mChapterclass Load (0.1ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 6[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+  [1m[36mCexam Load (0.2ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 4[0m
+  [1m[35mChapterclass Load (0.2ms)[0m  SELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname[0m
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 5
+  [1m[36mChapterclass Load (0.4ms)[0m  [1mSELECT "chapterclasses".* FROM "chapterclasses" WHERE "chapterclasses"."chapter_id" = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "courseusers".* FROM "courseusers" WHERE ( ltype=2 and course_id=6) AND ( link_id not in(0)) ORDER BY linkname
+Rendered courses/show.html.erb within layouts/application (168.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (119.7ms)
+Rendered shared/_tabs.html.erb (4.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:32:43.386882' AND ends_at >= '2012-09-10 15:32:43.386913')[0m
+Completed 200 OK in 343ms (Views: 299.0ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:33:02 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+Rendered cexams/_form.html.erb (2.4ms)
+Rendered chapters/_form.html.erb (2.0ms)
+Rendered chapters/edit.html.erb within layouts/application (5.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (126.6ms)
+Rendered shared/_tabs.html.erb (4.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:33:03.236252' AND ends_at >= '2012-09-10 15:33:03.236302')[0m
+Completed 200 OK in 244ms (Views: 146.5ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/cexams" for 192.168.1.99 at 2012-09-10 15:33:32 +0000
+  Processing by CexamsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "cexam"=>{"chapter_id"=>"2", "name"=>"测验-全等三角形", "etype"=>"1", "description"=>""}, "commit"=>"创建评测"}
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "cexams" ("chapter_id", "created_at", "description", "etype", "name", "score", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["chapter_id", 2], ["created_at", Mon, 10 Sep 2012 15:33:32 UTC +00:00], ["description", ""], ["etype", 1], ["name", "测验-全等三角形"], ["score", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 15:33:32 UTC +00:00]]
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = 2 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/chapters/2/edit
+Completed 302 Found in 70ms
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:33:32 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+Rendered cexams/_form.html.erb (1.5ms)
+Rendered chapters/_form.html.erb (1.5ms)
+Rendered chapters/edit.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (104.0ms)
+Rendered shared/_tabs.html.erb (3.2ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:33:32.966378' AND ends_at >= '2012-09-10 15:33:32.966401')[0m
+Completed 200 OK in 161ms (Views: 121.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:36:11 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+Rendered chapters/edit.html.erb within layouts/application (215.6ms)
+Completed 500 Internal Server Error in 310ms
+
+ActionView::Template::Error (undefined local variable or method `chapter' for #<#<Class:0x9bee00c>:0x8e0be6c>):
+    3: <% content_for :sidebar do -%>
+    4:    <h2><%= t("chapter.exam") %></h2>
+    5:    <ul>
+    6:       <% for cexam in chapter.cexams %>
+    7:       <li><%= link_to cexam.name,chapter_path(chapter,:by=>"remove_class",:sclass=>cexam.id),:method=>:put %></li>
+    8:       <% end %> 
+    9:       <li><%= render ("cexams/form") %></li>
+  app/views/chapters/edit.html.erb:6:in `block in _app_views_chapters_edit_html_erb__159224652_83731390'
+  app/views/chapters/edit.html.erb:3:in `_app_views_chapters_edit_html_erb__159224652_83731390'
+  app/controllers/chapters_controller.rb:20:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.7ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:36:51 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2
+Rendered cexams/_form.html.erb (1.9ms)
+Rendered chapters/_form.html.erb (1.7ms)
+Rendered chapters/edit.html.erb within layouts/application (8.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (98.6ms)
+Rendered shared/_tabs.html.erb (4.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:36:51.288279' AND ends_at >= '2012-09-10 15:36:51.288303')[0m
+Completed 200 OK in 198ms (Views: 121.0ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/cexams" for 192.168.1.99 at 2012-09-10 15:40:33 +0000
+  Processing by CexamsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5OnoUVqpbJ/4I851JJBlFotLIw/7piqoKUdfOFLXlQc=", "cexam"=>{"chapter_id"=>"2", "name"=>"课堂意见收集", "etype"=>"0", "description"=>""}, "commit"=>"创建评测"}
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "cexams" ("chapter_id", "created_at", "description", "etype", "name", "score", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["chapter_id", 2], ["created_at", Mon, 10 Sep 2012 15:40:33 UTC +00:00], ["description", ""], ["etype", 0], ["name", "课堂意见收集"], ["score", nil], ["status", nil], ["updated_at", Mon, 10 Sep 2012 15:40:33 UTC +00:00]]
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = 2 LIMIT 1[0m
+Redirected to http://192.168.1.10:8080/chapters/2/edit
+Completed 302 Found in 104ms
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:40:33 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mCexam Load (0.2ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2[0m
+Rendered cexams/_form.html.erb (1.7ms)
+Rendered chapters/_form.html.erb (1.5ms)
+Rendered chapters/edit.html.erb within layouts/application (7.3ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (153.1ms)
+Rendered shared/_tabs.html.erb (3.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:40:33.503027' AND ends_at >= '2012-09-10 15:40:33.503051')
+Completed 200 OK in 209ms (Views: 172.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:43:53 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mChapter Load (0.1ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2
+Rendered chapters/edit.html.erb within layouts/application (229.8ms)
+Completed 500 Internal Server Error in 323ms
+
+ActionView::Template::Error (undefined method `edit_exam_path' for #<#<Class:0xa1e4e98>:0xa1ec9f4>):
+    5:    <ul>
+    6:       <% for cexam in @chapter.cexams %>
+    7:       <li>
+    8:           <%= link_to cexam.name,edit_exam_path(cexam) %>
+    9:          [<%= link_to "X",cexam,:method=>:delete,:confirm=>t("are_you_sure") %>]
+    10:       </li>
+    11:       <% end %> 
+  app/views/chapters/edit.html.erb:8:in `block (2 levels) in _app_views_chapters_edit_html_erb__159224652_84893270'
+  app/views/chapters/edit.html.erb:6:in `block in _app_views_chapters_edit_html_erb__159224652_84893270'
+  app/views/chapters/edit.html.erb:3:in `_app_views_chapters_edit_html_erb__159224652_84893270'
+  app/controllers/chapters_controller.rb:20:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:44:04 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mCexam Load (0.2ms)[0m  SELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2
+Rendered cexams/_form.html.erb (1.8ms)
+Rendered chapters/_form.html.erb (1.3ms)
+Rendered chapters/edit.html.erb within layouts/application (10.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (106.4ms)
+Rendered shared/_tabs.html.erb (3.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:44:04.261823' AND ends_at >= '2012-09-10 15:44:04.261848')[0m
+Completed 200 OK in 167ms (Views: 128.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/chapters/2/edit" for 192.168.1.99 at 2012-09-10 15:44:28 +0000
+  Processing by ChaptersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mChapter Load (0.1ms)[0m  SELECT "chapters".* FROM "chapters" WHERE "chapters"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mCexam Load (0.2ms)[0m  [1mSELECT "cexams".* FROM "cexams" WHERE "cexams"."chapter_id" = 2[0m
+Rendered cexams/_form.html.erb (1.4ms)
+Rendered chapters/_form.html.erb (2.5ms)
+Rendered chapters/edit.html.erb within layouts/application (10.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (61.4ms)
+Rendered shared/_tabs.html.erb (4.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-10 15:44:28.409138' AND ends_at >= '2012-09-10 15:44:28.409160')
+Completed 200 OK in 163ms (Views: 84.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/cexams/3/edit" for 192.168.1.99 at 2012-09-10 15:44:36 +0000
+  Processing by CexamsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", "3"]]
+Completed 404 Not Found in 13ms
+
+ActiveRecord::RecordNotFound (Couldn't find Course with id=3):
+  app/controllers/cexams_controller.rb:18:in `edit'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.2ms)

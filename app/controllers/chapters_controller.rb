@@ -16,7 +16,7 @@ class ChaptersController < ApplicationController
   
   def edit
     @chapter = Chapter.find(params[:id])
-    
+    @cexam= Cexam.new(:chapter_id=>@chapter.id)
     respond_to do |format|
       format.html # edit.html.erb
     end
