@@ -20,8 +20,8 @@
 	<td><%= sclass.sclassname %></td>
 	<td><%= sclass.s_count %></td>
 	<td class="actions">
-		<%= link_to t('class.member'), sclass_path(sclass.sclass_id) %> | 
-		<%= link_to t('class.course'), sclass_path(sclass.sclass_id) %>
+		<%= link_to t('class.member'), sclass_path(sclass.sclass_id,:by=>"show_member") %> | 
+		<%= link_to t('class.course'), sclass_path(sclass.sclass_id,:by=>"show_course") %>
 	</td>
   </tr>  
   <% end %>

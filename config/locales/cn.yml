@@ -5,6 +5,7 @@ cn:
     name: 名称
     title: 标题
     desc: 描述信息
+    content: 内容
     back: 返回
     edit: 编辑
     show: 显示
@@ -299,6 +300,9 @@ cn:
     edit: 编辑章节
     create: 创建章节
     update: 更新章节
+    class: 课堂
+    class1: 开启班级
+    class2: 可选班级
   class:
     admin: 班级管理
     list: 班级列表
@@ -307,7 +311,7 @@ cn:
     member: 成员
     course: 课程
     other: 参与的班级
-    scount: 学生数量
+    s_count: 学生数量
   session:
     system_login: 系统登录
     login_info: "登录信息"

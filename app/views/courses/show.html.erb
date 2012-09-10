@@ -18,7 +18,7 @@
 
    <h2><%= t("course.class") %></h2>
    <ul>
-      <% for sclass in @course.sclasses %>
+      <% for sclass in @course.sclasses.order("linkname") %>
 		 <li><%= sclass.linkname %>
 			[<%= link_to "x",course_path(@course,:by=>"remove_class",:sclass=>sclass.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>] 	 
 		 </li>
@@ -32,17 +32,28 @@
   <tr>
 	<th><%= t('chapter.code')%></th>
 	<th><%= t('general.title')%></th>
-	<th><%= t('general.desc')%></th>
+	<th><%= t('chapter.class1')%></th>
+	<th><%= t('chapter.class2')%></th>
 	<th><%= t('general.admin')%></th>
   </tr>
 
+  <% sclasses=@course.sclasses %>
   <% for chapter in @course.chapters %>
+  <% s1="0" %>
   <tr><td><%= chapter.cpcode %></td>
-      <td><%= link_to chapter.title,edit_chapter_path(chapter) %></td>
-      <td><%= chapter.description %></td>
+      <td><%= chapter.title %></td>
+      <td><% for sclass1 in chapter.sclasses %>
+		  <%  s1+=","+sclass1.link_id.to_s %>
+		  <%= link_to sclass1.linkname,chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id),:method=>:put %><br>
+		  <% end %> 
+	  </td>
+      <td><% for sclass2 in sclasses.where(" link_id not in("+s1+")") %>
+		  <%= link_to sclass2.linkname,chapter_path(chapter,:by=>"add_class",:sclass=>sclass2.link_id),:method=>:put %><br>
+		  <% end %> 
+	  </td>
       <td align=right>
-	  <%= link_to t("general.edit"),edit_chapter_path(student.user_id) %> | 
-	  <%= link_to t("general.delete"),chapter_path(chapter),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+	  <%= link_to t("general.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("general.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
   <% end %>
 </table>

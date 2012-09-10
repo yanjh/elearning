@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032500) do
+ActiveRecord::Schema.define(:version => 20120905032600) do
+
+  create_table "_courseusers_old_20120910", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "coursename"
+    t.integer  "link_id"
+    t.integer  "ltype"
+    t.integer  "linkname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "onumber"
+  end
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -30,6 +41,19 @@ ActiveRecord::Schema.define(:version => 20120905032500) do
     t.datetime "updated_at"
     t.string   "token"
   end
+
+  create_table "chapterclasses", :force => true do |t|
+    t.integer  "chapter_id"
+    t.string   "chaptername"
+    t.integer  "link_id"
+    t.string   "linkname"
+    t.integer  "ltype"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chapterclasses", ["chapter_id", "link_id", "ltype"], :name => "index_chapterclasses_on_chapter_id_and_link_id_and_ltype", :unique => true
 
   create_table "chapters", :force => true do |t|
     t.integer  "corder"
@@ -76,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20120905032500) do
     t.string   "coursename"
     t.integer  "link_id"
     t.integer  "ltype"
-    t.string  "linkname"
+    t.string   "linkname"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "onumber"

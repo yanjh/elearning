@@ -5,9 +5,11 @@
 <%= form_for @chapter do |f| %>
 <%= f.error_messages %>
 <table >
-    <%= cell(t("chapter.code"), (f.text_field :title))%>
+    <%= f.hidden_field :course_id %>
+    <%= cell(t("chapter.code"), (f.text_field :cpcode))%>
     <%= cell(t("general.title"), (f.text_field :title))%>
     <%= cell(t("general.desc"), (f.text_area :description, :rows =>3,:cols=>28))%>
+    <%= cell(t("general.content"), (f.text_area :content, :rows =>8,:cols=>48)) unless @chapter.id.nil? %>
     <%= cell("", (submit_tag stitle))%>
 </table>
 <% end %>

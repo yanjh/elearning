@@ -6,8 +6,8 @@ class CoursesController < ApplicationController
   end
   
   def show
-    @course = Course.find(params[:id])
-    @chapter = Chapter.new
+    @course  = Course.find(params[:id])
+    @chapter = Chapter.new(:course_id=>params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sclass }

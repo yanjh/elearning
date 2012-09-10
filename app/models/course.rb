@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  has_many :chapters
+  has_many :chapters, :order=>"cpcode"
   validate :name, :presence => true, :on => :create, :message => "can't be blank"
   
   def add_chapter(chapter) 

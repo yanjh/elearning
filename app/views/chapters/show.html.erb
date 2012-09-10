@@ -1,0 +1,30 @@
+<% content_for :header do -%><%= t("chapter.admin") %> - <%= @chapter.title %> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("chapter.admin") %></h2>
+   <ul><li><%= link_to t("general.repair") @chapter %></li></ul>
+
+<% end -%>
+
+<table class="index">
+  <tr>
+	<th><%= t('chapter.code')%></th>
+	<th><%= t('general.title')%></th>
+	<th><%= t('general.desc')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+
+  <% for sclass in @course.sclasses %>
+  <tr><td><%= sclass.name %></td>
+      <td><%= link_to chapter.title,edit_chapter_path(chapter) %></td>
+      <td><%= chapter.description %></td>
+      <td align=right>
+	  <%= link_to t("general.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("general.delete"),chapter_path(chapter),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+  </td></tr>
+  <% end %>
+</table>
+
+
+<%= link_to t('general.back'), root_path %> | 
+<%= link_to t('general.edit'), root_path %>
