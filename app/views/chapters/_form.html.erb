@@ -1,0 +1,13 @@
+<%
+    stitle = @chapter.id.nil? ? stitle = t('chapter.create'):t('chapter.update')
+-%>
+
+<%= form_for @chapter do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("chapter.code"), (f.text_field :title))%>
+    <%= cell(t("general.title"), (f.text_field :title))%>
+    <%= cell(t("general.desc"), (f.text_area :description, :rows =>3,:cols=>28))%>
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

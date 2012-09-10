@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032400) do
+ActiveRecord::Schema.define(:version => 20120905032500) do
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(:version => 20120905032400) do
     t.integer  "cid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
+    t.string   "cpcode"
+    t.text     "description"
   end
 
   create_table "classusers", :force => true do |t|
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20120905032400) do
     t.string   "coursename"
     t.integer  "link_id"
     t.integer  "ltype"
-    t.integer  "linkname"
+    t.string  "linkname"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "onumber"

@@ -3,6 +3,7 @@
 cn:
   general:
     name: 名称
+    title: 标题
     desc: 描述信息
     back: 返回
     edit: 编辑
@@ -10,6 +11,7 @@ cn:
     view: 查看
     admin: 管理
     general: 通用
+    dashboard: 工作台
     add: 增加
     new: 新建
     create: 创建
@@ -230,6 +232,12 @@ cn:
     admin: 课程管理
     code: 课程代码
     name: 课程名称
+    teacher: 课程教师
+    teacher_name: 教号
+    add_teacher: 加入教师
+    class: 课程班级
+    class_name: 班级名称
+    add_class: 加入班级
     type: 课程类别
     title: 课程
     list: 课程列表
@@ -285,7 +293,12 @@ cn:
       -
         - 信息技术
         - 14
-
+  chapter:
+    code: 章节代码
+    new: 新建章节
+    edit: 编辑章节
+    create: 创建章节
+    update: 更新章节
   class:
     admin: 班级管理
     list: 班级列表
@@ -325,10 +338,14 @@ cn:
   operate:
     success: 操作已成功
     create_success: 创建操作已成功
+    add_success: 添加操作已成功
     update_success: 更新操作已成功
     delete_success: 删除操作已成功
+    remove_success: 移除操作已成功
     false: 操作失败
     create_false: 创建操作失败
+    add_false: 添加操作失败
     update_false: 更新操作失败
     delete_false: 删除操作失败
+    remove_false: 移除操作失败
     error: 操作失败- %{error}

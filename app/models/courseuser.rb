@@ -1,4 +1,6 @@
 class Courseuser < ActiveRecord::Base
+  
+    # ltype: 0-main teacher 1-aid 2-class
     #has_one :user, :class_name=>"User"
     validates_uniqueness_of :course_id, :scope => [:link_id,:ltype]
  

@@ -1,50 +1,52 @@
-<% content_for :header do -%> <%= t('admin.orgs.class')%> - <%= @sclass.name %> <% end -%>
+<% content_for :header do -%><%= t("course.admin") %> - <%= @course.title %> <% end -%>
 
 <% content_for :sidebar do -%>
-   <% if @sclass.teachers.count>0 %>
-   <h2><%= t("admin.orgs.teacher_list") %></h2>
-   <ul><% for teacher in @sclass.teachers %>
-      <li><%= link_to teacher.username,edit_admin_user_path(teacher.user_id) %>
-		 [<%= link_to "x",operate_admin_sclass_path(@sclass,:by=>"remove_teacher",:user_id=>teacher.user_id),:method=>:put %>]</li>
-   <% end -%></ul>
-   <% end -%>
+   <h2><%= t("chapter.new") %></h2>
+   <ul><li><%= render ("chapters/form") %></li></ul>
 
-   <h2><%= t("admin.orgs.new_teacher") %></h2>
-   <ul><li><%= render ("form_teacher") %></li></ul>    
-
-   <h2><%= t("admin.orgs.new_student") %></h2>
-   <ul><li><%= render ("form_student") %></li></ul>    
-
-   <h2><%= t("general.operate") %></h2>
+   <h2><%= t("course.teacher") %></h2>
    <ul>
-	  <li><%= link_to t("general.repair"),operate_admin_sclass_path(@sclass,:by=>"repair"),:method=>:put %></li>
-   </ul>
+      <% for teacher in @course.teachers %>
+		 <li><%= teacher.linkname %>
+		 <% if teacher.ltype==1 %>
+			[<%= link_to "x",course_path(@course,:by=>"remove_teacher",:teacher=>teacher.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>] 	 
+		 <% end -%>
+		 </li>
+	  <% end -%>
+      <li><%= render ("form_teacher") %></li>
+   </ul>    
+
+   <h2><%= t("course.class") %></h2>
+   <ul>
+      <% for sclass in @course.sclasses %>
+		 <li><%= sclass.linkname %>
+			[<%= link_to "x",course_path(@course,:by=>"remove_class",:sclass=>sclass.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>] 	 
+		 </li>
+	  <% end -%>
+      <li><%= render ("form_class") %></li>
+   </li></ul>    
+
 <% end -%>
-
-
 
 <table class="index">
   <tr>
-	<th><%= t('admin.users.ID')%></th>
-	<th><%= t('admin.orgs.snumber')%></th>
-	<th><%= t('admin.users.sname')%></th>
+	<th><%= t('chapter.code')%></th>
+	<th><%= t('general.title')%></th>
+	<th><%= t('general.desc')%></th>
 	<th><%= t('general.admin')%></th>
   </tr>
-  
-  <% icount=@sclass.students.count
-     i1=1
-     i=0
-  %>
 
-  <% for student in @sclass.students %>
-  <tr><td><%= student.user_id %></td>
-	  <td><%= student.user.login %></td>
-      <td><%= link_to student.username,edit_admin_user_path(student.user_id) %></td>
+  <% for chapter in @course.chapters %>
+  <tr><td><%= chapter.cpcode %></td>
+      <td><%= link_to chapter.title,edit_chapter_path(chapter) %></td>
+      <td><%= chapter.description %></td>
       <td align=right>
-		 <%= link_to t("general.edit"),edit_admin_user_path(student.user_id) %> | 
-		 <%= link_to t("general.remove"),operate_admin_sclass_path(@sclass,:by=>"remove_student",:user_id=>student.user_id),:method=>:put,:confirm=>t("phrase.are_you_sure") %>
+	  <%= link_to t("general.edit"),edit_chapter_path(student.user_id) %> | 
+	  <%= link_to t("general.delete"),chapter_path(chapter),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
   <% end %>
 </table>
 
-<%= link_to t('general.back'), admin_orgs_path %>
+
+<%= link_to t('general.back'), root_path %> | 
+<%= link_to t('general.edit'), root_path %>

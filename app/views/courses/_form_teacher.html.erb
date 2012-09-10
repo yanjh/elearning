@@ -1,0 +1,4 @@
+<%= form_tag course_path(:by=>"add_teacher"), :method => 'put' do %>
+    <%= text_field_tag "teacher",nil,:placeholder=>t("course.teacher_name") %>
+    <%= submit_tag t("course.add_teacher") %>
+<% end %>

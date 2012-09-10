@@ -5,7 +5,7 @@ class CreateCourseusers < ActiveRecord::Migration
       t.string  :coursename
       t.integer :link_id
       t.integer :ltype
-      t.integer :linkname
+      t.string :linkname
 
       t.timestamps
     end
