@@ -6,4 +6,9 @@
 
 <%= render 'form' %>
 
+<hr>
+<h2><%= t("question.problem") %></h2>
+
+<%= render 'cexams/form_question' %>
+
 <%= link_to(t('general.back'), edit_cexam_path(@question.cexam)) %>

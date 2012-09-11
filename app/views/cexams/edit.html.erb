@@ -32,7 +32,8 @@
   <tr>
     <td><%= question.problem.pcode %></td>
     <td><%= t("problem.types")[question.problem.ptype][0] %></td>
-    <td><%= raw question.problem.content.gsub("\n", '<br>') %></td>
+        <% title=question.problem.title.nil? ? "":(question.problem.title.gsub("\n", '<br>')+"<br>") %>
+    <td><%= raw title+question.problem.content.gsub("\n", '<br>') %></td>
     <td><%= question.score %></td>
     <td><%= question.qorder %></td>
     <td align=right>

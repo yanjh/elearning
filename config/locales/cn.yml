@@ -372,11 +372,23 @@ cn:
       -
         - 简答文件题
         - 5
+    stypes:
+      -
+        - 公开
+        - 0
+      -
+        - 私有
+        - 1
+      -
+        - 禁用
+        - 2
 
   question:
     edit:  编辑问题
     score: 问题分值
     order: 问题次序
+    problem: 题目内容
+    problem_update: 更新题目内容
 
   session:
     system_login: 系统登录

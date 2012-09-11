@@ -3,7 +3,7 @@ class CreateProblems < ActiveRecord::Migration
     create_table :problems do |t|
       t.integer :owner
       t.string  :pcode
-      t.string  :title
+      t.text    :title
       t.text    :content
       t.string  :answer
       t.string  :tags

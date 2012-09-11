@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032920) do
+ActiveRecord::Schema.define(:version => 20120905032930) do
 
-  create_table "_courseusers_old_20120910", :force => true do |t|
-    t.integer  "course_id"
-    t.string   "coursename"
-    t.integer  "link_id"
-    t.integer  "ltype"
-    t.integer  "linkname"
+  create_table "_questions_old_20120911", :force => true do |t|
+    t.integer  "cexam_id"
+    t.integer  "problem_id"
+    t.integer  "score"
+    t.integer  "pcode"
+    t.string   "title"
+    t.integer  "ptype"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "onumber"
   end
 
   create_table "announcements", :force => true do |t|
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20120905032920) do
     t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "profiles", :force => true do |t|
@@ -176,6 +178,7 @@ ActiveRecord::Schema.define(:version => 20120905032920) do
     t.integer  "problem_id"
     t.integer  "score"
     t.integer  "pcode"
+    t.integer  "qorder"
     t.string   "title"
     t.integer  "ptype"
     t.integer  "status"

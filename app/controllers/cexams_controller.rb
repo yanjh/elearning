@@ -37,30 +37,39 @@ class CexamsController < ApplicationController
   end
   
   def update
-    @course = Course.find(params[:id])
+    @cexam = Cexam.find(params[:id])
     respond_to do |format|
-      if params[:by]=="add_teacher"
-        teacher=User.find_by_login(params[:teacher])
-        if teacher && (teacher.id!=current_user.id)
-          @course.add_user(teacher,1)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
+      if params[:by]=="add_problem"
+        problem=Problem.find_by_pcode(params[:problem])
+        if problem 
+          Question.create(:problem_id=>problem.id,:pcode=>problem.pcode,:cexam_id=>@cexam.id,:qorder=>1,:score=>10)
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_success') }
           #format.json { head :ok }
         else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_false') }
         end
-      elsif params[:by]=="add_class"
-        sclass=Sclass.find_by_name(params[:sclass])
-        if sclass 
-          @course.add_class(sclass)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
+      elsif params[:by]=="add_question"
+        problem = Problem.new(params[:problem])
+        problem.owner=current_user.id
+        if problem.save
+          Question.create(:problem_id=>problem.id,:pcode=>problem.pcode,:cexam_id=>@cexam.id,:qorder=>1,:score=>10)
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_success') }
           #format.json { head :ok }
         else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_false') }
+        end
+      elsif params[:by]=="update_problem"
+        problem = Problem.find(params[:problem_id])
+        if problem.update_attributes(params[:problem])
+          Question.update_all({:ptype=>problem.ptype},["problem_id=?",problem.id])
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_success') }
+          #format.json { head :ok }
+        else
+          format.html { redirect_to edit_cexam_path(@cexam), notice: t('operate.add_false') }
         end
       else
-        if @course.update_attributes(params[:course])
-           @course.update_user(current_user,0)
-          format.html { redirect_to root_url, notice: t('operate.update_success') }
+        if @cexam.update_attributes(params[:cexam])
+          format.html { redirect_to course_path(@cexam.course), notice: t('operate.update_success') }
           format.json { head :ok }
         else
           format.html { render action: "edit" }
