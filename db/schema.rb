@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032700) do
+ActiveRecord::Schema.define(:version => 20120905032920) do
 
   create_table "_courseusers_old_20120910", :force => true do |t|
     t.integer  "course_id"
@@ -146,6 +146,21 @@ ActiveRecord::Schema.define(:version => 20120905032700) do
     t.datetime "updated_at"
   end
 
+  create_table "problems", :force => true do |t|
+    t.integer  "owner"
+    t.string   "pcode"
+    t.string   "title"
+    t.text     "content"
+    t.string   "answer"
+    t.string   "tags"
+    t.integer  "ptype"
+    t.integer  "ctype"
+    t.integer  "status"
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.string   "real_name"
@@ -154,6 +169,18 @@ ActiveRecord::Schema.define(:version => 20120905032700) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "facebook_email"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "cexam_id"
+    t.integer  "problem_id"
+    t.integer  "score"
+    t.integer  "pcode"
+    t.string   "title"
+    t.integer  "ptype"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -177,12 +204,36 @@ ActiveRecord::Schema.define(:version => 20120905032700) do
     t.datetime "updated_at"
   end
 
+  create_table "seresults", :force => true do |t|
+    t.integer  "student_id"
+    t.string   "student_name"
+    t.integer  "exam_id"
+    t.integer  "etype"
+    t.text     "answer"
+    t.integer  "score"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "settings", :force => true do |t|
     t.string   "label"
     t.string   "identifier"
     t.text     "description"
     t.string   "field_type",  :default => "string"
     t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sqresults", :force => true do |t|
+    t.integer  "student_id"
+    t.string   "student_name"
+    t.integer  "question_id"
+    t.integer  "ptype"
+    t.string   "answer"
+    t.integer  "score"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

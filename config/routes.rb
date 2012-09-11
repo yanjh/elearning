@@ -3,11 +3,11 @@ Rails3::Application.routes.draw do
 
   devise_for  :users,
               :controllers => { :sessions => "user_sessions" },
-              :path_names => { :sign_in => 'login', :sign_out => 'logout',  :registration => 'register' }
+              :path_names =>  { :sign_in => 'login', :sign_out => 'logout',  :registration => 'register' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  resources :profiles,:sclasses,:courses,:chapters,:cexams,:questions,:announcements
+  resources :profiles,:sclasses,:courses,:chapters,:cexams,:questions,:problems,:announcements
 
   resources :authentications
   match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback

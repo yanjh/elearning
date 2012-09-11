@@ -1,0 +1,13 @@
+<%
+    stitle = @question.id.nil? ? stitle = t('problem.create'):t('problem.update')
+-%>
+
+<%= form_for @question do |f| %>
+<%= f.error_messages %>
+<table >
+    <%= cell(t("question.score"), (f.text_field :score))%>
+    <%= cell(t("question.order"), (f.text_field :qorder))%>
+
+    <%= cell("", (submit_tag stitle))%>
+</table>
+<% end %>

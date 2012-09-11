@@ -15,8 +15,8 @@ class CexamsController < ApplicationController
   end
   
   def edit
-    @course = Course.find(params[:id])
-    
+    @cexam   = Cexam.find(params[:id])
+    @problem = Problem.new
     respond_to do |format|
       format.html # edit.html.erb
     end

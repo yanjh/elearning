@@ -44,7 +44,7 @@
   <tr><td><%= chapter.cpcode %></td>
       <td><%= chapter.title %></td>
       <td><% for cexam in chapter.cexams %>
-	    <%= link_to cexam.name,chapter_path(chapter,:by=>"remove_class",:sclass=>cexam.id),:method=>:put %><br>
+	    <%= link_to cexam.name,edit_cexam_path(cexam) %><br>
 	  <% end %> 
       </td>
       <td><% for sclass1 in chapter.sclasses %>

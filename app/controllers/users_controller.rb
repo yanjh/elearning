@@ -7,7 +7,7 @@ class UsersController < ApplicationController
               :edit_email,      :update_email,
               :set_login ]
   
-  layout 'login'
+  #layout 'login'
   
   def troubleshooting
     # Render troubleshooting.html.erb

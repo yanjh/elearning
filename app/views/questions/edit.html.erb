@@ -1,0 +1,9 @@
+<% content_for :header do -%> <%= t('question.edit') %> <% end -%>
+
+<% content_for :sidebar do -%>
+
+<% end -%>
+
+<%= render 'form' %>
+
+<%= link_to(t('general.back'), edit_cexam_path(@question.cexam)) %>

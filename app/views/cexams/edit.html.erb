@@ -1,9 +1,47 @@
-<% content_for :header do -%> <%= t('course.edit') %> <% end -%>
+<% content_for :header do -%> <%= t('exam.edit') %> <% end -%>
 
 <% content_for :sidebar do -%>
-
+   <h2><%= t("exam.question") %></h2>
+   <ul>
+      <li><%= render ("form_question") %></li>
+      <li><%= form_tag cexam_path(:by=>"add_problem"), :method => 'put' do %>
+            <%= text_field_tag "problem",nil,:placeholder=>t("exam.problem_code") %>
+            <%= submit_tag t("exam.add_problem") %>
+          <% end %>
+      </li>
+      <li><%= link_to t("problem.select"), @cexam %></li>
+   </ul> 
 <% end -%>
 
 <%= render 'form' %>
 
-<%= link_to(t('general.back'), root_path) %>
+<hr>
+<h2><%= t("problem.list") %></h2>
+
+<table class="index">
+  <tr>
+	<th><%= t('problem.code')%></th>
+	<th><%= t('problem.ptype')%></th>
+	<th><%= t('problem.content')%></th>
+	<th><%= t('problem.score')%></th>
+	<th><%= t('problem.order')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+  
+<% for question in @cexam.questions %>
+  <tr>
+    <td><%= question.problem.pcode %></td>
+    <td><%= t("problem.types")[question.problem.ptype][0] %></td>
+    <td><%= raw question.problem.content.gsub("\n", '<br>') %></td>
+    <td><%= question.score %></td>
+    <td><%= question.qorder %></td>
+    <td align=right>
+      <%= link_to t("general.edit"),edit_question_path(question) %> | 
+      <%= link_to t("general.remove"),question,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+    </td>
+  </tr>
+<% end -%>
+</table>
+
+<%= link_to(t('general.back'), course_path(@cexam.chapter.course)) %>
+

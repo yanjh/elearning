@@ -40,7 +40,7 @@ cn:
     are_you_sure: 你确认要进行此项操作吗 ?
   site:
     sidebar: 工具栏
-    t_dashboard: 教师工作台
+    system_login: 系统登录
     s_dashboard: 学生工作台
     needhelp: 获取帮助和反馈
     description: 欢迎来到教学资源管理系统！
@@ -294,6 +294,9 @@ cn:
       -
         - 信息技术
         - 14
+      -
+        - 其他
+        - 15
   chapter:
     code: 章节代码
     new: 新建章节
@@ -315,12 +318,16 @@ cn:
     s_count: 学生数量
   exam:
     admin: 评测管理
+    edit: 编辑评测
     create: 创建评测
     update: 更新评测
     list: 班级列表
     type: 评测类型
     list: 班级列表
     name: 评测名称  
+    question: 评测问题  
+    add_problem: 添加问题  
+    problem_code: 问题代码  
     types:
       -
         - 课堂调查
@@ -331,6 +338,45 @@ cn:
       -
         - 阶段考试
         - 2
+  problem:
+    admin: 评测问题管理
+    list: 问题列表
+    code: 问题编码
+    ctype: 问题类别
+    content: 问题内容
+    answer: 标准答案
+    edit: 编辑问题
+    create: 创建问题
+    update: 更新问题
+    public: 公开
+    select: 选择问题
+    ptype: 问题形式
+    score: 分值
+    order: 次序
+    types:
+      -
+        - 单选题
+        - 0
+      -
+        - 多选题
+        - 1
+      -
+        - 判断题
+        - 2
+      -
+        - 填空题
+        - 3
+      -
+        - 简答题
+        - 4
+      -
+        - 简答文件题
+        - 5
+
+  question:
+    edit:  编辑问题
+    score: 问题分值
+    order: 问题次序
 
   session:
     system_login: 系统登录
