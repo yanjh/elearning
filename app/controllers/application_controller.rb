@@ -3,8 +3,17 @@ class ApplicationController < ActionController::Base
   before_filter :prepare_for_mobile,:set_locale #,:set_user_language
   
   helper :all # include all helpers, all the time
-
   
+  # 
+  #def after_sign_in_path_for(resource)
+      #root_url
+      #current_user_path
+  #end
+  
+  #def after_sign_out_path_for(resource)
+      #current_user_path
+  #
+
     # i18n if params[:locale] is nil then I18n.default_locale will be used
   def set_locale 
 	  I18n.locale = params[:locale]

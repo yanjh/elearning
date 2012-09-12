@@ -21,4 +21,9 @@ class Chapter < ActiveRecord::Base
     Chapterclass.delete_all(:chapter_id=>self.id,:link_id=>sclass.id)  
   end
   
+  def user_status(user_id)
+    s=Mlink.one(self.id,user_id,Mlink::T_CHAPTER_USER)
+    (s.nil?)?0:s.status
+  end
+  
 end

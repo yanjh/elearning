@@ -251,6 +251,8 @@ cn:
     update: 更新课程
     new_chapter: 新建章节
     edit_chapter: 编辑章节
+    current: 进行中
+    closed: 已关闭
     types:
       -
         - 语文
@@ -307,6 +309,11 @@ cn:
     class1: 开启班级
     class2: 可选班级
     exam: 章节评测
+    checkin: 检录
+    enter: 进入
+    finish: 完成
+    and_exam: 章节和评测
+    status: 状态
   class:
     admin: 班级管理
     list: 班级列表

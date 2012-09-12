@@ -51,5 +51,12 @@ class Sclass < ActiveRecord::Base
   def remove_course(course_id)
     Courseuser.delete_all(:course_id=>course_id,:link_id=>self.id,:ltype=>2)
   end
+  
+  def chapters
+    chapters=Chapterclass.where("link_id=?",self.id)
+    s="0"
+    chapters.each {|c| s+=","+c.chapter_id.to_s }
+    Chapter.where(" id in("+s+")").order("course_id")
+  end
 
 end

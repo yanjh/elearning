@@ -7,9 +7,9 @@ Rails3::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  resources :profiles,:sclasses,:courses,:chapters,:cexams,:questions,:problems,:announcements
-
-  resources :authentications
+  resources :profiles,:sclasses,:courses,:chapters,:cexams,:questions,:problems,:announcements,:authentications
+  resources :scourses,:tcourse
+  
   match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback
   
   # RESTful rewrites

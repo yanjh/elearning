@@ -1,0 +1,46 @@
+<% content_for :header do -%><%= @sclass.name %> - <%= current_user.site_name %><% end -%>
+
+<% content_for :sidebar do -%>	
+	<h2><%= t("course.list") %></h2>
+	<ul>
+		<li><%= link_to t("course.current"),scourses_path %></li>
+ 		<li><%= link_to t("course.closed") ,scourses_path(:by=>"show_closed") %></li>
+    </ul>
+<% end -%>
+
+<table class="index">
+  <tr>
+	<th><%= t('course.title')%></th>
+	<th><%= t('chapter.and_exam')%></th>
+	<th><%= t('chapter.status')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+  
+  <% for chapter in @chapters %> 
+  <% course=chapter.course %> 
+  <tr><td><%= course.ccode+":"+course.title %></td>
+      <td><%= chapter.cpcode+":"+chapter.title %></td>
+      <td><%= chapter.user_status(current_user.id) %></td>
+      <td align=right>
+		<%= link_to t("chapter.checkin"),scourses_path %> | 
+		<%= link_to t("chapter.enter"),scourses_path %> | 
+		<%= link_to t("chapter.finish"),scourses_path %> | 
+	  </td>
+  </tr>
+      <% for cexam in chapter.cexams %> 
+		<tr><td></td>
+			<td>- <%= cexam.name %></td>
+			<td><%= chapter.user_status(current_user.id) %></td>
+			<td align=right>
+			  <%= link_to t("chapter.checkin"),scourses_path %> | 
+			  <%= link_to t("chapter.enter"),scourses_path %> | 
+			  <%= link_to t("chapter.finish"),scourses_path %> | 
+			</td>
+		</tr>
+      <% end %> 
+  <% end %> 
+</table>
+
+
+
+

@@ -1,7 +1,6 @@
 class  SclassesController < ApplicationController
 
   #require role
-  
   def index
 
   end
