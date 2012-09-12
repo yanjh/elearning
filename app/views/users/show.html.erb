@@ -1,16 +1,12 @@
-<% content_for :header do -%>  <%= t("site.s_dashboard") %><% end -%>
+<% content_for :header do -%> <%= @student.login %> - <%= @student.name %> <% end -%>
 
 <% content_for :sidebar do -%>
-	<h2><%= t("site.sidebar") %></h2>
-	<ul>
-		<li><%= link_to t("site.needhelp"), "#" %></li>
-		<% if logged_in? %>	
-			<li><%= link_to t('session.log_out'), destroy_user_session_path %></li>
-		<% end -%>
-	</ul>
+
+	<h2><%= t("genral.sidebar") %></h2>
 <% end -%>
 
-<h2><%= t("course.list") %></h2>
+
+
 <table class="index">
   <tr>
 	<th><%= t('course.code')%></th>
@@ -31,4 +27,4 @@
   <% end %> 
 </table>
 
-
+<%= link_to t('general.back'), admin_orgs_path %>

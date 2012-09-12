@@ -11,19 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032930) do
-
-  create_table "_questions_old_20120911", :force => true do |t|
-    t.integer  "cexam_id"
-    t.integer  "problem_id"
-    t.integer  "score"
-    t.integer  "pcode"
-    t.string   "title"
-    t.integer  "ptype"
-    t.integer  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20120905032940) do
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -147,10 +135,25 @@ ActiveRecord::Schema.define(:version => 20120905032930) do
     t.datetime "updated_at"
   end
 
+  create_table "mlinks", :force => true do |t|
+    t.integer  "id1"
+    t.string   "name1"
+    t.string   "order1"
+    t.integer  "id2"
+    t.string   "name2"
+    t.string   "order2"
+    t.integer  "ltype"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mlinks", ["id1", "id2", "ltype"], :name => "index_mlinks_on_id1_and_id2_and_ltype", :unique => true
+
   create_table "problems", :force => true do |t|
     t.integer  "owner"
     t.string   "pcode"
-    t.string   "title"
+    t.text     "title"
     t.text     "content"
     t.string   "answer"
     t.string   "tags"

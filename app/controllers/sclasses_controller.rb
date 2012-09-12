@@ -8,8 +8,7 @@ class  SclassesController < ApplicationController
   
   def show
     @sclass   = Sclass.find(params[:id])
-    @student  = User.new
-    @teacher  = User.new
+    @course  = Course.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,19 +34,23 @@ class  SclassesController < ApplicationController
     end
   end
   
-    # PUT /grades/1
-  # PUT /grades/1.json
+
   def update
     @sclass = Sclass.find(params[:id])
-
     respond_to do |format|
+    if params[:by]=="remove_course"
+      @sclass.remove_course(params[:course_id])
+      format.html { redirect_to sclass_url(@sclass), notice: t('operate.remove_success') }
+      format.json { head :ok }
+    else
       if @sclass.update_attributes(params[:sclass])
-        format.html { redirect_to admin_orgs_url, notice: t('admin.orgs.update_class_success') }
+        format.html { redirect_to admin_orgs_url, notice: t('operate.update_success') }
         format.json { head :ok }
       else
         format.html { render action: "edit_class" }
         format.json { render json: @school.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
   

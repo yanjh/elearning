@@ -316,6 +316,7 @@ cn:
     course: 课程
     other: 参与的班级
     s_count: 学生数量
+    score_record: 成绩单
   exam:
     admin: 评测管理
     edit: 编辑评测

@@ -18,4 +18,8 @@ class Classuser < ActiveRecord::Base
       sclass.students.count
     end
     
+    def courses
+      Courseuser.where("link_id=? and ltype=2",self.sclass_id).order("onumber")
+    end
+    
 end

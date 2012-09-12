@@ -84,4 +84,17 @@ Rails3::Application.routes.draw do
     end
   end
   
+    # Teacher 
+  namespace :teacher do 
+    root :to => "dashboard#index"
+    resources :courses, :chapters, :cexams, :sresults
+  end
+
+    # Student 
+  namespace :student do 
+    root :to => "dashboard#index"
+    resources :courses, :chapters, :cexams, :sresults
+    
+  end
+  
 end

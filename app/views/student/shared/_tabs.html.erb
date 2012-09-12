@@ -1,6 +1,6 @@
 <ul>
 	<% if logged_in? %>
-		<li><%= tab_to t("site.general"), [{:controller => "dashboard" }] %></li>
+		<li><%= tab_to t("site.general1"), [{:controller => "../../dashboard" }] %></li>
 		
 		<% if current_user.student? %>
 			<li><%= tab_to t("site.my_course"), [{:controller => "student/courses" }] %></li>

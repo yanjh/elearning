@@ -43,4 +43,13 @@ class Sclass < ActiveRecord::Base
       end
     end
   end
+  
+  def courses
+    Courseuser.where("link_id=? and ltype=2",self.id).order("onumber")
+  end
+  
+  def remove_course(course_id)
+    Courseuser.delete_all(:course_id=>course_id,:link_id=>self.id,:ltype=>2)
+  end
+
 end

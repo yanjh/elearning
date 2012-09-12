@@ -9,7 +9,7 @@ class Courseuser < ActiveRecord::Base
     end
     
     def sclasses
-      #User.find(link_id) if self.ltype==0
+      Courseuser.where(:course_id=>self.course_id,:ltype=>2).order(:linkname)
     end
     
     def course

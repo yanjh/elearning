@@ -11,19 +11,18 @@
 	<th><%= t('admin.orgs.grade')%></th>
 	<th><%= t('class.name')%></th>
 	<th><%= t('class.s_count')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('class.course')%></th>
   </tr>
 
-  <% for sclass in current_user.sclasses %>
+  <% for sclass in current_user.sclasses.order(:sclassname) %>
   <tr>
 	<td><%= sclass.grade.name %></td>
-	<td><%= sclass.sclassname %></td>
+	<td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
 	<td><%= sclass.s_count %></td>
-	<td class="actions">
-		<%= link_to t('class.member'), sclass_path(sclass.sclass_id,:by=>"show_member") %> | 
-		<%= link_to t('class.course'), sclass_path(sclass.sclass_id,:by=>"show_course") %>
-	</td>
-  </tr>  
+	<td><% for course in sclass.courses %>
+		<%= link_to course.coursename,course_path(course.course_id) %><br>	
+	<% end %></td>
+ </tr>  
   <% end %>
 </table>
 

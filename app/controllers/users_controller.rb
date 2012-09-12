@@ -8,6 +8,11 @@ class UsersController < ApplicationController
               :set_login ]
   
   #layout 'login'
+  def show
+    @student = User.find(params[:id])
+    @sclass  = Sclass.find(@student.sclass.sclass_id)
+    @courses = @sclass.courses
+  end
   
   def troubleshooting
     # Render troubleshooting.html.erb

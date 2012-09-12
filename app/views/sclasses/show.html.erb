@@ -9,16 +9,15 @@
    <% end -%></ul>
    <% end -%>
 
-   <h2><%= t("admin.orgs.new_teacher") %></h2>
-   <ul><li><%= render ("form_teacher") %></li></ul>    
-
-   <h2><%= t("admin.orgs.new_student") %></h2>
-   <ul><li><%= render ("form_student") %></li></ul>    
-
-   <h2><%= t("general.operate") %></h2>
-   <ul>
-	  <li><%= link_to t("general.repair"),operate_admin_sclass_path(@sclass,:by=>"repair"),:method=>:put %></li>
-   </ul>
+   
+	<h2><%= t("course.list") %></h2>
+   	<ul><% for course in @sclass.courses %>
+	  	<li><%= link_to course.coursename,course_path(course.course_id) %>
+		 [<%= link_to "x",sclass_path(@sclass,:by=>"remove_course",:course_id=>course.course_id),:method=>:put %>]</li>
+ 	<% end %></ul>
+	
+	<h2><%= t("course.new") %></h2>
+	<ul><li><%= render 'courses/form' %></li></ul>
 <% end -%>
 
 
@@ -39,11 +38,9 @@
   <% for student in @sclass.students %>
   <tr><td><%= student.user_id %></td>
 	  <td><%= student.user.login %></td>
-      <td><%= link_to student.username,edit_admin_user_path(student.user_id) %></td>
-      <td align=right>
-		 <%= link_to t("general.edit"),edit_admin_user_path(student.user_id) %> | 
-		 <%= link_to t("general.remove"),operate_admin_sclass_path(@sclass,:by=>"remove_student",:user_id=>student.user_id),:method=>:put,:confirm=>t("phrase.are_you_sure") %>
-  </td></tr>
+      <td><%= link_to student.username,user_path(student.user_id) %></td>
+      <td align=right><%= link_to t("class.score_record"),user_path(student.user_id) %></td>
+  </tr>
   <% end %>
 </table>
 

@@ -55,13 +55,13 @@ class User < ActiveRecord::Base
   def sclasses
     Classuser.where([" user_id=? and ltype=0",self.id]).order("onumber")
   end
+
+  def sclass
+    Classuser.where([" user_id=? and ltype=1",self.id]).limit(1).first
+  end
   
   def courses
     Courseuser.where([" link_id=? and ltype=0",self.id]).order("onumber")
-  end
-  
-  def sclass
-    #Classusers.find(condition[" user_id=? and ltype=1",self.id])
   end
   
   def facebook?

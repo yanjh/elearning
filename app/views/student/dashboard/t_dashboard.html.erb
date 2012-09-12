@@ -1,0 +1,46 @@
+<% content_for :header do -%>
+	<%= t("site.t_dashboard") %>
+<% end -%>
+
+
+<% content_for :sidebar do -%>
+
+	<h2><%= t("admin.orgs.class_list") %></h2>
+	<ul>
+		<% for sclass in current_user.sclasses %>
+		<li><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id) %></li>
+		<% end -%>
+	</ul>
+	
+	<h2><%= t("course.new") %></h2>
+	<ul><li><%= render 'courses/form' %></li></ul>
+	
+<% end -%>
+
+
+
+<h2><%= t("course.list") %></h2>
+
+<table class="index">
+  <tr>
+	<th><%= t('course.code')%></th>
+	<th><%= t('course.type')%></th>
+	<th><%= t('general.name')%></th>
+	<th><%= t('general.desc')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+
+  <% for ucourse in current_user.courses %>
+  <tr><td><%= ucourse.course.ccode %></td>
+      <td><%= t("course.types")[ucourse.course.ctype][0] %></td>
+      <td><%= link_to ucourse.coursename, course_path(ucourse.course_id) %></td>
+      <td><%= ucourse.course.description %></td>
+      <td align=right>
+	<%= link_to t("general.edit"),edit_course_path(ucourse.course_id) %> | 
+	<%= link_to t("general.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+  </td></tr>
+  <% end %>
+</table>
+
+
+

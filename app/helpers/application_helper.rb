@@ -44,6 +44,16 @@ module ApplicationHelper
   def admin?
     logged_in? && current_user.admin?
   end
+
+  # Return true if the currently logged in user is an teacher
+  def teacher?
+    logged_in? && current_user.teacher?
+  end
+
+  # Return true if the currently logged in user is an student
+  def student?
+    logged_in? && current_user.student?
+  end
   
   # Write a secure email adress
   def secure_mail_to(email)
