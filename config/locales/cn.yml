@@ -315,11 +315,17 @@ cn:
     class2: 可选班级
     exam: 章节评测
     checkin: 检录
+    uncheckin: 未检录
     enter: 进入
     finish: 完成
     and_exam: 章节和评测
-    status: 状态
     title: 章节
+    status: 状态
+    statuses:
+      - 未检录
+      - 已检录
+      - 已完成
+      - 已关闭
   class:
     admin: 班级管理
     list: 班级列表

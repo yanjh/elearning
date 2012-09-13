@@ -25,7 +25,7 @@ authorization do
   end
   
   role :student do
-    has_permission_on [:student_courses, :student_chapters, :student_cexams, :questions, :problems],
+    has_permission_on [:scourses, :schapters, :scexams, :questions, :problems],
     :to => [:manage,:read]
   end
   

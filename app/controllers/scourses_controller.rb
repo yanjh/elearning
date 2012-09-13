@@ -66,27 +66,35 @@ class ScoursesController < ApplicationController
   
   def update
     #@course = Course.find(params[:id])
+    user_id=current_user.id
     respond_to do |format|
       if params[:by]=="update_exam"
-        @cexam=Cexam.find(params[:id])
+        scourse_id=params[:id]
+        cexam=Cexam.find(params[:cexam])
+        for question in cexam.questions
+          aw=params["a_"+question.id.to_s]
+          #logger.debug "answer:"+answer if answer
+          
+          sq=Sqresult.one(user_id,question.id)
+          if aw
+            if aw.kind_of?(Array)
+              answer=aw.map {|s| s }.join
+            else
+              answer=aw
+            end
+            
+            if sq
+              sq.update_attributes(:answer=>answer)
+            else
+              sq=Sqresult.create(:student_id=>user_id,:question_id=>question.id,:answer=>answer)
+            end
+          else
+            sq.delete if sq
+          end
+        end
         
-        teacher=User.find_by_login(params[:teacher])
-        if teacher && (teacher.id!=current_user.id)
-          @course.add_user(teacher,1)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
+        format.html { redirect_to scourse_url(scourse_id), notice: t('operate.add_success') }
           #format.json { head :ok }
-        else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
-        end
-      elsif params[:by]=="cexam"
-        sclass=Sclass.find_by_name(params[:sclass])
-        if sclass 
-          @course.add_class(sclass)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
-          #format.json { head :ok }
-        else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
-        end
       else
         if @course.update_attributes(params[:course])
            @course.update_user(current_user,0)

@@ -8,7 +8,7 @@ Rails3::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :profiles,:sclasses,:courses,:chapters,:cexams,:questions,:problems,:announcements,:authentications
-  resources :scourses,:tcourses
+  resources :scourses,:tcourse
   
   match '/auth/:provider/callback' => 'authentications#create', :as => :auth_callback
   
@@ -84,5 +84,17 @@ Rails3::Application.routes.draw do
     end
   end
   
+    # Teacher 
+  namespace :teacher do 
+    root :to => "dashboard#index"
+    resources :courses, :chapters, :cexams, :sresults
+  end
+
+    # Student 
+  namespace :student do 
+    root :to => "dashboard#index"
+    resources :courses, :chapters, :cexams, :sresults
+    
+  end
   
 end
