@@ -1,0 +1,36 @@
+<% content_for :header do -%><%= @title %> - <%= @scourse.name1 %> <% end -%>
+<p>
+<%= form_tag scourse_path(@cexam,:by=>"update_exam"),:method =>:put do %>
+<% i=0 %>
+   <% for question in @cexam.questions
+      i+=1
+      title = i.to_s+". "+question.problem.title.gsub("\n", '<br>')+" ["+t("problem.types")[question.problem.ptype][0]+","+t("question.score1",:score=>question.score)+"]"
+      content=""
+      tagid="answer_"+question.id.to_s;
+      
+      case question.problem.ptype
+      when 0 
+         #content = question.problem.content.gsub("\n", '<br>')+"<p>"
+         for item in question.problem.content.lines
+            content+="<br>"+radio_button_tag(tagid, item[0])+" "+item
+         end
+      when 1
+         for item in question.problem.content.lines
+            content+="<br>"+check_box_tag(tagid, item[0])+" "+item
+         end
+      when 2
+         content = "<br>"+radio_button_tag(tagid, "A")+t("problem.right")+"  "+radio_button_tag("answer_"+question.id.to_s, "B")+t("problem.wrong")
+         
+      when 3
+         content = "<br>"+text_area_tag(tagid, "Hi, nice site", :size => "24x6")
+
+      else
+         content = "<br>"+question.problem.content.gsub("\n", '<br>')+"<p>" 
+      end
+      
+      %>
+      
+      <p><%=raw title %><%=raw content %>
+   <% end -%>
+   <p><%= submit_tag t("general.save") %> <%= submit_tag t("general.finish") %>
+<% end %>

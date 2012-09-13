@@ -17,30 +17,38 @@
   </tr>
   
   <% for chapter in @chapters %> 
-  <% course=chapter.course %> 
-  <tr><td><%= course.ccode+":"+course.title %></td>
-      <td><%= chapter.cpcode+":"+chapter.title %></td>
-      <td><%= chapter.user_status(current_user.id) %></td>
-      <td align=right>
-		<%= link_to t("chapter.checkin"),scourses_path %> | 
-		<%= link_to t("chapter.enter"),scourses_path %> | 
-		<%= link_to t("chapter.finish"),scourses_path %> | 
-	  </td>
-  </tr>
-      <% for cexam in chapter.cexams %> 
+	<% course=chapter.course %> 
+	<% status=chapter.user_status(current_user.id) %> 
+	<tr><td><%= course.ccode+":"+course.title %></td>
+		<td><%= chapter.cpcode+":"+chapter.title %></td>
+		<td><%= status %></td>
+		<td align=right>
+		  <% if status==0 %>
+			<%= link_to t("chapter.checkin"),scourses_path(:by=>"chapter",:id=>chapter.id),:method=>:post %>
+		  <% elsif status==1 %>
+			<%= link_to t("chapter.enter") ,scourse_path(chapter.id,:by=>"chapter") %> | 
+			<%= link_to t("chapter.finish"),scourse_path(chapter.id,:by=>"chapter"),:method=>:put %>
+		  <% else  %>
+			<%= link_to t("chapter.view"),scourses_path %>
+		  <% end  %>
+		</td>
+	</tr>
+    <% for cexam in chapter.cexams %> 
+	<% status1=cexam.user_status(current_user.id) %> 
 		<tr><td></td>
 			<td>- <%= cexam.name %></td>
-			<td><%= chapter.user_status(current_user.id) %></td>
+			<td><%= status1 %></td>
 			<td align=right>
-			  <%= link_to t("chapter.checkin"),scourses_path %> | 
-			  <%= link_to t("chapter.enter"),scourses_path %> | 
-			  <%= link_to t("chapter.finish"),scourses_path %> | 
+			<% if status1==0 %>
+				<%= link_to t("chapter.checkin"),scourses_path(:by=>"cexam",:id=>cexam.id),:method=>:post %>
+			<% elsif status==1  %>
+				<%= link_to t("chapter.enter"),scourse_path(chapter.id,:by=>"cexam") %> | 
+				<%= link_to t("chapter.finish"),scourses_path %>
+			<% else  %>
+				<%= link_to t("chapter.view"),scourses_path %>
+			<% end  %>
 			</td>
 		</tr>
-      <% end %> 
+    <% end %> 
   <% end %> 
 </table>
-
-
-
-

@@ -10,34 +10,5 @@
 	</ul>
 <% end -%>
 
-<h2><%= t("course.list") %></h2>
-<table class="index">
-  <tr>
-	<th><%= t('course.code')%></th>
-	<th><%= t('course.name')%></th>
-	<th><%= t('course.chapter')%></th>
-	<th><%= t('course.finished')%></th>
-	<th><%= t('course.score')%></th>
-	<th><%= t('general.admin')%></th>
-  </tr>
-  
-  <% for course in @courses %> 
-  <tr><td></td>
-	  <td><%= link_to course.coursename,course_path(course.course_id) %></td>
-      <td></td>
-      <td></td>
-      <td align=right></td>
-  </tr>
-  <% end %>
-  
-  <% for chapter in @chapters %> 
-  <tr><td></td>
-	  <td><%= link_to course.coursename,course_path(course.course_id) %></td>
-      <td></td>
-      <td></td>
-      <td align=right></td>
-  </tr>
-  <% end %> 
-</table>
-
+Welcome Student!!
 

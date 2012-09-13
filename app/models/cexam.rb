@@ -11,4 +11,9 @@ class Cexam < ActiveRecord::Base
     
   end
   
+  def user_status(user_id)
+    s=Mlink.one(self.id,user_id,Mlink::T_CEXAM_USER)
+    (s.nil?)?0:s.status
+  end
+  
 end

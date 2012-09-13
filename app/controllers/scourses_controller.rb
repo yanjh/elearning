@@ -7,11 +7,25 @@ class ScoursesController < ApplicationController
   end
   
   def show
-    @course  = Course.find(params[:id])
-    @chapter = Chapter.new(:course_id=>params[:id])
+    if (params[:by]=="chapter")
+      @scourse  = Mlink.one(params[:id],current_user.id,Mlink::T_CHAPTER_USER )
+    elsif (params[:by]=="cexam")
+      @scourse  = Mlink.one(params[:id],current_user.id,Mlink::T_CEXAM_USER )
+    else
+      @scourse  = Mlink.find(params[:id])
+    end
+    
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @sclass }
+      if @scourse.ltype==Mlink::T_CHAPTER_USER
+        @chapter = Chapter.find(@scourse.id1)
+        @title = t("chapter.title")
+      else
+        @title = t("exam.title")
+        @cexam = Cexam.find(@scourse.id1)
+      end
+    
+      format.html  # show.html.erb
+      format.json { render json: @scourse }
     end
   end
   
@@ -23,25 +37,39 @@ class ScoursesController < ApplicationController
     end
   end
   
-  def create
-    @course = Course.new(params[:course])
-
+  def create    
     respond_to do |format|
-      if @course.save
-        @course.add_user(current_user,0)
-        format.html { redirect_to root_url, notice: t('course.create_success')}
-        #format.json { render json: @grade, status: :created, location: @grade }
+      if (params[:by]=="chapter")
+        chapter = Chapter.find(params[:id])
+        if @scourse = Mlink.create(:id1=>chapter.id,:name1=>chapter.title,:order1=>chapter.cpcode,:id2=>current_user.id,:name2=>current_user.name,:order2=>current_user.login,:ltype=>Mlink::T_CHAPTER_USER,:status=>1)
+          format.html { redirect_to scourse_url(@scourse), notice: t('operate.create_success')}
+          #format.json { render json: @grade, status: :created, location: @grade }
+        else
+          #format.html { render action: "new" }
+          #format.json { render json: @grade.errors, status: :unprocessable_entity }
+        end
+      elsif (params[:by]=="cexam")
+        cexam = Cexam.find(params[:id])
+        if @scourse = Mlink.create(:id1=>cexam.id,:name1=>cexam.name,:order1=>cexam.id,:id2=>current_user.id,:name2=>current_user.name,:order2=>current_user.login,:ltype=>Mlink::T_CEXAM_USER,:status=>1)
+          format.html { redirect_to scourse_url(@scourse), notice: t('operate.create_success')}
+          #format.json { render json: @grade, status: :created, location: @grade }
+        else
+          #format.html { render action: "new" }
+          #format.json { render json: @grade.errors, status: :unprocessable_entity }
+        end
+      
       else
-        #format.html { render action: "new" }
-        #format.json { render json: @grade.errors, status: :unprocessable_entity }
+    
       end
     end
   end
   
   def update
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
     respond_to do |format|
-      if params[:by]=="add_teacher"
+      if params[:by]=="update_exam"
+        @cexam=Cexam.find(params[:id])
+        
         teacher=User.find_by_login(params[:teacher])
         if teacher && (teacher.id!=current_user.id)
           @course.add_user(teacher,1)
@@ -50,7 +78,7 @@ class ScoursesController < ApplicationController
         else
           format.html { redirect_to course_url, notice: t('operate.add_false') }
         end
-      elsif params[:by]=="add_class"
+      elsif params[:by]=="cexam"
         sclass=Sclass.find_by_name(params[:sclass])
         if sclass 
           @course.add_class(sclass)

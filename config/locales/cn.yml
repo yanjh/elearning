@@ -24,6 +24,9 @@ cn:
     repair: 修复
     reply: 回复
     operate: 操作
+    cancel: 取消操作
+    save: 保存
+    finish: 完成
     yes: 是
     no: 否
     next: 下一条
@@ -42,6 +45,8 @@ cn:
     sidebar: 工具栏
     system_login: 系统登录
     s_dashboard: 学生工作台
+    t_dashboard: 教师工作台
+    a_dashboard: 管理工作台
     needhelp: 获取帮助和反馈
     description: 欢迎来到教学资源管理系统！
     general: 通用
@@ -314,6 +319,7 @@ cn:
     finish: 完成
     and_exam: 章节和评测
     status: 状态
+    title: 章节
   class:
     admin: 班级管理
     list: 班级列表
@@ -325,6 +331,7 @@ cn:
     s_count: 学生数量
     score_record: 成绩单
   exam:
+    title: 评测
     admin: 评测管理
     edit: 编辑评测
     create: 创建评测
@@ -361,6 +368,8 @@ cn:
     ptype: 问题形式
     score: 分值
     order: 次序
+    right: 对
+    wrong: 错
     types:
       -
         - 单选题
@@ -394,6 +403,7 @@ cn:
   question:
     edit:  编辑问题
     score: 问题分值
+    score1: %{score}分
     order: 问题次序
     problem: 题目内容
     problem_update: 更新题目内容
