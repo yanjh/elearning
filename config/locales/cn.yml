@@ -412,7 +412,8 @@ cn:
     score1: %{score}分
     order: 问题次序
     problem: 题目内容
-    problem_update: 更新题目内容
+    right1: √
+    wrong1: x
 
   session:
     system_login: 系统登录

@@ -48,8 +48,10 @@
 	  <% end %> 
       </td>
       <td><% for sclass1 in chapter.sclasses %>
-	    <%  s1+=","+sclass1.link_id.to_s %>
-	    <%= link_to sclass1.linkname,chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id),:method=>:put %><br>
+	      <%  s1+=","+sclass1.link_id.to_s %>
+	      <%= link_to sclass1.linkname,tcourse_path(@course,:by=>"course",:sclass=>sclass1.link_id) %> 
+	     [<%= link_to "x",chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure")  %>]
+		<br>
 	  <% end %> 
       </td>
       <td><% for sclass2 in sclasses.where(" link_id not in("+s1+")").order("linkname") %>

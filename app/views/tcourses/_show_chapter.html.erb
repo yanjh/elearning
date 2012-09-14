@@ -1,0 +1,27 @@
+<% content_for :header do -%><%= @sclass.name %> - <%= @course.title %>-<% @chapter.title%> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("chapter.new") %></h2>
+    
+<% end -%>
+
+<table class="index">
+  <tr>
+	<th><%= t('chapter.code')%></th>
+	<th><%= t('general.title')%></th>
+	<th><%= t('chapter.exam')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+
+  <% for student in @sclass.students %>
+  <tr><td><%= student.user_id %></td>
+	  <td><%= student.user.login %></td>
+      <td><%= link_to student.username,user_path(student.user_id) %></td>
+      <td align=right><%= link_to t("class.score_record"),user_path(student.user_id) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p>
+<%= link_to t('general.back'), tcourse_path(@course,:by=>"course",:sclass=>@sclass.id) %>
+

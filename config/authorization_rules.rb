@@ -19,7 +19,7 @@ authorization do
   end
   
   role :teacher do
-    has_permission_on [:sclasses, :courses, :chapters, :cexams, :questions, :problems],
+    has_permission_on [:sclasses, :courses, :tcourses, :chapters, :cexams, :questions, :problems],
     :to => [:manage,:read]
     
   end

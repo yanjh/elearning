@@ -10,4 +10,8 @@ class Question < ActiveRecord::Base
     sq=Sqresult.one(user_id,self.id)
     (sq.nil?)?"":sq.answer
   end
+  
+  def self.answers(user_id)
+    Sqresult.where("student_id=?",user_id).order("qorder")
+  end
 end
