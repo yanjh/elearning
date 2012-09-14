@@ -27,6 +27,7 @@ cn:
     cancel: 取消操作
     save: 保存
     finish: 完成
+    status: 状态
     yes: 是
     no: 否
     next: 下一条
@@ -55,6 +56,7 @@ cn:
     class_admin: 班级管理
     course_admin: 课程管理
     exam_admin: 评测管理
+    problem_admin: 问题管理
     my_course: 我的课程
     my_class: 我的班级
     other_class: 参与班级
@@ -273,37 +275,37 @@ cn:
         - 3
       -
         - 地理
-        - 5
+        - 4
       -
         - 历史
-        - 6
+        - 5
       -
         - 生物
-        - 7
+        - 6
       -
         - 物理
-        - 8
+        - 7
       -
         - 化学
-        - 9
+        - 8
       -
         - 政治
-        - 10
+        - 9
       -
         - 体育
-        - 11
+        - 10
       -
         - 美术
-        - 12
+        - 11
       -
         - 音乐
-        - 13
+        - 12
       -
         - 信息技术
-        - 14
+        - 13
       -
         - 其他
-        - 15
+        - 14
   chapter:
     code: 章节代码
     new: 新建章节
@@ -335,6 +337,8 @@ cn:
     course: 课程
     other: 参与的班级
     s_count: 学生数量
+    teacher: 教师
+    student: 学生
     score_record: 成绩单
   exam:
     title: 评测
@@ -349,6 +353,7 @@ cn:
     question: 评测问题  
     add_problem: 添加问题  
     problem_code: 问题代码  
+    score: 得分  
     types:
       -
         - 课堂调查

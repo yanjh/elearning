@@ -14,6 +14,7 @@ cn:
       invalid_token: '无效的认证令牌.'
       timeout: '会话已过期, 请重新登录.'
       inactive: '帐号未激活.'
+      already_authenticated: 已经验证过了
     user_sessions:
       signed_in: '已成功登录.'
       signed_out: '已成功注销.'

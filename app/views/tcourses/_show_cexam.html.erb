@@ -10,9 +10,9 @@
 %>
 <table class="index">
   <tr>
-	<th><%= t('cexam.student')%></th>
-	<th><%= t('cexam.status')%></th>
-	<th><%= t('cexam.score')%></th>
+	<th><%= t('class.student')%></th>
+	<th><%= t('general.status')%></th>
+	<th><%= t('exam.score')%></th>
 	<% for q in questions
 	  i+=1%>
 	  <th><%= i.to_s %></th>
@@ -41,7 +41,7 @@
 				  #break if answers[j].question_id==q.id
 			   end
 			   %>
-			   <td width=60><%= answer %></td>
+			   <td ><%= answer %></td>
 			<% end %>
 	  </tr>
    <% end %>

@@ -1,4 +1,6 @@
-<% content_for :header do -%><%= @sclass.name %> - <%= @course.title %>-<% @chapter.title%> <% end -%>
+<% content_for :header do -%>
+   <%= @sclass.name %> - <%= @course.title %>-<%= @chapter.title%>
+<% end -%>
 
 <% content_for :sidebar do -%>
    <h2><%= t("chapter.new") %></h2>
@@ -7,18 +9,22 @@
 
 <table class="index">
   <tr>
-	<th><%= t('chapter.code')%></th>
-	<th><%= t('general.title')%></th>
-	<th><%= t('chapter.exam')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('classh.student')%></th>
+	<th><%= t('general.status')%></th>
   </tr>
 
-  <% for student in @sclass.students %>
-  <tr><td><%= student.user_id %></td>
-	  <td><%= student.user.login %></td>
-      <td><%= link_to student.username,user_path(student.user_id) %></td>
-      <td align=right><%= link_to t("class.score_record"),user_path(student.user_id) %></td>
-  </tr>
+  <% for student in @sclass.students
+	  cu = Mlink.one(@chapter.id,student.user_id,Mlink::T_CHAPTER_USER)
+	  if cu.nil?
+		 status=0
+		 stime=""
+	  else
+		 status = cu.status
+		 stime=""
+	  end %>
+	  <tr><td><%= student.username %>(<%= student.user.login %>)</td>
+		  <td><%= t("chapter.statuses")[status] %><%= stime %></td>
+	  </tr>
   <% end %>
 </table>
 

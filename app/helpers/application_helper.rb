@@ -92,4 +92,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  
+  def hb(content)
+	content.gsub("\n", '<br>') unless content.nil?
+  end
 end

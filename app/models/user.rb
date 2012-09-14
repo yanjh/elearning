@@ -45,11 +45,11 @@ class User < ActiveRecord::Base
   end
   
   def teacher?
-    has_role?(:teacher)
+    has_real_role?(:teacher)
   end
   
   def student?
-    has_role?(:student)
+    has_real_role?(:student)
   end
   
   def sclasses

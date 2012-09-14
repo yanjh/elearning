@@ -1,23 +1,12 @@
-<% content_for :header do -%>
-	<%= t("site.t_dashboard") %>
-<% end -%>
+<% content_for :header do -%> <%= t("site.t_dashboard") %> <% end -%>
 
 
 <% content_for :sidebar do -%>
 
-	<h2><%= t("admin.orgs.class_list") %></h2>
-	<ul>
-		<% for sclass in current_user.sclasses %>
-		<li><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id) %></li>
-		<% end -%>
-	</ul>
-	
 	<h2><%= t("course.new") %></h2>
 	<ul><li><%= render 'courses/form' %></li></ul>
 	
 <% end -%>
-
-
 
 <h2><%= t("course.list") %></h2>
 
@@ -39,6 +28,27 @@
 	<%= link_to t("general.edit"),edit_course_path(ucourse.course_id) %> | 
 	<%= link_to t("general.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
+  <% end %>
+</table>
+<p></p>
+<h2><%= t("class.list") %></h2>
+<table class="index">
+  <tr>
+	<th><%= t('admin.orgs.grade')%></th>
+	<th><%= t('class.name')%></th>
+	<th><%= t('class.s_count')%></th>
+	<th><%= t('class.course')%></th>
+  </tr>
+
+  <% for sclass in current_user.sclasses.order(:sclassname) %>
+  <tr>
+	<td><%= sclass.grade.name %></td>
+	<td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
+	<td><%= sclass.s_count %></td>
+	<td><% for course in sclass.courses %>
+		<%= link_to course.coursename,course_path(course.course_id) %><br>	
+	<% end %></td>
+ </tr>  
   <% end %>
 </table>
 

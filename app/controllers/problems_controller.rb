@@ -1,4 +1,8 @@
 class ProblemsController < ApplicationController
+  def index
+    @problems= Problem.user_problems(current_user.id)
+    
+  end
   
   def create
     @problem = Problem.new(params[:problem])

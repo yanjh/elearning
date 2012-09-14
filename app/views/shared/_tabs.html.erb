@@ -7,10 +7,9 @@
 		<% end %>
 
 		<% if current_user.teacher? %>
-			<li style="float: right;"><%= tab_to t("site.support_info") %></li>
-			<li style="float: right;"><%= tab_to t("site.class_admin"), [{:controller => "sclasses" }] %></li>
-			<li style="float: right;"><%= tab_to t("site.course_admin"),[{:controller => "courses" }] %></li>
-			<li style="float: right;"><%= tab_to t("site.exam_admin") %></li>
+			<li style="float: right;"><%= tab_to t("site.class_admin"),  [{:controller => "sclasses" }] %></li>
+			<li style="float: right;"><%= tab_to t("site.course_admin"), [{:controller => "courses"  }] %></li>
+			<li style="float: right;"><%= tab_to t("site.problem_admin"),[{:controller => "problems" }] %></li>
 		<% end -%>
 	<% else  %>
 		<li><%= tab_to t("site.general"), [{:controller => "dashboard" }] %></li>

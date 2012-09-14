@@ -1,12 +1,9 @@
-<% content_for :header do -%><%= t("course.list") %><% end -%>
+<% content_for :header do -%><%= t("course.admin") %><% end -%>
 
 <% content_for :sidebar do -%>	
 	<h2><%= t("course.new") %></h2>
 	<ul><li><%= render 'courses/form' %></li></ul>
 <% end -%>
-
-
-<h2><%= t("course.list") %></h2>
 
 <table class="index">
   <tr>
@@ -22,7 +19,7 @@
       <td><%= t("course.types")[ucourse.course.ctype][0] %></td>
       <td><%= link_to ucourse.coursename, course_path(ucourse.course_id) %></td>
 	  <td><% for sclass in ucourse.sclasses %>
-			<%= link_to sclass.linkname,sclass_path(sclass.link_id) %><br>	
+			<%= link_to sclass.linkname,tcourse_path(ucourse.course_id,:by=>"course",:sclass=>sclass.link_id) %><br>	
 	  <% end %></td>
 	  <td align=right>
 		  <%= link_to t("general.edit"),edit_course_path(ucourse.course_id) %> | 
@@ -30,6 +27,8 @@
 	  </td></tr>
   <% end %>
 </table>
+
+
 
 
 

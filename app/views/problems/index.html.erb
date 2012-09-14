@@ -1,0 +1,32 @@
+<% content_for :header do -%> <%= t("problem.admin") %> <% end -%>
+
+<% content_for :sidebar do -%>	
+	<h2><%= t("problem.create") %></h2>
+	<ul>
+		<li><%= link_to t("chapter.uncheckin"),scourses_path %></li>
+		<li><%= link_to t("course.current"),scourses_path %></li>
+ 		<li><%= link_to t("course.closed") ,scourses_path(:by=>"show_closed") %></li>
+    </ul>
+<% end -%>
+
+<table class="index">
+  <tr>
+	<th><%= t('problem.pcode')%></th>
+	<th><%= t('problem.ctype')%></th>
+	<th><%= t('problem.ptype')%></th>
+	<th><%= t('general.content')%></th>
+	<th><%= t('general.admin')%></th>
+  </tr>
+  
+  <% for p in @problems %> 
+	<tr><td><%= p.pcode %></td>
+		<td><%= t("course.types")[p.ctype][0] %></td>
+		<td><%= t("problem.types")[p.ptype][0] %></td>
+		<td><%=raw hb(p.title) %><br><%=raw hb(p.content)  %></td>
+ 		<td align=right>
+			<%= link_to t("general.edit"), edit_problem_path(p) %> | 
+			<%= link_to t("general.delete"),problem_path(p),:method=>:put,:confirm=>t("phrase.are_you_sure") %>
+		</td>
+	</tr>
+  <% end -%>
+</table>
