@@ -8,7 +8,8 @@ class CreateProfileRoles < ActiveRecord::Migration
       t.string :real_name
       t.string :location
       t.string :website
-      
+      t.string :facebook_email
+ 
       t.timestamps
     end
     
@@ -27,6 +28,7 @@ class CreateProfileRoles < ActiveRecord::Migration
     
     create_table :roles do |t|
       t.column :name, :string
+      t.text :description
     end
     
     # generate the join table
@@ -39,6 +41,8 @@ class CreateProfileRoles < ActiveRecord::Migration
       t.integer :user_id
       t.string :provider
       t.string :uid
+      t.string :token
+
       t.timestamps
     end
     
@@ -53,7 +57,8 @@ class CreateProfileRoles < ActiveRecord::Migration
     
     user.roles << admin_role
 
-
+    Role.create(:name => 'student')
+    Role.create(:name => 'teacher')
   end
 
   def self.down

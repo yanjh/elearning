@@ -9,9 +9,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :login, :limit => 40
       t.string :identity_url      
       t.string :name, :limit => 100, :default => '', :null => true
+      t.string :sname, :limit => 100, :default => '', :null => true
+      t.string :ucode, :limit => 100, :default => '', :null => true
       t.string :email, :limit => 100
       t.string :state, :null => :false, :default => 'passive'      
       t.string :twitter_token
+      t.string :xmpp_token
+      t.string :language, :default=>"cn"
+
       t.datetime :activated_at
       t.datetime :deleted_at
       

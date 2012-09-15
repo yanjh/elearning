@@ -1,23 +1,41 @@
 class ProblemsController < ApplicationController
   def index
-    @problems= Problem.user_problems(current_user.id)
+    if (params[:operate]=="filter")
+      case params[:by]
+      when "all"
+        @problems = Problem.where("owner=? or status=0",current_user.id).order("updated_at desc").page(params[:page])
+      when "public"
+        @problems = Problem.where("owner=? and status=0",current_user.id).order("updated_at desc").page(params[:page])
+      when "private"
+        @problems = Problem.where("owner=? and status=1",current_user.id).order("updated_at desc").page(params[:page])
+      when "close"
+        @problems = Problem.where("owner=? and status=2",current_user.id).order("updated_at desc").page(params[:page])
+      when "ctype"
+        @problems = Problem.where("(owner=? or status=0) and ctype=?",current_user.id,params[:type]).order("updated_at desc").page(params[:page])
+      when "ptype"
+        @problems = Problem.where("(owner=? or status=0) and ptype=?",current_user.id,params[:type]).order("updated_at desc").page(params[:page])
+      end
+    else
+      @problems= Problem.user_problems(current_user.id).page(params[:page])
+    end
     
+    @problem = Problem.new(:pcode=>[*('A'..'Z')].sample+rand(36**5).to_s(36))
+    
+  end
+  
+  def edit
+    @problem= Problem.find(params[:id])    
   end
   
   def create
     @problem = Problem.new(params[:problem])
+    @problem.owner=current_user.id
+    @problem.ownername=current_user.name
 
     respond_to do |format|
       if @problem.save
-        if params[:cexam_id]
-          cexam_id=params[:cexam_id]
-          @question=Question.create(:problem_id=>@problem.id,:pcode=>@problem.pcode,:cexam_id=>cexam_id,:qorder=>@problem.id)
-          format.html { redirect_to edit_cexam_path(cexam_id), notice: t('operate.create_success')}
-        else
           format.html { redirect_to problems_path, notice: t('operate.create_success')}
           
-        end
-        #format.json { render json: @grade, status: :created, location: @grade }
       else
         format.html { redirect_to :back, notice: t('operate.create_false')}
         #format.json { render json: @grade.errors, status: :unprocessable_entity }
@@ -25,54 +43,25 @@ class ProblemsController < ApplicationController
     end
   end
   
-  def edit
-    @chapter = Chapter.find(params[:id])
-    @cexam= Cexam.new(:chapter_id=>@chapter.id)
-    respond_to do |format|
-      format.html # edit.html.erb
-    end
-  end
-  
   def update
-    @chapter = Chapter.find(params[:id])
+    @problem = Problem.find(params[:id])
     
     respond_to do |format|
-      if params[:by]=="add_class"
-        sclass=Sclass.find(params[:sclass])
-        if sclass 
-          @chapter.add_class(sclass)
-          format.html { redirect_to @chapter.course, notice: t('operate.add_success') }
-          #format.json { head :ok }
-        else
-          format.html { redirect_to @chapter.course, notice: t('operate.add_false') }
-        end
-      elsif params[:by]=="remove_class"
-        sclass=Sclass.find(params[:sclass])
-        if sclass 
-          @chapter.remove_class(sclass)
-          format.html { redirect_to @chapter.course, notice: t('operate.remove_success') }
-          #format.json { head :ok }
-        else
-          format.html { redirect_to @chapter.course, notice: t('operate.remove_false') }
-        end
+      if @problem.update_attributes(params[:problem],:owner=>current_user.id,:ownername=>current_user.name)
+        format.html { redirect_to problems_path, notice: t('operate.update_success') }
+        #format.json { head :ok }
       else
-        if @chapter.update_attributes(params[:chapter])
-          format.html { redirect_to course_path(@chapter.course), notice: t('operate.update_success') }
-          format.json { head :ok }
-        else
-          format.html { render action: "edit" }
-          #format.json { render json: @course.errors, status: :unprocessable_entity }
-        end
+        format.html { render action: "edit" }
+        #format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end
   
   def destroy
-    @chapter = Chapter.find(params[:id])
+    @problem = Problem.find(params[:id])
     respond_to do |format|
-      @course  =@chapter.course
-      @chapter.destroy
-      format.html { redirect_to @course }
+      @problem.delete
+      format.html { redirect_to problems_path }
       format.json { head :ok }
     end
   end

@@ -1,6 +1,9 @@
 # Ernest Bursa
 # http://ernest.bzdury.pl
 cn:
+  g:
+    delete: 删除
+    d_confirm: 你真的要删除吗?
   general:
     name: 名称
     title: 标题
@@ -368,13 +371,19 @@ cn:
     admin: 评测问题管理
     list: 问题列表
     code: 问题编码
+    codeowner: 问题编码-作者
     ctype: 问题类别
     content: 问题内容
     answer: 标准答案
     edit: 编辑问题
     create: 创建问题
     update: 更新问题
+    all: 所有
+    level: 级别
     public: 公开
+    private: 私有
+    close: 关闭
+    filter: 筛选问题
     select: 选择问题
     ptype: 问题形式
     score: 分值

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905032960) do
+ActiveRecord::Schema.define(:version => 20120905032940) do
 
   create_table "announcements", :force => true do |t|
     t.text     "headline"
@@ -57,22 +57,22 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "corder"
+    t.string   "cpcode"
     t.string   "title"
     t.text     "content"
+    t.text     "description"
     t.integer  "status"
     t.integer  "cid"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "course_id"
-    t.string   "cpcode"
-    t.text     "description"
   end
 
   create_table "classusers", :force => true do |t|
     t.integer  "sclass_id"
     t.integer  "user_id"
-    t.string   "sclassname"
     t.string   "username"
+    t.string   "sclassname"
     t.integer  "ltype"
     t.string   "onumber"
     t.datetime "created_at"
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
     t.integer  "link_id"
     t.integer  "ltype"
     t.string   "linkname"
+    t.string   "onumber"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "onumber"
   end
 
   add_index "courseusers", ["course_id", "link_id", "ltype"], :name => "index_courseusers_on_course_id_and_link_id_and_ltype", :unique => true
@@ -151,10 +151,12 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
   add_index "mlinks", ["id1", "id2", "ltype"], :name => "index_mlinks_on_id1_and_id2_and_ltype", :unique => true
 
   create_table "problems", :force => true do |t|
-    t.integer  "owner"
     t.string   "pcode"
+    t.integer  "owner"
+    t.string   "ownername"
     t.text     "title"
     t.text     "content"
+    t.text     "description"
     t.string   "answer"
     t.string   "tags"
     t.integer  "ptype"
@@ -163,7 +165,6 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
     t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
   end
 
   create_table "profiles", :force => true do |t|
@@ -220,7 +221,6 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "feedback"
   end
 
   create_table "settings", :force => true do |t|
@@ -243,8 +243,6 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "feedback"
-    t.integer  "qorder"
   end
 
   create_table "users", :force => true do |t|
@@ -261,15 +259,16 @@ ActiveRecord::Schema.define(:version => 20120905032960) do
     t.string   "login",                :limit => 40
     t.string   "identity_url"
     t.string   "name",                 :limit => 100, :default => ""
+    t.string   "sname",                :limit => 100, :default => ""
+    t.string   "ucode",                :limit => 100, :default => ""
     t.string   "state",                               :default => "passive"
     t.string   "twitter_token"
+    t.string   "xmpp_token"
+    t.string   "language",                            :default => "cn"
     t.datetime "activated_at"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "language"
-    t.string   "sname"
-    t.string   "unumber"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

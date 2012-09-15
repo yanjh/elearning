@@ -94,6 +94,11 @@ module ApplicationHelper
   end
   
   def hb(content)
-	content.gsub("\n", '<br>') unless content.nil?
+	content.strip.gsub("\n", '<br>') unless content.nil?
   end
+  
+  def link_to_d(path)
+	link_to t("g.delete"), path, :method=>:delete, :confirm=>t("g.d_confirm")
+  end
+
 end

@@ -1,10 +1,12 @@
 class CreateProblems < ActiveRecord::Migration
   def change
     create_table :problems do |t|
-      t.integer :owner
       t.string  :pcode
+      t.integer :owner
+      t.string  :ownername
       t.text    :title
       t.text    :content
+      t.text    :description
       t.string  :answer
       t.string  :tags
       t.integer :ptype

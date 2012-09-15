@@ -1,32 +1,62 @@
 <% content_for :header do -%> <%= t("problem.admin") %> <% end -%>
 
 <% content_for :sidebar do -%>	
-	<h2><%= t("problem.create") %></h2>
-	<ul>
-		<li><%= link_to t("chapter.uncheckin"),scourses_path %></li>
-		<li><%= link_to t("course.current"),scourses_path %></li>
- 		<li><%= link_to t("course.closed") ,scourses_path(:by=>"show_closed") %></li>
-    </ul>
+   <h2><%= t("problem.create") %></h2>
+   <ul>
+      <li><%= render ("form") %></li>
+   </ul>
+   
+   <h2><%= t("problem.filter") %></h2>
+   <ul>
+      <li>
+		<%= link_to t("problem.all"), problems_path(:operate=>"filter",:by=>"all") %> | 
+		<%= link_to t("problem.private"), problems_path(:operate=>"filter",:by=>"private") %> | 
+		<%= link_to t("problem.public"), problems_path(:operate=>"filter",:by=>"public") %> | 
+		<%= link_to t("problem.close"), problems_path(:operate=>"filter",:by=>"close") %>	  
+	  </li>
+	  <li><% i=0
+			for t in t("problem.types") do
+				i+=1
+				if i>4
+					i=0
+				%><br>
+				<% end %>
+				<%= link_to t[0],problems_path(:operate=>"filter",:by=>"ptype",:type=>t[1]) %> |
+		  <% end -%> 
+	  </li>
+	  <li><% i=0
+			for t in t("course.types") do
+				i+=1
+				if i>4
+					i=0
+				%><br><% end %>
+				<%= link_to t[0],problems_path(:operate=>"filter",:by=>"ctype",:type=>t[1]) %> |
+		  <% end -%> 
+	  </li>
+   </ul> 
 <% end -%>
 
 <table class="index">
   <tr>
-	<th><%= t('problem.pcode')%></th>
+	<th><%= t('problem.codeowner')%></th>
+	<th><%= t('general.status')%></th>
 	<th><%= t('problem.ctype')%></th>
-	<th><%= t('problem.ptype')%></th>
 	<th><%= t('general.content')%></th>
 	<th><%= t('general.admin')%></th>
   </tr>
   
   <% for p in @problems %> 
-	<tr><td><%= p.pcode %></td>
-		<td><%= t("course.types")[p.ctype][0] %></td>
-		<td><%= t("problem.types")[p.ptype][0] %></td>
-		<td><%=raw hb(p.title) %><br><%=raw hb(p.content)  %></td>
+	<tr><td><%= p.pcode %><br><%= p.ownername %></td>
+		<td><%= t("problem.stypes")[p.status][0] %></td>
+		<td><%= t("course.types")[p.ctype][0] %><br><%= t("problem.types")[p.ptype][0] %></td>
+		<td><%=raw hb(p.title) %>
+		    <%=raw "<br>"+hb(p.content) unless p.content.blank? %><br><%=raw (t("problem.answer")+": "+hb(p.answer)) unless p.answer.blank? %></td>
  		<td align=right>
 			<%= link_to t("general.edit"), edit_problem_path(p) %> | 
-			<%= link_to t("general.delete"),problem_path(p),:method=>:put,:confirm=>t("phrase.are_you_sure") %>
+			<%= link_to_d problem_path(p) %>
 		</td>
 	</tr>
   <% end -%>
 </table>
+
+<%= will_paginate @problems, :previous_label => t("general.prev_page"), :next_label => t("general.next_page")%>

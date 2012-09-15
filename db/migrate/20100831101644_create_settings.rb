@@ -9,9 +9,17 @@ class CreateSettings < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    Setting.create!(:label =>"资源服务根URL器", :identifier => "resourse-url", :description => "", :field_type =>"string", :value =>"")
+    Setting.create!(:label =>"IM服务器地址", :identifier => "im-server-address", :description => "", :field_type =>"string", :value =>"")
+    Setting.create!(:label =>"IM登录域", :identifier => "im-domain", :description => "", :field_type =>"string", :value =>"yucai.im")
   end
 
   def self.down
+      ["twiter-auth", "openid-auth", "facebook-auth"].each do |x|
+      Settings.find_by_identifier(x).destroy!
+    end
+        
     drop_table :settings
   end
 end
