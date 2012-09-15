@@ -31,11 +31,11 @@
 <table class="index">
   <tr>
 	<th><%= t('chapter.code')%></th>
-	<th><%= t('general.title')%></th>
+	<th><%= t('g.title')%></th>
 	<th><%= t('chapter.exam')%></th>
 	<th><%= t('chapter.class1')%></th>
 	<th><%= t('chapter.class2')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
 
   <% sclasses=@course.sclasses %>
@@ -58,12 +58,12 @@
 		  <% end %> 
 	  </td>
       <td align=right>
-	  <%= link_to t("general.edit"),edit_chapter_path(chapter) %> | 
-	  <%= link_to t("general.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+	  <%= link_to t("g.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("g.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
   <% end %>
 </table>
 
 
-<%= link_to t('general.back'), root_path %> | 
-<%= link_to t('general.edit'), root_path %>
+<%= link_to t('g.back'), root_path %> | 
+<%= link_to t('g.edit'), root_path %>

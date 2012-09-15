@@ -5,9 +5,9 @@
 <%= form_for [:admin,@grade] do |f| %>
     <%= f.error_messages %>
     <table >
-        <%= cell(t("general.name"), (f.text_field :name))%>
+        <%= cell(t("g.name"), (f.text_field :name))%>
         <%= cell(t("admin.orgs.grade_year"), (f.text_field :gyear))%>
-        <%= cell(t("general.desc"), (f.text_area :description, :rows =>4,:cols=>28))%>
+        <%= cell(t("g.desc"), (f.text_area :description, :rows =>4,:cols=>28))%>
         <%= cell("", submit_tag(stitle))%>
     </table>
 <% end %>

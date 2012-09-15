@@ -14,7 +14,7 @@
 	<th><%= t('course.chapter')%></th>
 	<th><%= t('course.finished')%></th>
 	<th><%= t('course.score')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
   
   <% for course in @courses %> 
@@ -27,4 +27,4 @@
   <% end %> 
 </table>
 
-<%= link_to t('general.back'), admin_orgs_path %>
+<%= link_to t('g.back'), admin_orgs_path %>

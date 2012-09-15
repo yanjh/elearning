@@ -39,7 +39,7 @@
 	<th><%= t('activerecord.attributes.user.email')%></th>
 	<th><%= t('activerecord.attributes.user.status')%></th>
 	<th><%= t('activerecord.attributes.user.admin')%></th>
-	<th align=right><%= t('general.admin')%></th>
+	<th align=right><%= t('g.admin')%></th>
   </tr>
   
   <% for user in @users %>
@@ -49,24 +49,24 @@
 	<td><%= user.name %></td>
 	<td><%= user.email %></td>
 	<td><%= user.state %></td>
-	<td><%= t('general.yes') if user.admin? %></td>
+	<td><%= t('g.yes') if user.admin? %></td>
 	<td class="actions">
 		<% if user.pending? %>
-			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('g.edit'), edit_admin_user_path(user) %>
 			<%= link_to t('admin.users.options.activate'), operate_admin_user_url(user,:by=>"active"), :method => :put %>
 			<%= link_to t('admin.users.options.suspend'),  operate_admin_user_url(user,:by=>"suspend"),:method => :put %>
 			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>
 		<% elsif user.passive? %>
-			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('g.edit'), edit_admin_user_path(user) %>
 			<%= link_to t('admin.users.options.activate'), operate_admin_user_url(user,:by=>"active"), :method => :put %>
 			<%= link_to t('admin.users.options.suspend'),  operate_admin_user_url(user,:by=>"suspend"),:method => :put %>
 			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>
 		<% elsif user.active? %>
-			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('g.edit'), edit_admin_user_path(user) %>
 			<%= link_to t('admin.users.options.suspend'), operate_admin_user_url(user,:by=>"suspend"), :method => :put  %>
 			<%= link_to t('admin.users.options.delete'),  admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure")%>
 		<% elsif user.suspended? %>
-			<%= link_to t('general.edit'), edit_admin_user_path(user) %>
+			<%= link_to t('g.edit'), edit_admin_user_path(user) %>
 			<%= link_to t('admin.users.options.unsuspend'), operate_admin_user_url(user,:by=>"unsuspend"), :method => :put %>
 			<%= link_to t('admin.users.options.delete'), admin_user_url(user), :method => :delete, :confirm => t("phrase.are_you_sure") %>		
 		<% end %>
@@ -75,4 +75,4 @@
   <% end %>
 </table>
 
-<%= will_paginate @users, :previous_label => t("general.prev_page"), :next_label => t("general.next_page")%>
+<%= will_paginate @users, :previous_label => t("g.prev_page"), :next_label => t("g.next_page")%>

@@ -8,9 +8,9 @@
 <table class="index">
   <tr>
 	<th><%= t('chapter.code')%></th>
-	<th><%= t('general.title')%></th>
+	<th><%= t('g.title')%></th>
 	<th><%= t('chapter.exam')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
 
   <% for chapter in @course.chapters %>
@@ -21,13 +21,13 @@
 	  <% end %> 
       </td>
       <td align=right>
-	  <%= link_to t("general.edit"),edit_chapter_path(chapter) %> | 
-	  <%= link_to t("general.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+	  <%= link_to t("g.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("g.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
   </td></tr>
   <% end %>
 </table>
 
 <p>
-<%= link_to t('general.back'), course_path(@course) %>
+<%= link_to t('g.back'), course_path(@course) %>
 
 

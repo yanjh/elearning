@@ -13,7 +13,7 @@
 <table >
     <%= cell(t("problem.code"),    (f.text_field :pcode))%>
     <%= cell(t("problem.ctype"),   (f.select(:ctype, t("course.types"))+"  "+f.select(:ptype, t("problem.types"))+"  "+f.select(:status, t("problem.stypes")))) %>
-    <%= cell(t("general.title"),   (f.text_area :title,:rows=>3,:cols=>30))%>
+    <%= cell(t("g.title"),   (f.text_area :title,:rows=>3,:cols=>30))%>
     <%= cell(t("problem.content"), (f.text_area :content,:rows=>4,:cols=>30))%>
     <%= cell(t("problem.answer"),  (f.text_area :answer,:rows=>1,:cols=>30))%>
 

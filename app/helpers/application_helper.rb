@@ -100,5 +100,8 @@ module ApplicationHelper
   def link_to_d(path)
 	link_to t("g.delete"), path, :method=>:delete, :confirm=>t("g.d_confirm")
   end
-
+  
+  def link_to_dx(path)
+	raw "["+link_to("X", path, :method=>:delete, :confirm=>t("g.d_confirm"))+"]"
+  end
 end

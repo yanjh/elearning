@@ -29,7 +29,7 @@
 	<th><%= t('admin.orgs.grade')%></th>
 	<th><%= t('admin.orgs.grade_year')%></th>
 	<th><%= t('admin.orgs.class_list')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
 
   <% for grade1 in @grades %>
@@ -38,8 +38,8 @@
 	<td><%= grade1.gyear %></td>
 	<td><%= grade1.sclasses.count %></td>
 	<td class="actions">
-		<%= link_to t('general.edit'), edit_admin_grade_path(grade1) %> | 
-	    <%= link_to t('general.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>grade1.name) %> 
+		<%= link_to t('g.edit'), edit_admin_grade_path(grade1) %> | 
+	    <%= link_to t('g.delete'), admin_grade_url(grade1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>grade1.name) %> 
 	</td>
   </tr>
 	<% for sclass1 in grade1.sclasses %>
@@ -48,9 +48,9 @@
 	  <td></td>
 	  <td><%= sclass1.name %>  (<%= sclass1.students.count %>)</td>
 	  <td class="actions">
-		  <%= link_to t('general.view'), [:admin,sclass1] %> | 
-		  <%= link_to t('general.edit'), edit_admin_sclass_path(sclass1) %> | 
-		  <%= link_to t('general.delete'), admin_sclass_url(sclass1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>sclass1.name) %> 
+		  <%= link_to t('g.view'), [:admin,sclass1] %> | 
+		  <%= link_to t('g.edit'), edit_admin_sclass_path(sclass1) %> | 
+		  <%= link_to t('g.delete'), admin_sclass_url(sclass1), :method => :delete, :confirm => t("phrase.confirm_delete",:something=>sclass1.name) %> 
 	  </td>
 	</tr>
 	<% end %>	

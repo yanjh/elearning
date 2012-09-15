@@ -3,31 +3,23 @@
 <% end -%>
 
 <% content_for :sidebar do -%>
-   <h2><%= t("chapter.new") %></h2>
-    
+   <h2><%= t("chapter.new") %></h2>   
 <% end -%>
 
 <table class="index">
   <tr>
-	<th><%= t('classh.student')%></th>
-	<th><%= t('general.status')%></th>
+	<th><%= t('g.student')%></th>
+	<th><%= t('g.status')%></th>
   </tr>
 
   <% for student in @sclass.students
-	  cu = Mlink.one(@chapter.id,student.user_id,Mlink::T_CHAPTER_USER)
-	  if cu.nil?
-		 status=0
-		 stime=""
-	  else
-		 status = cu.status
-		 stime=""
-	  end %>
+	  cu = Mlink.one(@chapter.id,student.user_id,Mlink::T_CHAPTER_USER) %>
 	  <tr><td><%= student.username %>(<%= student.user.login %>)</td>
-		  <td><%= t("chapter.statuses")[status] %><%= stime %></td>
+		  <td><%= t("chapter.statuses")[cu.status] unless cu.nil? %><%= cu.updated_at.strftime(" (%m-%d %H:%M)") unless cu.nil? %></td>
 	  </tr>
   <% end %>
 </table>
 
 <p>
-<%= link_to t('general.back'), tcourse_path(@course,:by=>"course",:sclass=>@sclass.id) %>
+<%= link_to t('g.back'), tcourse_path(@course,:by=>"course",:sclass=>@sclass.id) %>
 

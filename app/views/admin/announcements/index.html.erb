@@ -19,8 +19,8 @@
   <tr>
     <td><%=h announcement.headline %><br><%=h announcement.message %></td>
     <td><%=h announcement.starts_at %><br><%=h announcement.ends_at %></td>
-    <td><%= link_to t('general.edit'), edit_admin_announcement_path(announcement) %></td>
-    <td><%= link_to t('general.destroy'), admin_announcement_path(announcement), :confirm => t('phrase.are_you_sure'), :method => :delete %></td>
+    <td><%= link_to t('g.edit'), edit_admin_announcement_path(announcement) %></td>
+    <td><%= link_to t('g.destroy'), admin_announcement_path(announcement), :confirm => t('phrase.are_you_sure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

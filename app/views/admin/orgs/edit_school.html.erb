@@ -12,8 +12,8 @@
     <%= cell(t("admin.orgs.desc"), (f.text_area  :description,:rows =>4,:cols=>32)) %>
     <%= cell(t("admin.orgs.address"), (f.text_area  :address,:rows =>3,:cols=>32)) %>
     
-    <%= cell("", (submit_tag t('general.update'))) %>
+    <%= cell("", (submit_tag t('g.update'))) %>
 </table>
 <% end -%>
 
-<%= link_to(t('general.back'), admin_orgs_path) %>
+<%= link_to(t('g.back'), admin_orgs_path) %>

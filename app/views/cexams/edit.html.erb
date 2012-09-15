@@ -25,7 +25,7 @@
 	<th><%= t('problem.content')%></th>
 	<th><%= t('problem.score')%></th>
 	<th><%= t('problem.order')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
   
 <% for question in @cexam.questions %>
@@ -37,12 +37,12 @@
     <td><%= question.score %></td>
     <td><%= question.qorder %></td>
     <td align=right>
-      <%= link_to t("general.edit"),edit_question_path(question) %> | 
-      <%= link_to t("general.remove"),question,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+      <%= link_to t("g.edit"),edit_question_path(question) %> | 
+      <%= link_to t("g.remove"),question,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
     </td>
   </tr>
 <% end -%>
 </table>
 
-<%= link_to(t('general.back'), course_path(@cexam.chapter.course)) %>
+<%= link_to(t('g.back'), course_path(@cexam.chapter.course)) %>
 

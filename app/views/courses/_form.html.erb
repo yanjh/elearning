@@ -11,7 +11,7 @@
     #cell(t("course.ctype"), (f.select(:ctype, C::COURSE_TYPE)))
     %>
     <%= cell(t("course.type"), (f.select(:ctype, t("course.types")))) %>
-    <%= cell(t("general.desc"), (f.text_area :description,:rows=>3,:cols=>24))%>
+    <%= cell(t("g.desc"), (f.text_area :description,:rows=>3,:cols=>24))%>
 
     <%= cell("", (submit_tag stitle))%>
 </table>

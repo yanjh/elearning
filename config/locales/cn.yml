@@ -2,9 +2,6 @@
 # http://ernest.bzdury.pl
 cn:
   g:
-    delete: 删除
-    d_confirm: 你真的要删除吗?
-  general:
     name: 名称
     title: 标题
     desc: 描述信息
@@ -22,7 +19,6 @@ cn:
     update: 更新
     remove: 移除
     destroy: 清除
-    delete: 删除
     recovery: 恢复
     repair: 修复
     reply: 回复
@@ -31,6 +27,9 @@ cn:
     save: 保存
     finish: 完成
     status: 状态
+    admins: 管理员
+    student: 学生
+    teacher: 教师
     yes: 是
     no: 否
     next: 下一条
@@ -38,6 +37,9 @@ cn:
     next_page: 下一页
     prev_page: 上一页
     or: 或者
+    delete: 删除
+    d_confirm: 你真的要删除吗?
+    are_you_sure: 你确认要进行此项操作吗 ?
   phrase:
     cant_blank: 不能为空
     confirm_save: 确认保存 %{somethin} ?

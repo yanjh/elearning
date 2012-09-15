@@ -9,9 +9,9 @@
   <tr>
 	<th><%= t('course.code')%></th>
 	<th><%= t('course.type')%></th>
-	<th><%= t('general.name')%></th>
+	<th><%= t('g.name')%></th>
 	<th><%= t('course.class')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
 
   <% for ucourse in current_user.courses %>
@@ -22,8 +22,8 @@
 			<%= link_to sclass.linkname,tcourse_path(ucourse.course_id,:by=>"course",:sclass=>sclass.link_id) %><br>	
 	  <% end %></td>
 	  <td align=right>
-		  <%= link_to t("general.edit"),edit_course_path(ucourse.course_id) %> | 
-		  <%= link_to t("general.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+		  <%= link_to t("g.edit"),edit_course_path(ucourse.course_id) %> | 
+		  <%= link_to t("g.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
 	  </td></tr>
   <% end %>
 </table>

@@ -9,7 +9,7 @@
 	<%= hidden_field_tag(:id, @role.id ) %>
 	<%= label_tag(:search, "用户名称:") %><br />
 	<%= text_field_tag(:search) %><br /><br />
-	<%= submit_tag(t("general.add")) %>
+	<%= submit_tag(t("g.add")) %>
     <% end %>
     </li></ul>
 <% end -%>
@@ -23,4 +23,4 @@
 
 <% end %>
 
-<hr><%= link_to t("general.back"), admin_roles_path %>
+<hr><%= link_to t("g.back"), admin_roles_path %>

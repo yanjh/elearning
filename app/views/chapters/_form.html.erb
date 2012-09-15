@@ -1,15 +1,11 @@
-<%
-    stitle = @chapter.id.nil? ? stitle = t('chapter.create'):t('chapter.update')
--%>
-
 <%= form_for @chapter do |f| %>
 <%= f.error_messages %>
 <table >
     <%= f.hidden_field :course_id %>
     <%= cell(t("chapter.code"), (f.text_field :cpcode))%>
-    <%= cell(t("general.title"), (f.text_field :title))%>
-    <%= cell(t("general.desc"), (f.text_area :description, :rows =>3,:cols=>28))%>
-    <%= cell(t("general.content"), (f.text_area :content, :rows =>8,:cols=>48)) unless @chapter.id.nil? %>
-    <%= cell("", (submit_tag stitle))%>
+    <%= cell(t("g.title"), (f.text_field :title))%>
+    <%= cell(t("g.desc"), (f.text_area :description, :rows =>3,:cols=>28))%>
+    <%= cell(t("g.content"), (f.text_area :content, :rows =>8,:cols=>48)) unless @chapter.id.nil? %>
+    <%= cell("", (submit_tag (@chapter.id.nil?)? t('chapter.create'):t('chapter.update')))%>
 </table>
 <% end %>

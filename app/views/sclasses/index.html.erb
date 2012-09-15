@@ -2,7 +2,7 @@
 
 <% content_for :sidebar do -%>
 
-   <h2><%= t("operate.title") %></h2>
+   <h2><%= t("g.title") %></h2>
    
 <% end -%>
 
@@ -15,14 +15,14 @@
   </tr>
 
   <% for sclass in current_user.sclasses.order(:sclassname) %>
-  <tr>
-	<td><%= sclass.grade.name %></td>
-	<td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
-	<td><%= sclass.s_count %></td>
-	<td><% for course in sclass.courses %>
-		<%= link_to course.coursename,course_path(course.course_id) %><br>	
-	<% end %></td>
- </tr>  
+   <tr>
+	 <td><%= sclass.grade.name %></td>
+	 <td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
+	 <td><%= sclass.s_count %></td>
+	 <td><% for c in sclass.courses %>
+		 <%= link_to c.coursename,course_path(c.course_id) %><br>	
+	 <% end %></td>
+   </tr>  
   <% end %>
 </table>
 

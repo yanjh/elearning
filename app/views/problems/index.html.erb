@@ -39,10 +39,10 @@
 <table class="index">
   <tr>
 	<th><%= t('problem.codeowner')%></th>
-	<th><%= t('general.status')%></th>
+	<th><%= t('g.status')%></th>
 	<th><%= t('problem.ctype')%></th>
-	<th><%= t('general.content')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.content')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
   
   <% for p in @problems %> 
@@ -52,11 +52,11 @@
 		<td><%=raw hb(p.title) %>
 		    <%=raw "<br>"+hb(p.content) unless p.content.blank? %><br><%=raw (t("problem.answer")+": "+hb(p.answer)) unless p.answer.blank? %></td>
  		<td align=right>
-			<%= link_to t("general.edit"), edit_problem_path(p) %> | 
+			<%= link_to t("g.edit"), edit_problem_path(p) %> | 
 			<%= link_to_d problem_path(p) %>
 		</td>
 	</tr>
   <% end -%>
 </table>
 
-<%= will_paginate @problems, :previous_label => t("general.prev_page"), :next_label => t("general.next_page")%>
+<%= will_paginate @problems, :previous_label => t("g.prev_page"), :next_label => t("g.next_page")%>

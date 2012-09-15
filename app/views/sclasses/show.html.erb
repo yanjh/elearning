@@ -27,7 +27,7 @@
 	<th><%= t('admin.users.ID')%></th>
 	<th><%= t('admin.orgs.snumber')%></th>
 	<th><%= t('admin.users.sname')%></th>
-	<th><%= t('general.admin')%></th>
+	<th><%= t('g.admin')%></th>
   </tr>
   
   <% icount=@sclass.students.count
@@ -44,4 +44,4 @@
   <% end %>
 </table>
 
-<%= link_to t('general.back'), admin_orgs_path %>
+<%= link_to t('g.back'), admin_orgs_path %>

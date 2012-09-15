@@ -16,7 +16,7 @@
     <%= cell(t("problem.code"),    (f.text_field :pcode))%>
     <%= cell(t("problem.ctype"),   (f.select(:ctype, t("course.types"))+"  "+f.select(:ptype, t("problem.types"))+"  "+f.select(:status, t("problem.stypes")))) %>
     <%= cell(t("problem.level"),   (f.select(:level, [1,2,3,4,5,6,7,8,9,10]))) %>
-    <%= cell(t("general.title"),   (f.text_area :title,:rows=>3,:cols=>fwidth))%>
+    <%= cell(t("g.title"),   (f.text_area :title,:rows=>3,:cols=>fwidth))%>
     <%= cell(t("problem.content"), (f.text_area :content,:rows=>5,:cols=>fwidth))%>
     <%= cell(t("problem.answer"),  (f.text_area :answer,:rows=>2,:cols=>fwidth))%>
 
