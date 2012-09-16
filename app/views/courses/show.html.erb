@@ -21,18 +21,15 @@
 			<%= s1.name2 %>
 			<%= link_to_dx course_path(@course,:by=>"remove_class",:sclass=>s1.id2) %><br>	 
 	     <% end -%>
-	  <%= t("class.noselect") if sin=="" %>
-	  </li>
-	  <li><%= t("class.forselect") %><br>
-		 <% for s2 in current_user.sclasses
-			unless sin.include?(","+s2.id.to_s) %>
-			   <%= link_to s2.name, course_path(@course,:by=>"add_class",:sclass=>s2.id),:method=>:put %><br>
+		 <%= t("class.noselect") if sin=="" %>
+	  </li></ul>
+   <h2><%= t("class.forselect") %></h2>
+   <ul><li><% for s2 in current_user.sclasses
+			   unless sin.include?(","+s2.id.to_s) %>
+				  <%= link_to s2.name, course_path(@course,:by=>"add_class",:sclass=>s2.id),:method=>:put %><br>
+			   <% end -%>
 			<% end -%>
-		 <% end -%>
-	  </li>
-
    </li></ul>    
-
 <% end -%>
 
 <table class="index">
