@@ -1,8 +1,8 @@
 <% content_for :header do -%><%= @title %> - <%= @scourse.name1 %> <% end -%>
 
 <% content_for :sidebar do -%>
-   <h2><%= t("chapter.new") %></h2>
     
 <% end -%>
 
-
+<%= t("g.f_time") %>: <%=@scourse.updated_at.strftime("%m-%d %H:%M") %><br>
+<%= t("g.s_time") %>: <%=@scourse.created_at.strftime("%m-%d %H:%M") %>

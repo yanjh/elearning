@@ -45,18 +45,18 @@ class Sclass < ActiveRecord::Base
   end
   
   def courses
-    Courseuser.where("link_id=? and ltype=2",self.id).order("onumber")
+    Mlink.where("id2=? and ltype=?",self.id, Mlink::T_COURSE_CLASS).order("order1")
   end
   
   def remove_course(course_id)
-    Courseuser.delete_all(:course_id=>course_id,:link_id=>self.id,:ltype=>2)
+    Mlink.delete_all(:id1=>course_id,:id2=>self.id,:ltype=>Mlink::T_COURSE_CLASS)
   end
   
   def chapters
-    chapters=Chapterclass.where("link_id=?",self.id)
+    chapters=Mlink.where("id1=?",self.id,:ltype=>Mlink::T_CHAPTER_CLASS)
     s="0"
     chapters.each {|c| s+=","+c.chapter_id.to_s }
-    Chapter.where(" id in("+s+")").order("course_id")
+    Chapter.where(" id in("+s+")").order("course_id, cpcode")
   end
 
 end

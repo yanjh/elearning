@@ -1,3 +1,14 @@
-<%= render (@scourse.t_chapter_user?)?"show_chapter":"show_cexam"  %>
+<%=
+  case @show
+  when "gc"
+    render "edit_chapter"
+  when "vc"
+    render "show_chapter"
+  when "ge"
+    render "edit_cexam"
+  when "ve"
+    render "show_cexam"
+  end
+%>
 <p>
 <%= link_to t('g.back'), scourses_path %>

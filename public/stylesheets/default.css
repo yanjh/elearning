@@ -316,3 +316,6 @@ label.collection_check_boxes {
   text-align: center;
   margin-bottom: 10px;
 }
+
+.l_div{width:90px; height:50px;float:left;margin:0 0 0 5px; border:1px #000 solid; background:#FF0000}  
+.r_div{width:90px; height:50px;float:left;margin:0 0 0 5px; border:1px #000 solid; background:#99CC00} 

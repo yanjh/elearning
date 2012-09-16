@@ -11,24 +11,29 @@
 	<th><%= t('course.type')%></th>
 	<th><%= t('g.name')%></th>
 	<th><%= t('course.class')%></th>
+	<th><%= t('class.forselect')%></th>
 	<th><%= t('g.admin')%></th>
   </tr>
 
-  <% for ucourse in current_user.courses %>
-  <tr><td><%= ucourse.course.ccode %></td>
-      <td><%= t("course.types")[ucourse.course.ctype][0] %></td>
-      <td><%= link_to ucourse.coursename, course_path(ucourse.course_id) %></td>
-	  <td><% for sclass in ucourse.sclasses %>
-			<%= link_to sclass.linkname,tcourse_path(ucourse.course_id,:by=>"course",:sclass=>sclass.link_id) %><br>	
-	  <% end %></td>
+  <% sclasses= current_user.sclasses %>
+  <% for c in current_user.courses %>
+  <tr><td><%= c.ccode %></td>
+      <td><%= t("course.types")[c.ctype][0] %></td>
+      <td><%= link_to c.title, course_path(c) %></td>
+	  <td><% sin=""
+			 for s in c.sclasses
+				sin+=","+s.id2.to_s %>
+				<%= link_to s.name2,tcourse_path(c,:by=>"course",:sclass=>s.id2) %>
+				<%= link_to_dx course_path(c,:by=>"remove_class1",:sclass=>s.id2) %><br>	 
+			<% end %></td>
+	  <td><% for s in sclasses
+				unless sin.include?(","+s.id.to_s) %>
+					<%= link_to s.name, course_path(c,:by=>"add_class1",:sclass=>s.id),:method=>:put %><br>
+				<% end -%>
+			<% end -%></td>
 	  <td align=right>
-		  <%= link_to t("g.edit"),edit_course_path(ucourse.course_id) %> | 
-		  <%= link_to t("g.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+		  <%= link_to t("g.edit"),edit_course_path(c) %> |  <%= link_to_d course_path(c) %>
 	  </td></tr>
   <% end %>
 </table>
-
-
-
-
 

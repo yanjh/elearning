@@ -35,15 +35,6 @@ class ChaptersController < ApplicationController
         else
           format.html { redirect_to @chapter.course, notice: t('operate.add_false') }
         end
-      elsif params[:by]=="remove_class"
-        sclass=Sclass.find(params[:sclass])
-        if sclass 
-          @chapter.remove_class(sclass)
-          format.html { redirect_to @chapter.course, notice: t('operate.remove_success') }
-          #format.json { head :ok }
-        else
-          format.html { redirect_to @chapter.course, notice: t('operate.remove_false') }
-        end
       else
         if @chapter.update_attributes(params[:chapter])
           format.html { redirect_to course_path(@chapter.course), notice: t('operate.update_success') }
@@ -59,10 +50,21 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter = Chapter.find(params[:id])
     respond_to do |format|
-      @course  =@chapter.course
-      @chapter.destroy
-      format.html { redirect_to @course }
-      format.json { head :ok }
+      if params[:by]=="remove_class"
+        sclass=Sclass.find(params[:sclass])
+        if sclass 
+          @chapter.remove_class(sclass)
+          format.html { redirect_to @chapter.course, notice: t('operate.remove_success') }
+          #format.json { head :ok }
+        else
+          format.html { redirect_to @chapter.course, notice: t('operate.remove_false') }
+        end
+      else
+        @course=@chapter.course
+        @chapter.destroy
+        format.html { redirect_to @course }
+        format.json { head :ok }
+      end
     end
   end
  

@@ -42,19 +42,6 @@ ActiveRecord::Schema.define(:version => 20120905032940) do
     t.datetime "updated_at"
   end
 
-  create_table "chapterclasses", :force => true do |t|
-    t.integer  "chapter_id"
-    t.string   "chaptername"
-    t.integer  "link_id"
-    t.string   "linkname"
-    t.integer  "ltype"
-    t.integer  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "chapterclasses", ["chapter_id", "link_id", "ltype"], :name => "index_chapterclasses_on_chapter_id_and_link_id_and_ltype", :unique => true
-
   create_table "chapters", :force => true do |t|
     t.integer  "corder"
     t.string   "cpcode"
@@ -94,19 +81,6 @@ ActiveRecord::Schema.define(:version => 20120905032940) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "courseusers", :force => true do |t|
-    t.integer  "course_id"
-    t.string   "coursename"
-    t.integer  "link_id"
-    t.integer  "ltype"
-    t.string   "linkname"
-    t.string   "onumber"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "courseusers", ["course_id", "link_id", "ltype"], :name => "index_courseusers_on_course_id_and_link_id_and_ltype", :unique => true
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

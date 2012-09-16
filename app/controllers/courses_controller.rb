@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        @course.add_user(current_user,0)
+        @course.add_teacher(current_user,Mlink::T_COURSE_TEACHER)
         format.html { redirect_to root_url, notice: t('course.create_success')}
         #format.json { render json: @grade, status: :created, location: @grade }
       else
@@ -43,20 +43,29 @@ class CoursesController < ApplicationController
       if params[:by]=="add_teacher"
         teacher=User.find_by_login(params[:teacher])
         if teacher && (teacher.id!=current_user.id)
-          @course.add_user(teacher,1)
+          @course.add_teacher(teacher,Mlink::T_COURSE_AID)
           format.html { redirect_to course_url, notice: t('operate.add_success') }
           #format.json { head :ok }
         else
           format.html { redirect_to course_url, notice: t('operate.add_false') }
         end
       elsif params[:by]=="add_class"
-        sclass=Sclass.find_by_name(params[:sclass])
+        sclass=Sclass.find(params[:sclass])
         if sclass 
           @course.add_class(sclass)
           format.html { redirect_to course_url, notice: t('operate.add_success') }
           #format.json { head :ok }
         else
           format.html { redirect_to course_url, notice: t('operate.add_false') }
+        end
+      elsif params[:by]=="add_class1"
+        sclass=Sclass.find(params[:sclass])
+        if sclass 
+          @course.add_class(sclass)
+          format.html { redirect_to courses_url, notice: t('operate.add_success') }
+          #format.json { head :ok }
+        else
+          format.html { redirect_to courses_url, notice: t('operate.add_false') }
         end
       else
         if @course.update_attributes(params[:course])
@@ -77,13 +86,18 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if params[:by]=="remove_teacher"
         teacher=User.find(params[:teacher])
-        @course.remove_user(teacher)
+        @course.remove_teacher(teacher)
         format.html { redirect_to @course }
         format.json { head :ok }
       elsif params[:by]=="remove_class"
         sclass=Sclass.find(params[:sclass])
         @course.remove_class(sclass)
         format.html { redirect_to @course }
+        format.json { head :ok }
+      elsif params[:by]=="remove_class1"
+        sclass=Sclass.find(params[:sclass])
+        @course.remove_class(sclass)
+        format.html { redirect_to courses_url }
         format.json { head :ok }
       else
         @course.delete_users
@@ -92,20 +106,5 @@ class CoursesController < ApplicationController
         format.json { head :ok }
       end
     end
-  end 
-  
-  def operate
-    @course = Course.find(params[:id])
-    case params[:by]
-    when "add_teacher"
-
-    when "remove_teacher"
-      
-    else
-    end
-    
-  end
-  
-  
-  
+  end   
 end

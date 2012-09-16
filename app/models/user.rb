@@ -52,16 +52,23 @@ class User < ActiveRecord::Base
     has_real_role?(:student)
   end
   
-  def sclasses
-    Classuser.where([" user_id=? and ltype=0",self.id]).order("onumber")
+  def sclasses #as teacher
+    sc=Classuser.where(" user_id=? and ltype=0",self.id).order("sclassname")
+    s="0"
+    sc.each {|c| s+=","+c.sclass_id.to_s }
+    Sclass.where(" id in("+s+")").order("name")
   end
 
-  def sclass
-    Classuser.where([" user_id=? and ltype=1",self.id]).limit(1).first
+  def sclass #as student 
+    s=Classuser.where(" user_id=? and ltype=1",self.id).limit(1).first
+    Sclass.find(s.sclass_id) if s
   end
   
-  def courses
-    Courseuser.where([" link_id=? and ltype=0",self.id]).order("onumber")
+  def courses #teacher course
+    courses=Mlink.where(" id2=? and ltype=?",self.id, Mlink::T_COURSE_TEACHER)
+    s="0"
+    courses.each {|c| s+=","+c.id1.to_s }
+    Course.where(" id in("+s+")").order("ccode")
   end
   
   def facebook?

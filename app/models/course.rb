@@ -6,36 +6,40 @@ class Course < ActiveRecord::Base
       chapters << chapter
   end
   
-  def add_user(user,link_type)
-    Courseuser.create(:course_id=>self.id,:coursename=>self.title,:link_id=>user.id,:linkname=>user.name,:ltype=>link_type,:onumber=>self.ccode)
+  def add_teacher(user,linktype)
+    Mlink.create(:id1=>self.id,:name1=>self.title,:order1=>self.ccode,:id2=>user.id,:name2=>user.name,:ltype=>linktype)
   end
 
   def add_class(sclass)
-    Courseuser.create(:course_id=>self.id,:coursename=>self.title,:link_id=>sclass.id,:linkname=>sclass.name,:ltype=>2,:onumber=>self.ccode)
+    Mlink.create(:id1=>self.id,:name1=>self.title,:order1=>self.ccode,:id2=>sclass.id,:name2=>sclass.name,:order2=>sclass.name,:ltype=>Mlink::T_COURSE_CLASS)
   end
   
-  def update_user(user,link_type)
-    Courseuser.where(:course_id =>self.id,:link_id => user.id, :ltype=>link_type).first.update_attributes(:coursename=>self.title,:linkname=>user.name,:onumber=>self.ccode)
+  def update_teacher(user)
+    Mlink.where(:id1 =>self.id,:id2 => user.id, :ltype=>Mlink::T_COURSE_AID).first.update_attributes(:name1=>self.title,:name2=>user.name)
+  end
+
+  def update_class(sclass)
+    Mlink.where(:id1 =>self.id,:id2 => user.id, :ltype=>Mlink::T_COURSE_CLASS).first.update_attributes(:name1=>self.title,:name2=>sclass.name)
   end
   
   def delete_users
-    Courseuser.delete_all(:course_id=>self.id)
+    Mlink.delete_all(:id1=>self.id)
   end
   
-  def remove_user(user)
-    Courseuser.delete_all(:course_id=>self.id,:link_id=>user.id)
+  def remove_teacher(user)
+    Mlink.delete_all(:id1=>self.id,:id2=>user.id,:ltype=>Mlink::T_COURSE_AID)
   end
   
   def remove_class(sclass)
-    Courseuser.delete_all(:course_id=>self.id,:link_id=>sclass.id,:ltype=>2)
+    Mlink.delete_all(:id1=>self.id,:id2=>sclass.id,:ltype=>Mlink::T_COURSE_CLASS)
   end
   
   def teachers
-    Courseuser.where("(ltype=0 or ltype=1) and course_id=?",self.id)
+    Mlink.where(" id1=?  and (ltype=? or ltype=?) ",self.id,Mlink::T_COURSE_TEACHER,Mlink::T_COURSE_AID)
   end
   
   def sclasses
-    Courseuser.where(" ltype=2 and course_id=?",self.id)
+    Mlink.where(" id1=? and ltype=?",self.id,Mlink::T_COURSE_CLASS).order("name2")
   end 
   
 end

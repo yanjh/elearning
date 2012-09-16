@@ -1,25 +1,20 @@
 <% content_for :header do -%> <%= @student.login %> - <%= @student.name %> <% end -%>
 
 <% content_for :sidebar do -%>
-
 	<h2><%= t("genral.sidebar") %></h2>
 <% end -%>
 
-
-
 <table class="index">
   <tr>
-	<th><%= t('course.code')%></th>
-	<th><%= t('course.name')%></th>
+	<th><%= t('course.code')%>-<%= t('course.name')%></th>
 	<th><%= t('course.chapter')%></th>
 	<th><%= t('course.finished')%></th>
 	<th><%= t('course.score')%></th>
 	<th><%= t('g.admin')%></th>
   </tr>
   
-  <% for course in @courses %> 
-  <tr><td></td>
-	  <td><%= link_to course.coursename,course_path(course.course_id) %></td>
+  <% for c in @student.sclass.courses %> 
+  <tr><td><%= c.order1 %>-<%= link_to c.name1,course_path(c.id1) %></td>
       <td></td>
       <td></td>
       <td align=right></td>
@@ -27,4 +22,4 @@
   <% end %> 
 </table>
 
-<%= link_to t('g.back'), admin_orgs_path %>
+<%= link_to t('g.back'), sclass_path(@student.sclass) %>

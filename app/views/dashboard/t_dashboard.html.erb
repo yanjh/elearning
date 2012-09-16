@@ -19,14 +19,14 @@
 	<th><%= t('g.admin')%></th>
   </tr>
 
-  <% for ucourse in current_user.courses %>
-  <tr><td><%= ucourse.course.ccode %></td>
-      <td><%= t("course.types")[ucourse.course.ctype][0] %></td>
-      <td><%= link_to ucourse.coursename, course_path(ucourse.course_id) %></td>
-      <td><%= ucourse.course.description %></td>
+  <% for c in current_user.courses %>
+  <tr><td><%= c.ccode %></td>
+      <td><%= t("course.types")[c.ctype][0] %></td>
+      <td><%= link_to c.title, course_path(c) %></td>
+      <td><%= c.description %></td>
       <td align=right>
-	<%= link_to t("g.edit"),edit_course_path(ucourse.course_id) %> | 
-	<%= link_to t("g.delete"),course_path(ucourse.course_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+		<%= link_to t("g.edit"),edit_course_path(c) %> | 
+		<%= link_to_d course_path(c) %>
   </td></tr>
   <% end %>
 </table>
@@ -40,15 +40,15 @@
 	<th><%= t('class.course')%></th>
   </tr>
 
-  <% for sclass in current_user.sclasses.order(:sclassname) %>
-  <tr>
-	<td><%= sclass.grade.name %></td>
-	<td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
-	<td><%= sclass.s_count %></td>
-	<td><% for course in sclass.courses %>
-		<%= link_to course.coursename,course_path(course.course_id) %><br>	
-	<% end %></td>
- </tr>  
+  <% for sclass in current_user.sclasses %>
+		<tr>
+		  <td><%= sclass.grade.name %></td>
+		  <td><%= link_to sclass.name, sclass_path(sclass,:by=>"show_member")  %></td>
+		  <td><%= sclass.students.count %></td>
+		  <td><% for c in sclass.courses %>
+			       <%= link_to c.name1,course_path(c.id1) %><br>	
+		      <% end %></td>
+	    </tr>  
   <% end %>
 </table>
 

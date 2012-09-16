@@ -13,16 +13,16 @@
 	<th><%= t('class.s_count')%></th>
 	<th><%= t('class.course')%></th>
   </tr>
-
-  <% for sclass in current_user.sclasses.order(:sclassname) %>
-   <tr>
-	 <td><%= sclass.grade.name %></td>
-	 <td><%= link_to sclass.sclassname, sclass_path(sclass.sclass_id,:by=>"show_member")  %></td>
-	 <td><%= sclass.s_count %></td>
-	 <td><% for c in sclass.courses %>
-		 <%= link_to c.coursename,course_path(c.course_id) %><br>	
-	 <% end %></td>
-   </tr>  
+  
+  <% for sclass in current_user.sclasses %>
+	  <tr>
+		<td><%= sclass.grade.name %></td>
+		<td><%= link_to sclass.name, sclass_path(sclass,:by=>"show_member")  %></td>
+		<td><%= sclass.students.count %></td>
+		<td><% for c in sclass.courses %>
+				 <%= link_to c.name1,course_path(c.id1) %><br>	
+			<% end %></td>
+	  </tr>  
   <% end %>
 </table>
 

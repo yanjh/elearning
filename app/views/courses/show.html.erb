@@ -6,24 +6,31 @@
 
    <h2><%= t("course.teacher") %></h2>
    <ul>
-      <% for teacher in @course.teachers %>
-		 <li><%= teacher.linkname %>
-		 <% if teacher.ltype==1 %>
-			[<%= link_to "x",course_path(@course,:by=>"remove_teacher",:teacher=>teacher.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>] 	 
-		 <% end -%>
+      <% for t in @course.teachers %>
+		 <li><%= t.name2 %>
+			 <%=link_to_dx course_path(@course,:by=>"remove_teacher",:teacher=>t.id2) if t.t_course_aid? %>
 		 </li>
 	  <% end -%>
       <li><%= render ("form_teacher") %></li>
    </ul>    
 
    <h2><%= t("course.class") %></h2>
-   <ul>
-      <% for sclass in @course.sclasses.order("linkname") %>
-		 <li><%= sclass.linkname %>
-			[<%= link_to "x",course_path(@course,:by=>"remove_class",:sclass=>sclass.link_id),:method=>:delete,:confirm=>t("phrase.are_you_sure") %>] 	 
-		 </li>
-	  <% end -%>
-      <li><%= render ("form_class") %></li>
+   <ul><li><% sin=""
+		 for s1 in @course.sclasses
+			sin+=","+s1.id2.to_s %>
+			<%= s1.name2 %>
+			<%= link_to_dx course_path(@course,:by=>"remove_class",:sclass=>s1.id2) %><br>	 
+	     <% end -%>
+	  <%= t("class.noselect") if sin=="" %>
+	  </li>
+	  <li><%= t("class.forselect") %><br>
+		 <% for s2 in current_user.sclasses
+			unless sin.include?(","+s2.id.to_s) %>
+			   <%= link_to s2.name, course_path(@course,:by=>"add_class",:sclass=>s2.id),:method=>:put %><br>
+			<% end -%>
+		 <% end -%>
+	  </li>
+
    </li></ul>    
 
 <% end -%>
@@ -47,15 +54,15 @@
 	    <%= link_to cexam.name,edit_cexam_path(cexam) %><br>
 	  <% end %> 
       </td>
-      <td><% for sclass1 in chapter.sclasses %>
-	      <%  s1+=","+sclass1.link_id.to_s %>
-	      <%= link_to sclass1.linkname,tcourse_path(@course,:by=>"course",:sclass=>sclass1.link_id) %> 
-	      <%= link_to_dx chapter_path(chapter,:by=>"remove_class",:sclass=>sclass1.link_id) %>
+      <td><% for c1 in chapter.sclasses %>
+	      <%  s1+=","+c1.id2.to_s %>
+	      <%= link_to c1.name2,tcourse_path(@course,:by=>"course",:sclass=>c1.id2) %> 
+	      <%= link_to_dx chapter_path(chapter,:by=>"remove_class",:sclass=>c1.id2) %>
 		<br>
 	  <% end %> 
       </td>
-      <td><% for sclass2 in sclasses.where(" link_id not in("+s1+")").order("linkname") %>
-		  <%= link_to sclass2.linkname,chapter_path(chapter,:by=>"add_class",:sclass=>sclass2.link_id),:method=>:put %><br>
+      <td><% for c2 in sclasses.where(" id2 not in("+s1+")").order("name2") %>
+		  <%= link_to c2.name2,chapter_path(chapter,:by=>"add_class",:sclass=>c2.id2),:method=>:put %><br>
 		  <% end %> 
 	  </td>
       <td align=right>
@@ -65,6 +72,4 @@
   <% end %>
 </table>
 
-
-<%= link_to t('g.back'), root_path %> | 
-<%= link_to t('g.edit'), root_path %>
+<%= link_to t('g.back'), courses_path %>

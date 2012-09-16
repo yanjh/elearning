@@ -39,7 +39,22 @@ cn:
     or: 或者
     delete: 删除
     d_confirm: 你真的要删除吗?
+    o_confirm: 你真的要进行此项操作吗?
     are_you_sure: 你确认要进行此项操作吗 ?
+    o_s: 操作已成功
+    o_f: 操作失败
+    a_s: 添加操作已成功
+    a_f: 添加操作失败
+    u_s: 更新操作已成功
+    u_f: 更新操作失败
+    s_s: 保存操作已成功
+    s_f: 保存操作失败
+    r_s: 移除操作已成功
+    r_f: 移除操作失败
+    d_s: 删除操作已成功
+    d_f: 删除操作失败
+    s_time: 开始时间
+    f_time: 完成时间
   phrase:
     cant_blank: 不能为空
     confirm_save: 确认保存 %{somethin} ?
@@ -335,6 +350,8 @@ cn:
       - 已关闭
   class:
     admin: 班级管理
+    forselect: 可选班级
+    noselect: 无关联班级
     list: 班级列表
     name: 班级名称
     my: 我的班级
@@ -423,6 +440,8 @@ cn:
         - 2
 
   question:
+    you_answer:  你的答案
+    right_answer:  正确答案
     edit:  编辑问题
     score: 问题分值
     score1: %{score}分

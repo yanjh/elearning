@@ -3,23 +3,6 @@ class Classuser < ActiveRecord::Base
     validates_uniqueness_of :user_id, :scope => [:sclass_id,:ltype]
  
     def user
-      User.find(user_id)
+      User.find(self.user_id)
     end
-    
-    def grade
-      sclass.grade
-    end
-    
-    def sclass
-      Sclass.find(self.sclass_id)
-    end
-    
-    def s_count
-      sclass.students.count
-    end
-    
-    def courses
-      Courseuser.where("link_id=? and ltype=2",self.sclass_id).order("onumber")
-    end
-    
 end

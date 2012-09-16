@@ -11,16 +11,14 @@
 
    
 	<h2><%= t("course.list") %></h2>
-   	<ul><% for course in @sclass.courses %>
-	  	<li><%= link_to course.coursename,course_path(course.course_id) %>
-		 [<%= link_to "x",sclass_path(@sclass,:by=>"remove_course",:course_id=>course.course_id),:method=>:put %>]</li>
+   	<ul><% for c in @sclass.courses %>
+	  	<li><%= link_to c.name1,course_path(c) %>
+			<%= link_to "x",sclass_path(@sclass,:by=>"remove_course",:course_id=>c.id1),:method=>:put %></li>
  	<% end %></ul>
 	
 	<h2><%= t("course.new") %></h2>
 	<ul><li><%= render 'courses/form' %></li></ul>
 <% end -%>
-
-
 
 <table class="index">
   <tr>
@@ -44,4 +42,4 @@
   <% end %>
 </table>
 
-<%= link_to t('g.back'), admin_orgs_path %>
+<%= link_to t('g.back'), sclasses_path %>

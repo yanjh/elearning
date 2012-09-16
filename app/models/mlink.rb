@@ -1,11 +1,16 @@
 class Mlink < ActiveRecord::Base
 
-  T_COURSE_TEACHER=0
-  T_COURSE_AID=1
-  T_COURSE_CLASS=2
+  T_CLASS_TEACHER  = 0
+  T_CLASS_AID      = 1
+  T_CLASS_STUDENT  = 2
 
-  T_CHAPTER_USER = 10
-  T_CEXAM_USER   = 11
+  T_COURSE_TEACHER = 4
+  T_COURSE_AID     = 5
+  T_COURSE_CLASS   = 6
+
+  T_CHAPTER_CLASS  = 9
+  T_CHAPTER_USER   = 10
+  T_CEXAM_USER     = 11
 
   def items1(id2,ltype)
     Mlink.where(["id2=? and ltype=?",id2,ltype]).order("order1")
@@ -25,6 +30,14 @@ class Mlink < ActiveRecord::Base
 
   def t_cexam_user?
     self.ltype==Mlink::T_CEXAM_USER
+  end
+  
+  def t_course_teacher?
+    self.ltype==Mlink::T_COURSE_TEACHER
+  end
+  
+  def t_course_aid?
+    self.ltype==Mlink::T_COURSE_AID
   end
   
 end
