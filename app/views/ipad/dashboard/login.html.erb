@@ -1,0 +1,31 @@
+<div data-role="header" data-theme="f">
+		<h1><%= t('session.login_info') %></h1>
+</div><!-- /header -->
+
+<!-- start content -->
+<div data-role="content" data-inset="true">		
+
+<%= form_for resource, :url => session_path(resource_name,:for=>"ipad"), :html=>{"data-ajax"=> "false"} do |f| -%>
+	<fieldset>
+		
+		<label for="email"><%= t('session.username') %>:</label>
+		<%= f.text_field 'login' %>
+
+		<label for="password"><%= t('session.password') %></label>
+		<%= f.password_field 'password' %></p>
+		
+		<% if devise_mapping.rememberable? -%>
+			<label for="password"><%= f.check_box :remember_me %><%= t('session.remember') %></label>
+		<% end -%>
+
+		<hr />
+		<%= f.submit t('session.log_in'), "data-role"=>"button", "data-inline"=>"true", "data-theme"	=>"b"  %>
+	</fieldset>
+	
+<% end -%>
+</div>
+
+<div data-role="footer" class="footer-docs" data-theme="c">
+	<p>&copy; 2012 jQuery Foundation and other contributors</p>
+</div>	
+<!-- end content -->

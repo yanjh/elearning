@@ -30,7 +30,7 @@ authorization do
   end
   
   role :guest do
-    
+    has_permission_on [:ipad_dashboard], :to => [:index]
   end
 end
   
