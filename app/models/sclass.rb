@@ -53,9 +53,9 @@ class Sclass < ActiveRecord::Base
   end
   
   def chapters
-    chapters=Mlink.where("id1=?",self.id,:ltype=>Mlink::T_CHAPTER_CLASS)
+    cps=Mlink.where(:id2=>self.id,:ltype=>Mlink::T_CHAPTER_CLASS)
     s="0"
-    chapters.each {|c| s+=","+c.chapter_id.to_s }
+    cps.each {|c| s+=","+c.id1.to_s }
     Chapter.where(" id in("+s+")").order("course_id, cpcode")
   end
 

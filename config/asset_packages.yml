@@ -3,6 +3,13 @@ javascripts:
 - base:
   - rails
   - application
+- ipad:
+  - base
+  - application
+  - jquery
+  - jquery.mobile
+  - jqm-docs
+
 stylesheets: 
 - base: 
   - default
@@ -11,6 +18,10 @@ stylesheets:
   - admin
 - dialog:
   - dialog
+- ipad:
+  - dialog
+  - jquery.mobile
+  - jqm-docs
 
 # rails, application
 # default, admin

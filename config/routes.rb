@@ -83,6 +83,9 @@ Rails3::Application.routes.draw do
 	  end 
     end
   end
-  
-  
+
+  namespace :ipad do 
+    root :to => 'dashboard#index'
+    resource :scourses,:tcourses
+  end  
 end

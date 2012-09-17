@@ -19,13 +19,13 @@ authorization do
   end
   
   role :teacher do
-    has_permission_on [:sclasses, :courses, :tcourses, :chapters, :cexams, :questions, :problems],
+    has_permission_on [:ipad_dashboard,:ipad_tcourses,:tcourses, :sclasses, :courses, :chapters, :cexams, :questions, :problems],
     :to => [:manage,:read]
     
   end
   
   role :student do
-    has_permission_on [:scourses, :schapters, :scexams, :questions, :problems],
+    has_permission_on [:ipad_dashboard,:ipad_scourses,:scourses, :schapters, :schapters, :scexams, :questions, :problems],
     :to => [:manage,:read]
   end
   

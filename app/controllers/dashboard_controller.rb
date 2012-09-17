@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
         @course= Course.new
         render "t_dashboard"
       elsif current_user.student?
-        @sclass  = Sclass.find(current_user.sclass.sclass_id)
+        @sclass  = current_user.sclass
         @courses = @sclass.courses
         render "s_dashboard"
       end    

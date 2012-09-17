@@ -1,0 +1,17 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title><%= configatron.site_name %></title>
+	
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<%=  stylesheet_link_tag 'jquery.mobile', 'jqm-docs', 'default' %>
+	<%=  javascript_include_tag "jquery","jquery.mobile","jqm-docs"%>
+	
+</head> 
+<body>
+	<%= yield %>
+</body>
+</html>
+

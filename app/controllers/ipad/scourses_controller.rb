@@ -1,4 +1,4 @@
-class ScoursesController < ApplicationController
+class Ipad::ScoursesController < Ipad::BaseController
   # course controller for student GET /
 
   def index
