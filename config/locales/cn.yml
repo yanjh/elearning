@@ -6,38 +6,43 @@ cn:
     title: 标题
     desc: 描述信息
     content: 内容
+    start: 开始
     back: 返回
-    edit: 编辑
     show: 显示
     view: 查看
+    setting: 设置
     admin: 管理
     general: 通用
     dashboard: 工作台
     add: 增加
     new: 新建
     create: 创建
+    edit: 编辑
     update: 更新
+    delete: 删除
     remove: 移除
     destroy: 清除
     recovery: 恢复
     repair: 修复
     reply: 回复
+    forword: 转发
     operate: 操作
-    cancel: 取消操作
+    ok: 确定
+    cancel: 取消
+    yes: 是
+    no: 否
+    cancel_operate: 取消操作
     save: 保存
     finish: 完成
     status: 状态
     admins: 管理员
     student: 学生
     teacher: 教师
-    yes: 是
-    no: 否
     next: 下一条
     prev: 上一条
     next_page: 下一页
     prev_page: 上一页
     or: 或者
-    delete: 删除
     d_confirm: 你真的要删除吗?
     o_confirm: 你真的要进行此项操作吗?
     are_you_sure: 你确认要进行此项操作吗 ?
@@ -65,13 +70,13 @@ cn:
   site:
     sidebar: 工具栏
     system_login: 系统登录
+    dashboard: 工作台
     s_dashboard: 学生工作台
     t_dashboard: 教师工作台
     a_dashboard: 管理工作台
     needhelp: 获取帮助和反馈
     description: 欢迎来到教学资源管理系统！
     general: 通用
-    dashboard: 工作台
     support_info: 支持信息
     class_admin: 班级管理
     course_admin: 课程管理

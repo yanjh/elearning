@@ -1,0 +1,63 @@
+<% content_for :header do -%><%= @sclass.name %> - <%= @course.title %>-<%= @cexam.name%> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("chapter.new") %></h2>
+    
+<% end -%>
+
+<% questions= @cexam.questions
+   i=0
+%>
+<table class="index">
+  <tr>
+	<th><%= t('g.student')%></th>
+	<th><%= t('g.status')%></th>
+	<th><%= t('exam.score')%></th>
+	<% for q in questions
+	  i+=1%>
+	  <th><%= i.to_s %></th>
+    <% end %>
+  </tr>
+
+  <%  for student in @sclass.students %>
+	  <tr><td><%= student.user.login %>-<%= student.user.name %> </td>
+		<td></td>
+		<td></td>
+		<%	i=0
+			answers=Question.answers(student.user_id)
+			count=answers.count
+			for q in questions 
+			   answer="o"
+			   j=i
+			   while j<count
+				  if answers[j].question_id==q.id 
+					 answer = answers[j].answer
+					 answer =((q.problem.answer==answer)?t("question.right1"):t("question.wrong1"))+"("+answer+")"
+					 i=j
+					 break
+				  else
+					 j+=1
+				  end
+				  #break if answers[j].question_id==q.id
+			   end
+			   %>
+			   <td ><%= answer %></td>
+			<% end %>
+	  </tr>
+   <% end %>
+</table>
+
+<h2><%= t("problem.list") %></h2>
+<% i=0
+   for question in questions 
+   i+=1
+%>
+   <%= i.to_s+". "+question.problem.pcode %> [<%= t("problem.types")[question.problem.ptype][0] %>,<%= question.score %>]<br>
+   <%= raw question.problem.title.gsub("\n", '<br>')%><br><%=raw question.problem.content.gsub("\n", '<br>') %><br>
+   <%= t("problem.answer") %>: <%= raw question.problem.answer %>
+   <p>
+<% end -%>
+
+<p>
+<%= link_to t('g.back'), tcourse_path(@course,:by=>"course",:sclass=>@sclass.id) %>
+

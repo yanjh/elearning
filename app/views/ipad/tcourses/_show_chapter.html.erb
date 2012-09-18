@@ -1,6 +1,5 @@
 <!-- Start of first page -->
 <div data-role="page" id="dashboard" class="type-interior">
-
 	<div data-role="header">
 		<h1><%= t("site.t_dashboard") %></h1>
 		<%= link_to t('session.log_out'), destroy_user_session_path(:for=>"ipad"),  "data-icon"=>"gear", "class"=>"ui-btn-right","data-ajax"=>"false" %>
@@ -40,30 +39,20 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-<!-- Start of second page -->
-<div data-role="page" id="classroom">
 
-		<div class="content-primary">
-			<h2>Getting Started with jQuery Mobile</h2>
-		</div><!--/content-primary -->		
-		
-		<div class="content-secondary">
-			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-				
-					<h3>More in this section</h3>
-					
-					<ul data-role="listview"  data-theme="c" data-dividertheme="d">
-						<li data-role="list-divider">Overview</li>
-						<li><a href="../../docs/about/intro.html">Intro to jQuery Mobile</a></li>
-						<li data-theme="a"><a href="../../docs/about/getting-started.html">Quick start guide</a></li>				
-						<li><a href="../../docs/about/features.html">Features</a></li>
-						<li><a href="../../docs/about/accessibility.html">Accessibility</a></li>
-						<li><a href="../../docs/about/platforms.html">Supported platforms</a></li>
-					</ul>
-			</div>
-		</div>		
+<table class="index">
+  <tr>
+	<th><%= t('g.student')%></th>
+	<th><%= t('g.status')%></th>
+  </tr>
 
-	<div data-role="footer">
-		<h4><%= configatron.site_name %></h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+  <% for student in @sclass.students
+	  cu = Mlink.one(@chapter.id,student.user_id,Mlink::T_CHAPTER_USER) %>
+	  <tr><td><%= student.username %>(<%= student.user.login %>)</td>
+		  <td><%= t("chapter.statuses")[cu.status] unless cu.nil? %><%= cu.updated_at.strftime(" (%m-%d %H:%M)") unless cu.nil? %></td>
+	  </tr>
+  <% end %>
+</table>
+
+<%= link_to t('g.back'), tcourse_path(@course,:by=>"course",:sclass=>@sclass.id) %>
+

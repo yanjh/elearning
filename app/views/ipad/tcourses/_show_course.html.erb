@@ -1,0 +1,44 @@
+<div data-role="page" id="dashboard" class="type-interior">
+	<div data-role="header">
+		<h1><%= t("site.t_dashboard") %></h1>
+		 <%= link_to t('g.back'), ipad_root_path,"data-icon"=>"arrow-l" %>
+		 <%= link_to t('session.log_out'), destroy_user_session_path(:for=>"ipad"),  "data-icon"=>"gear", "class"=>"ui-btn-right","data-ajax"=>"false" %>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content" role="main">
+		<div class="content-primary">
+			<% for cp in @course.chapters %>
+			<ul data-role="listview" class="ui-listview">
+				<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b"><%= c.ccode %> - <%= c.title %></li>
+				<%= cp.cpcode %> - <%= link_to cp.title,tcourse_path(@course,:by=>"chapter",:chapter=>cp.id,:sclass=>@sclass.id) %>
+				
+			    <% for cexam in chapter.cexams %>
+				<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
+					<div class="ui-btn-inner ui-li">
+				    <div class="ui-btn-text">
+					 <%= link_to cexam.name,tcourse_path(@course,:by=>"cexam",:sclass=>@sclass.id,:cexam=>cexam.id) %>
+					</div>
+				    <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+					</div>
+				</li>
+				<% end %>
+			</ul>
+			<% end %>
+		</div><!--/content-primary -->		
+		
+		<div class="content-secondary">
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+				<ul data-role="listview"  data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider"><%= t("g.start") %></li>
+					<li data-theme="a"><%= link_to t("course.list"), ipad_root_path %></a></li>
+					<li><%= link_to t("class.list"), ipad_root_path %></a></li>
+					<li><%= link_to t("g.setting"), ipad_root_path %></a></li>
+				</ul>
+			</div>
+		</div>		
+	</div>
+
+	<div data-role="footer">
+		<h4><%= configatron.site_name %></h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
