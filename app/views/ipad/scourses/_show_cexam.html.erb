@@ -1,0 +1,26 @@
+<% content_for :header do -%><%= @title %> - <%= @scourse.name1 %> <% end %>
+
+<%= t("g.f_time") %>: <%=@scourse.updated_at.strftime("%m-%d %H:%M") %><br>
+<%= t("g.s_time") %>: <%=@scourse.created_at.strftime("%m-%d %H:%M") %>
+
+<p>
+<% i=0
+   for q in @cexam.questions
+   i+=1
+   title = i.to_s+". "+q.problem.title.gsub("\n", '<br>')
+   title += " ["+t("problem.types")[q.problem.ptype][0]+","+t("question.score1",:score=>q.score)+"]" unless @cexam.etype==0
+   content=""
+   tagid="a_"+q.id.to_s;
+
+   answer=q.answer(current_user.id)
+
+   content = q.problem.content.gsub("\n", '<br>') 
+   %>
+   
+   <p><%=raw title %>
+   <br><%=raw content %>
+   <br><%=t("question.you_answer") %>: <%=answer %>
+   <% if(@cexam.etype!=0) %>
+      (<%=t("question.right_answer") %>: <%=q.problem.answer %>)
+   <% end -%>
+<% end -%>

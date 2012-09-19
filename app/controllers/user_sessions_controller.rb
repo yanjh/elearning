@@ -1,14 +1,23 @@
 class UserSessionsController < Devise::SessionsController
     def create
       if params[:for]=="ipad"
-		session['user_return_to'] = ipad_root_url
+		url_go = ipad_root_url
       elsif params[:for]=="admin"
-		session['user_return_to'] = admin_root_url
+		url_go = admin_root_url
       else
-        session['user_return_to'] = root_url
+        url_go = root_url
       end
       
-      super            
+      resource = warden.authenticate(auth_options)
+      set_flash_message(:notice, :signed_in) if is_navigational_format?
+      sign_in(resource_name, resource) if resource
+      #respond_with resource, :location => after_sign_in_path_for(resource)
+      respond_to do |format|
+        format.any(*navigational_formats) { redirect_to url_go }
+        format.all do
+          head :no_content
+        end
+      end 
     end
     
     def destroy #rewrite destroy

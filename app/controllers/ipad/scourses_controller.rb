@@ -2,8 +2,13 @@ class Ipad::ScoursesController < Ipad::BaseController
   # course controller for student GET /
 
   def index
-    @sclass  = current_user.sclass
-    @chapters = @sclass.chapters
+    respond_to do |format|
+      if params[:show]=="setting"
+        format.js { render "setting",:layout=>false,:content_type => 'text/javascript' }
+      else
+        
+      end 
+    end
   end
   
   def show

@@ -2,6 +2,10 @@ class DashboardController < ApplicationController
   # GET /
   # The default dashboard
   def index
+    if params[:for]=="ipad"
+      redirect_to ipad_root_url 
+    end
+    
     if logged_in?
       if current_user.teacher?
         @course= Course.new

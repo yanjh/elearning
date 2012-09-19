@@ -1,0 +1,44 @@
+<table class="index">
+  <tr>
+	<th><%= t('course.title')%></th>
+	<th><%= t('chapter.and_exam')%></th>
+	<th><%= t('chapter.status')%></th>
+	<th><%= t('g.admin')%></th>
+  </tr>
+  
+  <% for chapter in @chapters %> 
+	<% cu=chapter.course %> 
+	<% cus=chapter.user_status(current_user.id) %> 
+	<tr><td><%= cu.ccode+":"+cu.title %></td>
+		<td><%= chapter.cpcode+":"+chapter.title %></td>
+		<td><%= (cus.nil?)?t("chapter.statuses")[0]:t("chapter.statuses")[cus.status] %><%= cus.updated_at.strftime(" (%m-%d %H:%M)") unless cus.nil?  %></td>
+		<td align=right>
+		  <% if cus.nil? %>
+			<%= link_to t("chapter.checkin"),scourses_path(:by=>"chapter",:id=>chapter.id),:method=>:post %>
+		  <% elsif cus.status==1 %>
+			<%= link_to t("chapter.enter") ,scourse_path(chapter.id,:by=>"gc") %> | 
+			<%= link_to t("chapter.finish"),scourse_path(chapter.id,:by=>"fc"),:method=>:put %>
+		  <% elsif cus.status==2 %>
+			<%= link_to t("g.view"),scourse_path(chapter.id,:by=>"vc") %>
+		  <% end  %>
+		</td>
+	</tr>
+    <% for cexam in chapter.cexams %> 
+	<% eus=cexam.user_status(current_user.id) %> 
+		<tr><td></td>
+			<td>- <%= cexam.name %></td>
+			<td><%= (eus.nil?)?t("chapter.statuses")[0]:t("chapter.statuses")[eus.status] %><%= eus.updated_at.strftime(" (%m-%d %H:%M)") unless eus.nil?%></td>
+			<td align=right>
+			<% if eus.nil? %>
+				<%= link_to t("chapter.checkin"),scourses_path(:by=>"cexam",:id=>cexam.id),:method=>:post %>
+			<% elsif eus.status==1  %>
+				<%= link_to t("chapter.enter"),scourse_path(cexam.id,:by=>"ge") %> | 
+				<%= link_to t("chapter.finish"),scourse_path(cexam.id,:by=>"fe"),:method=>:put,:confirm=>t("g.o_confirm") %>
+			<% elsif eus.status==2  %>
+				<%= link_to t("g.view"),scourse_path(cexam.id,:by=>"ve") %>
+			<% end  %>
+			</td>
+		</tr>
+    <% end %> 
+  <% end %> 
+</table>

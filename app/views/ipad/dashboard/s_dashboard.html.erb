@@ -5,21 +5,20 @@
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<div class="content-primary">
-		<h2>Getting Started with jQuery Mobile</h2>
+		<div class="content-primary" id="c1">
+		<h2>Home Page</h2>
 
 		</div><!--/content-primary -->		
 		
 		<div class="content-secondary">
 			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-				
 					<h3>More in this section</h3>
 					
 					<ul data-role="listview"  data-theme="c" data-dividertheme="d">
 						<li data-role="list-divider">Overview</li>
 						<li data-theme="a"><%= link_to t("course.chapter"), ipad_root_path(:show=>"course"),:update =>"cart",:remote=>true %></li>
 						<li><a href="../../docs/about/accessibility.html">Accessibility</a></li>
-						<li><a href="../../docs/about/platforms.html">Supported platforms</a></li>
+						<li><%= link_to t("g.setting"), ipad_scourses_path(:show=>"setting"),:remote=>true %></li>
 					</ul>
 			</div>
 		</div>		
