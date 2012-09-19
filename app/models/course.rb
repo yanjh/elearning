@@ -15,11 +15,12 @@ class Course < ActiveRecord::Base
   end
   
   def update_teacher(user)
-    Mlink.where(:id1 =>self.id,:id2 => user.id, :ltype=>Mlink::T_COURSE_AID).first.update_attributes(:name1=>self.title,:name2=>user.name)
+    t = Mlink.one(self.id,user.id,Mlink::T_COURSE_TEACHER)
+    t.update_attributes(:name1=>self.title,:name2=>user.name) if t
   end
 
   def update_class(sclass)
-    Mlink.where(:id1 =>self.id,:id2 => user.id, :ltype=>Mlink::T_COURSE_CLASS).first.update_attributes(:name1=>self.title,:name2=>sclass.name)
+    Mlink.where(:id1=>self.id,:id2 => user.id, :ltype=>Mlink::T_COURSE_CLASS).first.update_attributes(:name1=>self.title,:name2=>sclass.name)
   end
   
   def delete_users

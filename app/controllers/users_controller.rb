@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   #layout 'login'
   def show
     @student = User.find(params[:id])
+    @course =  Course.find(params[:course]) if params[:course]
   end
   
   def troubleshooting

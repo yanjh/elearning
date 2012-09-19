@@ -14,6 +14,7 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'devise'
+gem 'devise-encryptable'
 gem "configatron"
 gem "post_commit"
 gem "will_paginate"
@@ -29,6 +30,7 @@ gem "delayed_job"
 gem "oauth2"
 gem "fb_graph"
 gem "omniauth"
+gem 'omniauth-openid'
 
 group :development do
   # To use debugger

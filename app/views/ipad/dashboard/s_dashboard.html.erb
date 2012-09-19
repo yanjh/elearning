@@ -5,9 +5,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content">
-
 		<div class="content-primary">
-		
 		<h2>Getting Started with jQuery Mobile</h2>
 
 		</div><!--/content-primary -->		
@@ -19,15 +17,12 @@
 					
 					<ul data-role="listview"  data-theme="c" data-dividertheme="d">
 						<li data-role="list-divider">Overview</li>
-						<li><a href="../../docs/about/intro.html">Intro to jQuery Mobile</a></li>
-						<li data-theme="a"><a href="../../docs/about/getting-started.html">Quick start guide</a></li>				
-						<li><a href="../../docs/about/features.html">Features</a></li>
+						<li data-theme="a"><%= link_to t("course.chapter"), ipad_root_path(:show=>"course"),:update =>"cart",:remote=>true %></li>
 						<li><a href="../../docs/about/accessibility.html">Accessibility</a></li>
 						<li><a href="../../docs/about/platforms.html">Supported platforms</a></li>
 					</ul>
 			</div>
 		</div>		
-
 	</div><!-- /content -->
 	
 	<div data-role="footer" class="footer-docs" data-theme="c">

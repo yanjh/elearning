@@ -20,7 +20,7 @@
 		<td><%= link_to sclass.name, sclass_path(sclass,:by=>"show_member")  %></td>
 		<td><%= sclass.students.count %></td>
 		<td><% for c in sclass.courses %>
-				 <%= link_to c.name1,course_path(c.id1) %><br>	
+				 <%= link_to c.name1,tcourse_path(c.id1,:by=>"course",:sclass=>sclass.id)  %><br>
 			<% end %></td>
 	  </tr>  
   <% end %>

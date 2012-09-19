@@ -7,9 +7,8 @@
 
 <table class="index">
   <tr>
-	<th><%= t('course.code')%></th>
+	<th><%= t('course.code')%> - <%= t('g.name')%></th>
 	<th><%= t('course.type')%></th>
-	<th><%= t('g.name')%></th>
 	<th><%= t('course.class')%></th>
 	<th><%= t('class.forselect')%></th>
 	<th><%= t('g.admin')%></th>
@@ -17,9 +16,8 @@
 
   <% sclasses= current_user.sclasses %>
   <% for c in current_user.courses %>
-  <tr><td><%= c.ccode %></td>
+  <tr><td><%= c.ccode %> - <%= c.title %></td>
       <td><%= t("course.types")[c.ctype][0] %></td>
-      <td><%= link_to c.title, course_path(c) %></td>
 	  <td><% sin=""
 			 for s in c.sclasses
 				sin+=","+s.id2.to_s %>
@@ -32,7 +30,9 @@
 				<% end -%>
 			<% end -%></td>
 	  <td align=right>
-		  <%= link_to t("g.edit"),edit_course_path(c) %> |  <%= link_to_d course_path(c) %>
+		  <%= link_to t("course.edit_chapter"),course_path(c) %> |
+		  <%= link_to t("g.edit"),edit_course_path(c) %> |
+		  <%= link_to_d course_path(c) %>
 	  </td></tr>
   <% end %>
 </table>

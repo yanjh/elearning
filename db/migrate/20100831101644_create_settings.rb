@@ -16,7 +16,7 @@ class CreateSettings < ActiveRecord::Migration
   end
 
   def self.down
-      ["twiter-auth", "openid-auth", "facebook-auth"].each do |x|
+      ["resourse-url", "im-server-address", "im-domain"].each do |x|
       Settings.find_by_identifier(x).destroy!
     end
         

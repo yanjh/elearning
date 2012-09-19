@@ -1,4 +1,4 @@
-<% content_for :header do -%> <%= @student.login %> - <%= @student.name %> <% end -%>
+<% content_for :header do -%> <%= @student.name %> - <%= @course.title %> <% end -%>
 
 <% content_for :sidebar do -%>
 	<h2><%= t("genral.sidebar") %></h2>
@@ -6,20 +6,26 @@
 
 <table class="index">
   <tr>
-	<th><%= t('course.code')%>-<%= t('course.name')%></th>
-	<th><%= t('course.chapter')%></th>
-	<th><%= t('course.finished')%></th>
-	<th><%= t('course.score')%></th>
-	<th><%= t('g.admin')%></th>
+	<th><%= t('chapter.code')%></th>
+	<th><%= t('g.title')%></th>
+	<th><%= t('chapter.exam')%></th>
+	<th><%= t('g.status')%></th>
   </tr>
-  
-  <% for c in @student.sclass.courses %> 
-  <tr><td><%= c.order1 %>-<%= link_to c.name1,course_path(c.id1) %></td>
-      <td></td>
-      <td></td>
-      <td align=right></td>
-  </tr>
-  <% end %> 
+
+  <% for chapter in @course.chapters %>
+  <tr><td><%= chapter.cpcode %></td>
+      <td><%= link_to chapter.title,tcourse_path(@course,:by=>"chapter",:chapter=>chapter.id,:student=>@student.id) %></td>
+      <td><% for cexam in chapter.cexams %>
+			<%= link_to cexam.name,tcourse_path(@course,:by=>"cexam",:student=>@student.id,:cexam=>cexam.id) %><br>
+		 <% end %> 
+      </td>
+      <td align=right>
+	  <%= link_to t("g.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("g.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+  </td></tr>
+  <% end %>
 </table>
+
+<p>
 
 <%= link_to t('g.back'), sclass_path(@student.sclass) %>

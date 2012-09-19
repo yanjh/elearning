@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.save
         @course.add_teacher(current_user,Mlink::T_COURSE_TEACHER)
-        format.html { redirect_to root_url, notice: t('course.create_success')}
+        format.html { redirect_to root_url, notice: t('g.c_s')}
         #format.json { render json: @grade, status: :created, location: @grade }
       else
         #format.html { render action: "new" }
@@ -44,34 +44,34 @@ class CoursesController < ApplicationController
         teacher=User.find_by_login(params[:teacher])
         if teacher && (teacher.id!=current_user.id)
           @course.add_teacher(teacher,Mlink::T_COURSE_AID)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
+          format.html { redirect_to course_url, notice: t('g.a_s') }
           #format.json { head :ok }
         else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
+          format.html { redirect_to course_url, notice: t('g.a_f') }
         end
       elsif params[:by]=="add_class"
         sclass=Sclass.find(params[:sclass])
         if sclass 
           @course.add_class(sclass)
-          format.html { redirect_to course_url, notice: t('operate.add_success') }
+          format.html { redirect_to course_url, notice: t('g.a_s') }
           #format.json { head :ok }
         else
-          format.html { redirect_to course_url, notice: t('operate.add_false') }
+          format.html { redirect_to course_url, notice: t('g.a_f') }
         end
       elsif params[:by]=="add_class1"
         sclass=Sclass.find(params[:sclass])
         if sclass 
           @course.add_class(sclass)
-          format.html { redirect_to courses_url, notice: t('operate.add_success') }
+          format.html { redirect_to courses_url, notice: t('g.a_s') }
           #format.json { head :ok }
         else
-          format.html { redirect_to courses_url, notice: t('operate.add_false') }
+          format.html { redirect_to courses_url, notice: t('g.a_f') }
         end
       else
         if @course.update_attributes(params[:course])
-           @course.update_user(current_user,0)
-          format.html { redirect_to root_url, notice: t('operate.update_success') }
-          format.json { head :ok }
+          @course.update_teacher(current_user)
+          format.html { redirect_to root_url, notice: t('g.u_s') }
+          #format.json { head :ok }
         else
           format.html { render action: "edit" }
           #format.json { render json: @course.errors, status: :unprocessable_entity }

@@ -48,6 +48,8 @@ cn:
     are_you_sure: 你确认要进行此项操作吗 ?
     o_s: 操作已成功
     o_f: 操作失败
+    c_s: 创建操作已成功
+    c_f: 创建操作失败
     a_s: 添加操作已成功
     a_f: 添加操作失败
     u_s: 更新操作已成功
@@ -277,6 +279,7 @@ cn:
     show: 显示课程
     new: 新建课程
     edit: 编辑课程
+    edit_chapter: 编辑章节
     create: 创建课程
     create_sucess: 成功创建课程
     create_false: 创建课程出现错误

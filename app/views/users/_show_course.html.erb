@@ -1,0 +1,33 @@
+<% content_for :header do -%><%= @student.name %> - <%= @course.title %> <% end -%>
+
+<% content_for :sidebar do -%>
+   <h2><%= t("chapter.new") %></h2>
+    
+<% end -%>
+
+<table class="index">
+  <tr>
+	<th><%= t('chapter.code')%></th>
+	<th><%= t('g.title')%></th>
+	<th><%= t('chapter.exam')%></th>
+	<th><%= t('g.admin')%></th>
+  </tr>
+
+  <% for chapter in @course.chapters %>
+  <tr><td><%= chapter.cpcode %></td>
+      <td><%= link_to chapter.title,tcourse_path(@course,:by=>"chapter",:chapter=>chapter.id,:sclass=>@sclass.id) %></td>
+      <td><% for cexam in chapter.cexams %>
+	    <%= link_to cexam.name,tcourse_path(@course,:by=>"cexam",:sclass=>@sclass.id,:cexam=>cexam.id) %><br>
+	  <% end %> 
+      </td>
+      <td align=right>
+	  <%= link_to t("g.edit"),edit_chapter_path(chapter) %> | 
+	  <%= link_to t("g.delete"),chapter,:method=>:delete,:confirm=>t("phrase.are_you_sure") %>
+  </td></tr>
+  <% end %>
+</table>
+
+<p>
+<%= link_to t('g.back'), sclass_path(@sclass) %>
+
+
