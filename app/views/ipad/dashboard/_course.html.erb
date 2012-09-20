@@ -1,0 +1,9 @@
+<ul data-role="listview" data-theme="g">
+<% for cp in current_user.schapters %>
+	<li data-role="list-divider"><%= cp.cpcode %> - <%= cp.title %></li>
+	<li><%= link_to t("class.enter_chapter"),ipad_scourses_path(:by=>"chapter",:chapter=>cp.id) %></li>
+	<% for ce in cp.cexams %>
+		<li><%= link_to t("class.enter_cexam")+" - "+ce.name,ipad_scourses_path(:by=>"cexam",:cexam=>ce.id) %></li>
+	<% end %>
+<% end %>
+</ul>

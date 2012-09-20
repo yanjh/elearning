@@ -4,9 +4,9 @@ class Ipad::ScoursesController < Ipad::BaseController
   def index
     respond_to do |format|
       if params[:show]=="setting"
-        format.js { render "setting",:layout=>false,:content_type => 'text/javascript' }
-      else
-        
+        format.js { render "setting" }
+      elsif params[:show]=="course"
+        format.js { render "course" }
       end 
     end
   end

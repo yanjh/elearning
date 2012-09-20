@@ -358,6 +358,10 @@ cn:
       - 已关闭
   class:
     admin: 班级管理
+    schapter: 正在进行
+    scourse: 可选课程
+    enter_chapter: 进入课堂
+    enter_cexam: 进入评测
     forselect: 可选班级
     noselect: 无关联班级
     list: 班级列表
