@@ -104,4 +104,21 @@ module ApplicationHelper
   def link_to_dx(path)
 	raw "["+link_to("X", path, :method=>:delete, :confirm=>t("g.d_confirm"))+"]"
   end
+
+  def link_to_dxr(path)
+	raw "["+link_to("X", path, :method=>:delete, :confirm=>t("g.d_confirm"),:remote=>true)+"]"
+  end
+  
+  def h_close(tag,content)
+	"<"+tag+">"+content+"</"+tag+">"
+  end
+  
+  def th(items)
+	content="<tr>"
+	items.each do |it|
+	  content+="<th>"+it+"</th>"
+	end
+	content+="</tr>"
+  end
+  
 end

@@ -1,0 +1,20 @@
+<td><%= c.ccode %> - <%= c.title %></td>
+    <td><%= t("course.types")[c.ctype][0] %></td>
+    <td id="td_ci_<%=c.id %>">
+        <% sin=""
+           for s in c.sclasses
+              sin+=","+s.id2.to_s %>
+              <%= link_to s.name2,tcourse_path(c,:by=>"course",:sclass=>s.id2) %>
+              <%= link_to_dxr course_path(c,:by=>"remove_class1",:sclass=>s.id2) %><br>	 
+          <% end %></td>
+    <td id="td_ce_<%=c.id %>">
+        <% for s in sclasses
+              unless sin.include?(","+s.id.to_s) %>
+                  <%= link_to s.name, course_path(c,:by=>"add_class1",:sclass=>s.id),:method=>:put,:remote=>true %><br>
+              <% end -%>
+          <% end -%></td>
+    <td align=right>
+        <%= link_to t("course.edit_chapter"),course_path(c) %> |
+        <%= link_to t("g.edit"),edit_course_path(c) %> |
+        <%= link_to_d course_path(c) %>
+</td>

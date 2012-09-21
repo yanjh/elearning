@@ -1,0 +1,61 @@
+<div class="ui-body ui-body-c">
+<%= form_tag ipad_scourses_path(@cexam.id,:by=>"update_exam"),:method =>:put do %>
+<% i=0 %>
+   <% for question in @cexam.questions
+      i+=1
+      title  = i.to_s+". "+question.problem.title.gsub("\n", '<br>')
+      title += " ["+t("problem.types")[question.problem.ptype][0]+","+t("question.score1",:score=>question.score)+"]" unless @cexam.etype==0
+
+      content = "<div data-role='fieldcontain'>"
+      tagid="a_"+question.id.to_s;
+
+      answer=question.answer(current_user.id)
+      #logger.debug "answer:"+question.id.to_s+"-"+answer
+      case question.problem.ptype
+      when 0 
+         content += "<fieldset data-role='controlgroup'>"
+         for item in question.problem.content.lines
+            content += radio_button_tag(tagid, item[0],answer==item[0])
+            content += "<label for='"+tagid+"_"+item[0]+"'>"+item+"</label>"
+         end
+         content += "</fieldset>"
+
+      when 1
+         content += "<fieldset data-role='controlgroup'>"
+         for item in question.problem.content.lines
+            tagid1= tagid+"_"+item[0]
+            content += check_box_tag(tagid+"[]", item[0],answer.include?(item[0]),:id =>tagid1)
+            content += "<label for='"+tagid1+"'>"+item+"</label>"
+         end
+         content += "</fieldset>"
+         
+      when 2
+         content += "<fieldset data-role='controlgroup'>"
+         content += radio_button_tag(tagid, "A",answer=="A")
+         content += "<label for='"+tagid+"_A'>"+t("problem.right")+"</label>"
+         content += radio_button_tag(tagid, "B",answer=="B")
+         content += "<label for='"+tagid+"_B'>"+t("problem.wrong")+"</label>"
+         content += "</fieldset>"
+         
+      when 3
+         content = "<br>"+text_area_tag(tagid, answer, :size => "40x4")
+
+      when 4
+         content = "<br>"+text_area_tag(tagid, answer, :size => "40x6")
+
+      else
+         content = "<br>"+question.problem.content.gsub("\n", '<br>')+"<p>" 
+      end
+      
+      content += "</div>" 
+      
+      %>
+      
+      <p><h3><%=raw title %></h3><%=raw content %>
+   <% end -%>
+   <fieldset class="ui-grid-b">
+      <div class="ui-block-a"><%= submit_tag t("g.save"),"data-theme"=>"e"  %></div>
+      <div class="ui-block-b"><%= submit_tag t("g.finish"),:confirm=>t("g.are_you_sure"),"data-theme"=>"b" %></div>	   
+   </fieldset>
+<% end %>
+</div>

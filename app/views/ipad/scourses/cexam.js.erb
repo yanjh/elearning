@@ -1,0 +1,6 @@
+$("#classroom").html("<%= escape_javascript render(:partial=>"cexam") %>");
+$("#ptitle2").html("<%= escape_javascript render(:partial=>"cexam_t") %>");
+$("#pfooter2").html("<%= escape_javascript render(:partial=>"cexam_f") %>");
+$("div[data-role=page]" ).page("destroy").page();
+
+$.mobile.changePage("#page_class", "slideup");

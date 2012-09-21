@@ -1,0 +1,3 @@
+$("#classroom").html("<%= escape_javascript render(:partial=>"chapter")%>");
+$.mobile.changePage("#page_class", "slideup");
+$("div[data-role=page]" ).page("destroy").page();

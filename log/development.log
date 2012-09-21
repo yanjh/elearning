@@ -1,9 +1,0 @@
-
-
-Started GET "/ipad/scourses?show=setting" for 192.168.0.189 at 2012-09-20 18:00:01 +0800
-  Processing by Ipad::ScoursesController#index as JS
-  Parameters: {"show"=>"setting"}
-  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1[0m
-  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8
-Rendered ipad/scourses/setting.js.erb (0.1ms)
-Completed 200 OK in 179ms (Views: 8.2ms | ActiveRecord: 2.6ms)

@@ -63,6 +63,7 @@ class CoursesController < ApplicationController
         if sclass 
           @course.add_class(sclass)
           format.html { redirect_to courses_url, notice: t('g.a_s') }
+          format.js { render "class1" }
           #format.json { head :ok }
         else
           format.html { redirect_to courses_url, notice: t('g.a_f') }
@@ -99,6 +100,7 @@ class CoursesController < ApplicationController
         @course.remove_class(sclass)
         format.html { redirect_to courses_url }
         format.json { head :ok }
+        format.js { render "class1" }
       else
         @course.delete_users
         @course.destroy

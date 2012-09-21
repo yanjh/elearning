@@ -1,4 +1,4 @@
-<div data-role="page" class="type-interior">
+<div data-role="page" id="page_main" class="type-interior" data-url="page_main"> 
 	<div data-role="header" data-theme="f">
 		<h1><%= t("site.s_dashboard") %></h1>
 		<%= link_to t('session.log_out'), destroy_user_session_path(:for=>"ipad"),  "data-icon"=>"gear", "class"=>"ui-btn-right" %>
@@ -18,6 +18,7 @@
 					<li data-theme="a"><%= link_to t("class.schapter"), ipad_scourses_path(:show=>"course"),:remote=>true %></li>
 					<li><%= link_to t("class.scourse"), ipad_scourses_path(:show=>"course"),:remote=>true %></li>
 					<li><%= link_to t("g.setting"), ipad_scourses_path(:show=>"setting"),:remote=>true %></li>
+					<li><%= link_to t("g.setting"), "#page_class" %></li>
 				</ul>
 			</div>
 		</div>		
@@ -26,4 +27,19 @@
 	<div data-role="footer" class="footer-docs" data-theme="c">
 		<p><%= configatron.site_name %></p>
 	</div>		
-</div><!-- /page -->
+</div>
+
+<!-- page content -->
+<div data-role="page" id="page_class" data-theme="f" data-url="page_class" >
+	<!-- title -->
+	<div data-role="header" data-position="fixed" id="ptitle2"></div>
+
+	<!-- content-->
+	<div data-role="content" id="classroom"  data-theme="f" ></div>
+
+	<!-- footer -->
+	<div data-role="footer" class="ui-bar" data-position="fixed" id="pfooter2">
+
+	</div>		
+</div>
+	

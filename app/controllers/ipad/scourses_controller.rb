@@ -7,6 +7,12 @@ class Ipad::ScoursesController < Ipad::BaseController
         format.js { render "setting" }
       elsif params[:show]=="course"
         format.js { render "course" }
+      elsif params[:show]=="chapter"
+        @chapter=Chapter.find(params[:chapter])
+        format.js { render "chapter" }
+      elsif params[:show]=="cexam"
+        @cexam=Cexam.find(params[:cexam])
+        format.js { render "cexam" }
       end 
     end
   end
@@ -69,8 +75,7 @@ class Ipad::ScoursesController < Ipad::BaseController
     user_id=current_user.id
     respond_to do |format|
       if params[:by]=="update_exam" #update
-        scourse_id=params[:id]
-        cexam=Cexam.find(params[:cexam])
+        cexam=Cexam.find(params[:id])
         for question in cexam.questions
           aw=params["a_"+question.id.to_s]
           #logger.debug "answer:"+answer if answer

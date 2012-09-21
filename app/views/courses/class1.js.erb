@@ -1,0 +1,1 @@
+$("#tr_c_<%= @course.id %>").html("<%= escape_javascript render(:partial=>"tr_c",:locals => {:sclasses=> current_user.sclasses,:c=>@course })%>");
