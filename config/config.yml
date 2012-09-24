@@ -18,6 +18,10 @@ development: &local
 
     school_name: 七中育才学校
     school_desc: 七中育才学校
+    
+    
+    chapter_root: http://192.168.1.10/chapters/
+    
 production:
     site_name: BaseApp2
     site_namemobile: BaseApp2
@@ -33,6 +37,8 @@ production:
 
     school_name: 七中育才学校
     school_desc: 七中育才学校  
+
+    chapter_root: http://192.168.1.10/chapters/
 staging:
   <<: *local
 

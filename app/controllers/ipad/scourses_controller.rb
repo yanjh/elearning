@@ -12,6 +12,7 @@ class Ipad::ScoursesController < Ipad::BaseController
         format.js { render "course2" }
       elsif params[:show]=="chapter"
         @chapter=Chapter.find(params[:chapter])
+        @path_root=configatron.chapter_root+@chapter.id.to_s+"/"
         format.js { render "chapter" }
       elsif params[:show]=="cexam"
         @cexam=Cexam.find(params[:cexam])

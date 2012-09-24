@@ -1,5 +1,5 @@
 <!-- Start of first page -->
-<div data-role="page" id="dashboard" class="type-interior">
+<div data-role="page" id="page_main" class="type-interior">
 
 	<div data-role="header">
 		<h1><%= t("site.t_dashboard") %></h1>
@@ -7,32 +7,22 @@
 	</div><!-- /header -->
 	
 	<div data-role="content" class="ui-content" role="main">
-		<div class="content-primary">
-			<% for c in current_user.courses %>
-			<ul data-role="listview" class="ui-listview">
-				<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b"><%= c.ccode %> - <%= c.title %></li>
-				<% for sc in c.sclasses %>
-				<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
-					<div class="ui-btn-inner ui-li">
-						<div class="ui-btn-text"><%= link_to sc.name2,ipad_tcourse_path(c,:by=>"course",:sclass=>sc.id2),:class=>"ui-link-inherit" %> </div>
-						<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"> </span>
-					</div>
-				</li>
-				<% end %>
-			</ul>
-			<% end %>
-		</div><!--/content-primary -->		
+		<!--/content-primary -->		
+		<div class="content-primary" id="pcontent1">
+			<%= render("ipad/tcourses/course") %>
+		</div>
 		
+		<!-- /menu -->
 		<div class="content-secondary">
 			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
 				<ul data-role="listview"  data-theme="c" data-dividertheme="d">
 					<li data-role="list-divider"><%= t("g.start") %></li>
-					<li data-theme="a"><%= link_to t("course.list"), ipad_root_path %></a></li>
-					<li><%= link_to t("class.list"), ipad_root_path %></a></li>
-					<li><%= link_to t("g.setting"), ipad_root_path %></a></li>
+					<li data-theme="a"><%= link_to t("course.list"), ipad_tcourses_path(:show=>"course"),:remote=>true %></li>
+					<li><%= link_to t("class.list"), ipad_tcourses_path(:show=>"sclass"),:remote=>true %></li>
+					<li><%= link_to t("g.setting"), ipad_tcourses_path(:show=>"setting"),:remote=>true %></li>
 				</ul>
 			</div>
-		</div>		
+		</div>	
 	</div>
 
 	<div data-role="footer">
@@ -40,30 +30,14 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-<!-- Start of second page -->
-<div data-role="page" id="classroom">
+<!-- page content -->
+<div data-role="page" id="page_class" data-theme="f" data-url="page_class" >
+	<!-- title -->
+	<div data-role="header" data-position="fixed" id="ptitle2"></div>
 
-		<div class="content-primary">
-			<h2>Getting Started with jQuery Mobile</h2>
-		</div><!--/content-primary -->		
-		
-		<div class="content-secondary">
-			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-				
-					<h3>More in this section</h3>
-					
-					<ul data-role="listview"  data-theme="c" data-dividertheme="d">
-						<li data-role="list-divider">Overview</li>
-						<li><a href="../../docs/about/intro.html">Intro to jQuery Mobile</a></li>
-						<li data-theme="a"><a href="../../docs/about/getting-started.html">Quick start guide</a></li>				
-						<li><a href="../../docs/about/features.html">Features</a></li>
-						<li><a href="../../docs/about/accessibility.html">Accessibility</a></li>
-						<li><a href="../../docs/about/platforms.html">Supported platforms</a></li>
-					</ul>
-			</div>
-		</div>		
+	<!-- content-->
+	<div data-role="content" id="pcontent2"  data-theme="f" ></div>
 
-	<div data-role="footer">
-		<h4><%= configatron.site_name %></h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+	<!-- footer -->
+	<div data-role="footer" class="ui-bar" data-position="fixed" id="pfooter2"></div>		
+</div>

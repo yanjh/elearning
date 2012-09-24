@@ -1,0 +1,15 @@
+<ul data-role="listview" data-theme="g">
+<% for c in current_user.courses %>
+	<% bshow=true %>
+	<% for cp in c.chapters %>
+	  <% if bshow %>
+			<li data-role="list-divider"><%= c.ccode %> - <%= c.title %></li>
+	  <% bshow=false 
+		 end  %>
+	  
+	  <% for s in cp.sclasses %>
+		  <li><%= link_to s.name2+" : "+cp.cpcode+"-"+cp.title,ipad_tcourse_path(c,:by=>"showchapter",:chapter=>cp.id,:sclass=>s.id2),:remote=>true %></li>
+	  <% end %> 
+	<% end %> 
+<% end %>
+</ul>

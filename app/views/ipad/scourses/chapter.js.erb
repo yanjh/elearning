@@ -1,3 +1,5 @@
-$("#classroom").html("<%= escape_javascript render(:partial=>"chapter")%>");
+$("#pcontent2").html("<%= escape_javascript render(:partial=>"chapter") %>").trigger("create");
+$("#ptitle2").html("<%= escape_javascript render(:partial=>"chapter_t") %>").trigger("create");
+$("#pfooter2").html("<%= escape_javascript render(:partial=>"chapter_f") %>").trigger("create");
+
 $.mobile.changePage("#page_class", "slideup");
-$("div[data-role=page]" ).page("destroy").page();

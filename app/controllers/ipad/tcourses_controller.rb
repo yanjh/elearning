@@ -2,8 +2,23 @@ class Ipad::TcoursesController <  Ipad::BaseController
   # course controller for student GET /
   
   def index
-    @sclass  = Sclass.find(current_user.sclass.sclass_id)
-    @chapters = @sclass.chapters
+    respond_to do |format|
+      if params[:show]=="setting"
+        format.js { render "setting" }
+      elsif params[:show]=="course"
+        format.js { render "course" }
+      elsif params[:show]=="course2"
+        @sclass=current_user.sclass
+        format.js { render "course2" }
+      elsif params[:show]=="chapter"
+        @chapter=Chapter.find(params[:chapter])
+        @path_root=configatron.chapter_root+@chapter.id.to_s+"/"
+        format.js { render "chapter" }
+      elsif params[:show]=="cexam"
+        @cexam=Cexam.find(params[:cexam])
+        format.js { render "cexam" }
+      end 
+    end
   end
   
   def show

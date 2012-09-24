@@ -63,8 +63,8 @@ class Sclass < ActiveRecord::Base
     s=""
     cps=Mlink.where(:id2=>self.id,:ltype=>Mlink::T_CHAPTER_CLASS)
     cps.each {|c| s+=","+c.id1.to_s }
-    puts s
-    (s.blank?)?nil:s.slice!(0)
+    #logger.debug "-----------------------s: #{s}"
+    (s.blank?)?nil:s[1..-1]
   end
 
   def chapters

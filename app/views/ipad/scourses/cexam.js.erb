@@ -1,6 +1,5 @@
-$("#classroom").html("<%= escape_javascript render(:partial=>"cexam") %>");
-$("#ptitle2").html("<%= escape_javascript render(:partial=>"cexam_t") %>");
-$("#pfooter2").html("<%= escape_javascript render(:partial=>"cexam_f") %>");
-$("div[data-role=page]" ).page("destroy").page();
+$("#pcontent2").html("<%= escape_javascript render(:partial=>"cexam") %>").trigger("create");
+$("#ptitle2").html("<%= escape_javascript render(:partial=>"cexam_t") %>").trigger("create");
+$("#pfooter2").html("<%= escape_javascript render(:partial=>"cexam_f") %>").trigger("create");
 
 $.mobile.changePage("#page_class", "slideup");
