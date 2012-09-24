@@ -12,8 +12,8 @@
    
 	<h2><%= t("course.list") %></h2>
    	<ul><% for c in @sclass.courses %>
-	  	<li><%= link_to c.name1,course_path(c) %>
-			<%= link_to_dx sclass_path(@sclass,:by=>"remove_course",:course_id=>c.id1) %></li>
+	  	<li><%= link_to c.title,course_path(c) %>
+			<%= link_to_dx sclass_path(@sclass,:by=>"remove_course",:course_id=>c.id) %></li>
  	<% end %></ul>
 	
 <% end -%>
@@ -35,7 +35,7 @@
   <tr><td><%= s.user_id %></td>
 	  <td><%= s.username %> (<%= s.user.login %>)</td>
       <td><% for c in @sclass.courses %>
-	  	   <%= link_to c.name1,user_path(s.user_id,:course=>c.id1)  %><br>
+	  	   <%= link_to c.title,user_path(s.user_id,:course=>c.id)  %><br>
 		  <% end %>
 	  </td>
       <td align=right><%= link_to t("class.score_record"),user_path(s.user_id) %></td>

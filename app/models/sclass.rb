@@ -45,18 +45,30 @@ class Sclass < ActiveRecord::Base
   end
   
   def courses
-    Mlink.where("id2=? and ltype=?",self.id, Mlink::T_COURSE_CLASS).order("order1")
+    crs= Mlink.where("id2=? and ltype=?",self.id, Mlink::T_COURSE_CLASS).order("order1")
+    s="0"
+    crs.each {|c| s+=","+c.id1.to_s }
+    s=="0"?nil:Course.where(" id in("+s+")").order("ccode")
+  end
+  
+  def add_course(course)
+    Mlink.create(:id1=>course.id,:name1=>course.title,:order1=>course.ccode,:id2=>self.id,:name2=>self.name,:ltype=>Mlink::T_COURSE_CLASS)
   end
   
   def remove_course(course_id)
     Mlink.delete_all(:id1=>course_id,:id2=>self.id,:ltype=>Mlink::T_COURSE_CLASS)
   end
   
-  def chapters
+  def chapters_s
+    s=""
     cps=Mlink.where(:id2=>self.id,:ltype=>Mlink::T_CHAPTER_CLASS)
-    s="0"
     cps.each {|c| s+=","+c.id1.to_s }
-    Chapter.where(" id in("+s+")").order("course_id, cpcode")
+    puts s
+    (s.blank?)?nil:s.slice!(0)
   end
 
+  def chapters
+    cps=self.chapters_s
+    (cps.nil?)?nil:Chapter.where(" id in("+cps+")").order("course_id, cpcode")
+  end  
 end

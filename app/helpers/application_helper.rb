@@ -97,6 +97,10 @@ module ApplicationHelper
 	content.strip.gsub("\n", '<br>') unless content.nil?
   end
   
+  def link_to_br(title,path)
+	raw link_to(title, path)+"<br>"
+  end
+
   def link_to_d(path)
 	link_to t("g.delete"), path, :method=>:delete, :confirm=>t("g.d_confirm")
   end
@@ -118,7 +122,7 @@ module ApplicationHelper
 	items.each do |it|
 	  content+="<th>"+it+"</th>"
 	end
-	content+="</tr>"
+	raw content+="</tr>"
   end
   
 end

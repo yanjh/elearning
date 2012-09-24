@@ -7,6 +7,9 @@ class Ipad::ScoursesController < Ipad::BaseController
         format.js { render "setting" }
       elsif params[:show]=="course"
         format.js { render "course" }
+      elsif params[:show]=="course2"
+        @sclass=current_user.sclass
+        format.js { render "course2" }
       elsif params[:show]=="chapter"
         @chapter=Chapter.find(params[:chapter])
         format.js { render "chapter" }

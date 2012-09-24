@@ -1,0 +1,15 @@
+<td><%= sclass.grade.name %></td>
+<td><%= link_to sclass.name, sclass_path(sclass,:by=>"show_member")  %></td>
+<td><%= sclass.students.count %></td>
+<td><% sin=","
+       for c in sclass.courses %>
+         <%=raw link_to(c.title,tcourse_path(c.id,:by=>"course",:sclass=>sclass.id)) %>
+         <%=raw link_to_dxr(sclass_path(sclass.id,:by=>"remove_course1",:course=>c.id)) %><br>
+    <% sin+=c.id.to_s+","
+       end unless sclass.courses.nil? %></td>
+<td><% for c in courses
+          unless sin.include?(","+c.id.to_s+",") %>
+             <%= link_to(c.title,sclass_path(sclass.id,:by=>"add_course1",:course=>c.id),:method=>:put,:remote=>true ) %><br>
+       <% end
+       end unless current_user.courses.nil? %>
+</td>

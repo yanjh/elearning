@@ -1,0 +1,18 @@
+<ul data-role="listview" data-theme="g">
+<%= sin=","+@sclass.chapters_s+"," %>
+<% for c in @sclass.courses %>
+	<li data-role="list-divider"><%= c.ccode %> - <%= c.title %></li>
+	<% for cp in c.chapters %>
+		<% if sin.include?(","+cp.id.to_s+",") %>
+			<li><%= link_to cp.cpcode+" - "+cp.title,ipad_scourses_path(:show=>"chapter",:chapter=>cp.id),:remote=>true %></li>
+			<% for ce in cp.cexams %>
+				<li><%= link_to " -- "+ce.name,ipad_scourses_path(:show=>"cexam",:cexam=>ce.id),:remote=>true %></li>
+			<% end %>
+		<% else %>
+			<li><%= link_to cp.cpcode+" - "+cp.title,"#" %></li>
+		<% end %>
+	<% end %>
+<% end %>
+</ul>
+
+
