@@ -1,6 +1,7 @@
-$("#pcontent2").html("<%= escape_javascript render(:partial=>"chapter") %>").trigger("create");
-$("#ptitle2").html("<%= escape_javascript render(:partial=>"chapter_t") %>").trigger("create");
-$("#pfooter2").html("<%= escape_javascript render(:partial=>"chapter_f") %>").trigger("create");
+$("#pcontent2").html("<%= escape_javascript render(:partial=>"chapter") %>");
+$("#pfooter2").html("<%= escape_javascript render(:partial=>"chapter_f") %>");
+$("#ptitle2").html("<%= @chapter.course.title %> - <%= @chapter.title %>");
 
-$.mobile.changePage("#page_class", "slideup");
+$("#page2").trigger("create");
 
+$.mobile.changePage("#page2", "slideup");

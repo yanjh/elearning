@@ -31,9 +31,12 @@
 </div><!-- /page -->
 
 <!-- page content -->
-<div data-role="page" id="page_class" data-theme="f" data-url="page_class" >
+<div data-role="page" id="page2" data-url="page2" data-theme="f" >
 	<!-- title -->
-	<div data-role="header" data-position="fixed" id="ptitle2"></div>
+	<div data-role="header" id="header2" data-position="fixed" >
+		<%= link_to t('g.back'),"#page_main" %>
+		<h1 id="ptitle2"></h1>
+	</div>
 
 	<!-- content-->
 	<div data-role="content" id="pcontent2"  data-theme="f" ></div>

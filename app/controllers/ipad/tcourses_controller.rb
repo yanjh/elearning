@@ -44,7 +44,7 @@ class Ipad::TcoursesController <  Ipad::BaseController
         elsif params[:direct]=="next"
           @position += 1
         else
-          @position =@postion-1 if @position>1
+          @position -= 1 if @position>1
         end 
         @image=configatron.chapter_root+@chapter.id.to_s+"/"+@position.to_s.rjust(3,'0')+".jpg"
         
