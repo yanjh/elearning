@@ -1,0 +1,3 @@
+<%= link_to t("g.home"), url_for(:show=>"nav_img",:position=>@position,:direct=>"home",:chapter=>@chapter.id,:sclass=>@sclass.id), :remote=>true,"data-role"=>"button", "data-icon"=>"home" %>
+<%= link_to t("g.prev"), url_for(:show=>"nav_img",:position=>@position,:direct=>"prev",:chapter=>@chapter.id,:sclass=>@sclass.id), :remote=>true,"data-role"=>"button", "data-icon"=>"arrow-l" %>
+<%= link_to t("g.next"), url_for(:show=>"nav_img",:position=>@position,:direct=>"next",:chapter=>@chapter.id,:sclass=>@sclass.id), :remote=>true,"data-role"=>"button", "data-icon"=>"arrow-r" %>

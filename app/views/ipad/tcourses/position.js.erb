@@ -1,0 +1,5 @@
+$("#pcontent2").html("<%= escape_javascript render(:partial=>"chapter") %>").trigger("create");
+$("#pfooter2").html("<%= escape_javascript render(:partial=>"chapter_f") %>").trigger("create");
+
+$.mobile.changePage("#page_class", "slideup");
+

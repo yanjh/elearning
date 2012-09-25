@@ -3,6 +3,7 @@
 cn:
   g:
     name: 名称
+    home: 主页
     title: 标题
     desc: 描述信息
     content: 内容

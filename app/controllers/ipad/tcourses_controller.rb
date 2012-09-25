@@ -25,14 +25,30 @@ class Ipad::TcoursesController <  Ipad::BaseController
     @course = Course.find(params[:id])
     @sclass = Sclass.find(params[:sclass])
     respond_to do |format|
-    case params[:by] 
+    case params[:show] 
       when "course"
         format.html {render "_show_course"} # respond to Ajax request
         
       when "chapter"
         @chapter = Chapter.find(params[:chapter])
-        format.html {render "_show_chapter"} # respond to Ajax request
+        @position=1
+        @image=configatron.chapter_root+@chapter.id.to_s+"/"+@position.to_s.rjust(3,'0')+".jpg"
+        format.js { render "chapter" }
         
+      when "nav_img"
+        @chapter = Chapter.find(params[:chapter])
+        @position=params[:position].to_i
+        logger.debug("--------------position: #{@position}")
+        if params[:direct]=="home"
+          @position =1 
+        elsif params[:direct]=="next"
+          @position += 1
+        else
+          @position =@postion-1 if @position>1
+        end 
+        @image=configatron.chapter_root+@chapter.id.to_s+"/"+@position.to_s.rjust(3,'0')+".jpg"
+        
+        format.js { render "position" }
       when "cexam"
         @cexam = Cexam.find(params[:cexam])
         format.html {render "_show_cexam"} # respond to Ajax request
