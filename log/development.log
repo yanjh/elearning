@@ -1,0 +1,261 @@
+DEPRECATED! (configure_from_yaml) Please stop using YAML and use Ruby instead. This method will be removed in 3.1.
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-27 16:03:37 +0000
+  Processing by DashboardController#index as HTML
+Rendered dashboard/_login.html.erb (28.9ms)
+Rendered dashboard/index.html.erb within layouts/application (69.9ms)
+Rendered shared/_global_links.html.erb (1.1ms)
+Rendered shared/_tabs.html.erb (0.7ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-27 16:03:37.894674' AND ends_at >= '2012-09-27 16:03:37.894864')[0m
+Completed 200 OK in 210ms (Views: 203.4ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users/login" for 192.168.1.99 at 2012-09-27 16:03:46 +0000
+  Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fiRsyox/DbGWSUCaLdyWghoUsFhHDxMoh4DYQ+4OpHk=", "user"=>{"login"=>"yanjh", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"登录"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE (login = 'yanjh') LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-09-25 14:59:24.783048', "current_sign_in_at" = '2012-09-27 16:03:46.384210', "last_sign_in_ip" = '192.168.1.99', "sign_in_count" = 65, "updated_at" = '2012-09-27 16:03:46.384783' WHERE "users"."id" = 4[0m
+Redirected to http://192.168.1.10:8080/
+Completed 302 Found in 181ms
+
+
+Started GET "/" for 192.168.1.99 at 2012-09-27 16:03:46 +0000
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered courses/_form.html.erb (53.3ms)
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+  [1m[35mClassuser Load (0.2ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname
+  [1m[36mSclass Load (0.2ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name[0m
+  [1m[35mGrade Load (0.2ms)[0m  SELECT "grades".* FROM "grades" WHERE "grades"."id" = 2 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=1)[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=7 and ltype=6) ORDER BY order1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=7 and ltype=6) ORDER BY order1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE ( id in(0,13,7,12)) ORDER BY ccode
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=6 and ltype=1)
+  [1m[36mMlink Load (0.1ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=6 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=6 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,13,12)) ORDER BY ccode[0m
+  [1m[35mGrade Load (0.1ms)[0m  SELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=1)[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=2 and ltype=6) ORDER BY order1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=2 and ltype=6) ORDER BY order1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE ( id in(0,14,6)) ORDER BY ccode
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=8 and ltype=1)
+  [1m[36mMlink Load (0.1ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=8 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=8 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,14,6,7)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=1 and ltype=1)[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=1 and ltype=6) ORDER BY order1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=1 and ltype=6) ORDER BY order1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE ( id in(0,13,6,12)) ORDER BY ccode
+Rendered dashboard/t_dashboard.html.erb within layouts/application (161.2ms)
+Rendered shared/_global_links.html.erb (0.8ms)
+Rendered shared/_tabs.html.erb (0.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-27 16:03:46.854667' AND ends_at >= '2012-09-27 16:03:46.854692')[0m
+Completed 200 OK in 407ms (Views: 169.2ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/courses" for 192.168.1.99 at 2012-09-27 16:03:49 +0000
+  Processing by CoursesController#index as HTML
+Rendered courses/_form.html.erb (9.0ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)[0m
+  [1m[35mCourse Load (0.4ms)[0m  SELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode
+  [1m[36mClassuser Load (0.2ms)[0m  [1mSELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id1=14 and ltype=6) ORDER BY name2
+  [1m[36mSclass Load (0.2ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name[0m
+Rendered courses/_tr_c.html.erb (13.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname
+  [1m[36mMlink Load (0.3ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE ( id1=13 and ltype=6) ORDER BY name2[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name
+Rendered courses/_tr_c.html.erb (3.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id1=6 and ltype=6) ORDER BY name2
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name[0m
+Rendered courses/_tr_c.html.erb (2.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE ( id1=7 and ltype=6) ORDER BY name2[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name
+Rendered courses/_tr_c.html.erb (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id1=12 and ltype=6) ORDER BY name2
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name[0m
+Rendered courses/_tr_c.html.erb (3.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname
+  [1m[36mMlink Load (0.1ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE ( id1=8 and ltype=6) ORDER BY name2[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name
+Rendered courses/_tr_c.html.erb (49.7ms)
+Rendered courses/index.html.erb within layouts/application (211.4ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered shared/_global_links.html.erb (12.5ms)
+Rendered shared/_tabs.html.erb (1.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-27 16:03:49.626123' AND ends_at >= '2012-09-27 16:03:49.626143')
+Completed 200 OK in 246ms (Views: 233.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/sclasses" for 192.168.1.99 at 2012-09-27 16:03:51 +0000
+  Processing by SclassesController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mClassuser Load (0.2ms)[0m  SELECT "classusers".* FROM "classusers" WHERE ( user_id=4 and ltype=0) ORDER BY sclassname
+  [1m[36mSclass Load (0.3ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE ( id in(0,7,6,2,8,1)) ORDER BY name[0m
+  [1m[35mMlink Load (0.2ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mGrade Load (0.2ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=1)
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=7 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=7 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,13,7,12)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+Rendered sclasses/_tr_s.html.erb (81.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=6 and ltype=1)
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=6 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=6 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,13,12)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+Rendered sclasses/_tr_s.html.erb (5.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mGrade Load (0.1ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=1)
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=2 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=2 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,14,6)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+Rendered sclasses/_tr_s.html.erb (5.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.5ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=8 and ltype=1)
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=8 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=8 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,14,6,7)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+Rendered sclasses/_tr_s.html.erb (4.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE "grades"."id" = 7 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=1 and ltype=1)
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=1 and ltype=6) ORDER BY order1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE (id2=1 and ltype=6) ORDER BY order1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,13,6,12)) ORDER BY ccode[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "mlinks".* FROM "mlinks" WHERE ( id2=4 and ltype=4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE ( id in(0,12,13,6,7,8,14)) ORDER BY ccode[0m
+Rendered sclasses/_tr_s.html.erb (4.3ms)
+Rendered sclasses/index.html.erb within layouts/application (236.1ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (10.3ms)
+Rendered shared/_tabs.html.erb (1.5ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-27 16:03:52.089464' AND ends_at >= '2012-09-27 16:03:52.089492')[0m
+Completed 200 OK in 262ms (Views: 251.7ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/sclasses/7?by=show_member" for 192.168.1.99 at 2012-09-27 16:04:02 +0000
+  Processing by SclassesController#show as HTML
+  Parameters: {"by"=>"show_member", "id"=>"7"}
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=0)[0m
+  [1m[35mClassuser Load (0.1ms)[0m  SELECT "classusers".* FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=0) ORDER BY onumber,user_id
+  [1m[36mMlink Load (0.2ms)[0m  [1mSELECT "mlinks".* FROM "mlinks" WHERE (id2=7 and ltype=6) ORDER BY order1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE ( id in(0,13,7,12)) ORDER BY ccode
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=1)[0m
+  [1m[35mClassuser Load (0.1ms)[0m  SELECT "classusers".* FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=1) ORDER BY onumber,user_id
+Rendered sclasses/show.html.erb within layouts/application (45.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+Rendered shared/_global_links.html.erb (97.7ms)
+Rendered shared/_tabs.html.erb (1.7ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "announcements" WHERE (starts_at <= '2012-09-27 16:04:02.757440' AND ends_at >= '2012-09-27 16:04:02.757468')[0m
+Completed 200 OK in 217ms (Views: 202.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/admin" for 192.168.1.99 at 2012-09-27 16:04:08 +0000
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+Rendered admin/dashboard/_sidebar.html.erb (2.4ms)
+Rendered admin/dashboard/index.html.erb within layouts/admin (26.5ms)
+Rendered shared/_global_links.html.erb (0.8ms)
+Rendered admin/shared/_tabs.html.erb (2.8ms)
+Completed 200 OK in 276ms (Views: 174.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/orgs" for 192.168.1.99 at 2012-09-27 16:04:09 +0000
+  Processing by Admin::OrgsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mGrade Load (0.3ms)[0m  SELECT "grades".* FROM "grades" WHERE "grades"."id" = ? LIMIT 1  [["id", 1]]
+Rendered admin/grades/_form.html.erb (11.6ms)
+  [1m[36mGrade Load (0.3ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE (id>1) ORDER BY gyear[0m
+Rendered admin/sclasses/_form.html.erb (10.2ms)
+  [1m[35mGrade Load (0.2ms)[0m  SELECT "grades".* FROM "grades" WHERE ( id>1) ORDER BY gyear
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "sclasses" WHERE "sclasses"."grade_id" = 2[0m
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."grade_id" = 2 ORDER BY name
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=7 and ltype=1)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=6 and ltype=1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "sclasses" WHERE "sclasses"."grade_id" = 7[0m
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."grade_id" = 7 ORDER BY name
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=1)[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=8 and ltype=1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=1 and ltype=1)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=3 and ltype=1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=9 and ltype=1)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sclasses" WHERE "sclasses"."grade_id" = 3
+  [1m[36mSclass Load (0.1ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."grade_id" = 3 ORDER BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=5 and ltype=1)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=4 and ltype=1)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sclasses" WHERE "sclasses"."grade_id" = 5
+  [1m[36mSclass Load (0.1ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."grade_id" = 5 ORDER BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sclasses" WHERE "sclasses"."grade_id" = 8
+  [1m[36mSclass Load (0.1ms)[0m  [1mSELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."grade_id" = 8 ORDER BY name[0m
+Rendered admin/orgs/index.html.erb within layouts/admin (136.2ms)
+Rendered shared/_global_links.html.erb (1.5ms)
+Rendered admin/shared/_tabs.html.erb (2.6ms)
+Completed 200 OK in 374ms (Views: 251.5ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/admin/sclasses/7/edit" for 192.168.1.99 at 2012-09-27 16:04:15 +0000
+  Processing by Admin::SclassesController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSclass Load (0.2ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36mGrade Load (0.2ms)[0m  [1mSELECT "grades".* FROM "grades" WHERE (id>1) ORDER BY gyear[0m
+Rendered admin/sclasses/_form.html.erb (21.7ms)
+Rendered admin/sclasses/edit.html.erb within layouts/admin (23.3ms)
+Rendered shared/_global_links.html.erb (0.7ms)
+Rendered admin/shared/_tabs.html.erb (2.3ms)
+Completed 200 OK in 151ms (Views: 44.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/admin/sclasses/2" for 192.168.1.99 at 2012-09-27 16:04:37 +0000
+  Processing by Admin::SclassesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSclass Load (0.1ms)[0m  SELECT "sclasses".* FROM "sclasses" WHERE "sclasses"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=0)[0m
+  [1m[35mClassuser Load (0.2ms)[0m  SELECT "classusers".* FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=0) ORDER BY onumber,user_id
+Rendered admin/sclasses/_form_teacher.html.erb (2.4ms)
+Rendered admin/sclasses/_form_student.html.erb (1.9ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=1)[0m
+  [1m[35mClassuser Load (0.2ms)[0m  SELECT "classusers".* FROM "classusers" LEFT OUTER JOIN users ON users.id = user_id WHERE (sclass_id=2 and ltype=1) ORDER BY onumber,user_id
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 22]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 20]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 19]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+Rendered admin/sclasses/show.html.erb within layouts/admin (48.5ms)
+Rendered shared/_global_links.html.erb (0.8ms)
+Rendered admin/shared/_tabs.html.erb (2.2ms)
+Completed 200 OK in 177ms (Views: 70.2ms | ActiveRecord: 3.8ms)
